@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<font face="Verdana, sans-serif">
+  <head>
+    <title>Tesla Music Band - Experimental Music Performance</title>
+    
+    
+  </head>
+  <body>
+  <p><a href="http://teslamusicband.com/en/index.html">Back</a></p>
+  
+<p>DRSSTC 1</p>
+
+<p>Sat, 09 April 2011. 02:41AM</p>
+  
+<p>It's hard to imagine, how the beautiful branched lightnings of Singing Dual-Resonant Solid State Tesla Coil can sometimes charm a people.</p>
+
+<p>For the first time I saw a singing Tesla coil about year ago. It was a Youtube video of Steve Ward's DRSSTC2 showed June 9 2007 on DucKon 16 festival in Naperville, Illinois, USA.</p>
+
+<p><a href="http://www.youtube.com/watch?v=3ff_AXVlo9U" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/Duckon.jpg"/> </a></p>
+
+<p>I have been completely charmed of the unique sound of DRSSTC. The beautiful sound of lightning bolt.</p>
+
+<p>The more I listened the more I became obsessed of singing Tesla coils and became desired to step into this terra incognita of making my own one.</p>
+
+<p>I began to learn more about it, read the pages, search for a people in my country who already had a deal with it and finally who live in my town. Shortly I found the guys with nicknames "X-Ray" and "Quartz", members of flyback.org.ru - russian clone of 4hv.org.</p>
+
+<p>I met them, join they local crew and start to make a coil.</p>  
+
+<p>It took about a year for make things right, make a money, got a parts, learn how to solder, make pcb design, assemble the system, etc. Really, a year ago I didn't know the difference between capacitor and resistor. It was just a parts for me and I was not sure I could take off ground this. I made attempts one by one, got an explosion of IGBTs, done a repair, start again, got an explosion again and again, but I believed that I could do it.</p>
+
+<p>And then, finally, I made my first DRSSTC!</p>
+
+<p>Description:</p>
+
+<p>The coil is a resonance transformer with frequency modulation of current of primary inductor of transformer</p>
+
+<p>The current modulation needs to force a transformer works in resonant mode</p>
+
+<p>The secondary inductor have a resonant frequency, as a combination of 1/2*pi*sqrt(L*C)</p>
+
+<p>So the transformer will work in resonant mode if the primary inductor sinusoidal current will grow up and fall with same frequency</p>
+
+<p>for that could happen, the insulated-gate bipolar transistors of primary transformer circuit should opens and be closed in time</p>
+
+<p>which clocked by the DRSSTC driver board</p>
+
+<p>In that coil a used a Steve Ward's driver board from his  <a href="http://stevehv.4hv.org/DRSSTC3.htm" target="_blank">DRSSTC3 page</a></p>
+
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/DRSSTC-OCDsch.JPG" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/DRSSTC-OCDsch_preview.JPG"/></a></p>
+
+<p>PCB design was made in <a href="https://www.electronic-software-shop.com/lng/en/electronic-software/sprint-layout-60.html" target="_blank">Sprint Layout software</a>. PCB board was made by photoresistive technology of making PCB.</p>
+
+<p>The coil is a two circuits. Primary and Secondary. Secondary circuit consists of a inductor and topload. Primary consists of an inductor, capacitor and swithes block.</p> 
+
+<p>Capacitor often consists of many capacitors in series and parallel. And named MMC - Multi-Mini Capacitors.</p>
+
+<p>Switching block consists of bridge rectifier, bus electrolytic capacitors, insulated-gate bipolar transistors, transient voltage supressing diodes, snubber capacitors, gate drive transformers, current transformers, driver and interrupter.</p>
+
+<p>In my coil I used of two GDT in combination of 1:2:2 with core matherial of Epcos N87 with dimensions of 22х13х6mm, wired with help of <a href="http://tqfp.org/calculatoria/gdt/" target="_blank">BSVi's GDT calculator</a>.</p>
+
+<p>I choose a full bridge topology and IRG4PC50UD IGBTs, HFA25PB60 ultrafast diodes, 1.5KE400CA transient voltage supressors, 15v zener diodes to gate-emitter, 10 Ohm resistor + 1N5819 diode to the gate charge-discharge circuit, and 18.8uF film snubber capacitors to the bridge.</p>
+
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/DRSSTC1_GDTs.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/DRSSTC1_GDTs_Preview.jpg"/></a></p>
+
+<p>The bus capacitor I used is a CAPXON 4700uF 400V, actually may have high ESR, which is not good, but it cheap and working.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Bus_cap.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/Bus_cap_preview.jpg"/></a></p>
+
+<p>I also used a noise filter to shield the power line of electromagnetic interference.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Noise_filter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/Noise_filter_Preview.jpg"/></a></p>
+
+<p>Charge resistor for bus cap 10 Ohm 10W. After some time, it burned down and was replaced by big green soviet resistor.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/charge_resistor.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/charge_resistor_preview.jpg"/></a></p>
+
+<p>and discharge 9kOhm 45W resistor, for bus cap. It definitely should not be looking like this, but I was young and inexperienced</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/discharge_resistor.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/discharge_resistor_preview.jpg"/></a></p>
+
+<p>MMC 250nF-3kV teflone Suntan 3A154K.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/3A154K.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/3A154K_preview.jpg"/></a></p>
+
+<p>V-looked primary inductor - 6mm hollow copper tube from M1M copper matherial, internal inductor diameter is a 13cm, external diameter 24cm, height 2cm. The last external special ring is a grounded strike-ring for catching spark and avoiding spark to get the inductor.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Primary.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_primary.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Primary2.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_primary2.jpg"/></a></p>
+
+<p>Secondary inductor wired on PVC hollow tube with 11cm diameter. Wired of 0.2mm old soviet epox copper wire. wire lenght 38,4cm. covered by 3 or 4 layers of Polyurethane with some strange name "yacht's varnish". Secondary pipe is connected with box with PVC screws to avoid induction heating from primary inductor.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/secondary.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/secondary_pre.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/secondary2.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/secondary2_pre.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/secondary3.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/secondary3_pre.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/toilet_screw.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/toilet_screw_pre.jpg"/></a></p>
+
+<p>Topload is a bent aluminium airduct with dimensions of 40x10cm. Topload acting like a capacitor for secondary circuit and lowering the resonant frequency. With that inductor and topload mine f(sec)=105kHz.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Toroid.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_toroid.jpg"/></a></p>
+
+<p>Orange plywood varnished box. Love the orange color.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/case1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_case1.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/case2.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_case2.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/case4.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_case4.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/case5.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_case5.jpg"/></a></p>
+<p>To start a coil first I switch-on the left switch, which sent a current through the charge resistor, then the second switch put charge resistor away from a curcuit when bus cap became full charged.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/case3.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_case3.jpg"/></a></p>
+
+<p>Nice vintage voltmeter help me see the voltage on a bus.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/napryazhometr.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/pre_napryazhometr.jpg"/></a></p>
+
+
+<p>The Interrupter sends a square pulse to the driver to command the driver to start swithcing the IGBTs</p>
+<p>It could be on NE555N or on MCu like a <a href="http://bsvi.ru/preryvatel-dlya-drsstc/" target="_blank">midi controller "i1" by BSVi</a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/i1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_i1.jpg"/></a></p>
+
+<p>Interrupter and driver have been placed into aluminium boxes from PC's PSU and connected with each other by BNC cable.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/driver_aluminium_case.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_driver_aluminium_case.jpg"/></a></p>
+
+<p>Sparks is about 50cm. Some photos and videos now.</p>
+
+<p><a href="http://www.youtube.com/watch?v=dsk_aFzspPg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/first_drsstc_video.jpg"/></a></p>
+
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/drsstc1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_drsstc1.jpg"/></a></p>
+
+
+<p>Lightnings</p>
+<p><a href="http://www.youtube.com/watch?v=yIwFafx8gbI" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/drsstc1_2.jpg"/></a></p>
+
+
+
+<p>The fuse. If you don't use it, your wires can be damaged</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/fuse.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_fuse.jpg"/></a></p>
+
+<p>Film caps are here, 4.7х4=18.8uF total.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/film.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_film.jpg"/></a></p>
+
+
+<p>Part of swithcing system.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/bridge_part.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_bridge_part.jpg"/></a></p>
+
+<p>Current transformers for driver feedback and over current detect systems.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/TT.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_TT.jpg"/></a></p>
+
+<p>Bridge rectifier.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/diode_bridge.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_diode_bridge.jpg"/></a></p>
+
+<p>Guts.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/farsh.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_farsh.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/farsh1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_farsh1.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/farsh2.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_farsh2.jpg"/></a></p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/farsh3.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_farsh3.jpg"/></a></p>
+
+<p>Primary fits on box by nylon tie.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/nylon.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_nylon.jpg"/></a></p>
+
+<p>To connect the sliding contact I used contacts from the mount-plate fuse box, after choose the size of contacts of the fuse according to primary diameter.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/fuse_hand.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_fuse_hand.jpg"/></a></p>
+<p>Wire for sliding contact.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/primary_cable.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_primary_cable.jpg"/></a></p>
+
+<p>Grounded strike-ring.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/ring.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_ring.jpg"/></a></p>
+
+<p>secondary inductor with toroid connector.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/secondary_screw.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_secondary_screw.jpg"/></a></p>
+
+<p>toroid connector.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/secondary_screw1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_secondary_screw1.jpg"/></a></p>
+
+<p>another one</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/toroid_bind.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_toroid_bind.jpg"/></a></p>
+
+<p>Yep, this is it. Dead IGBTs. Interrupter BNC wire had a bad ground connection.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/explode.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_explode.jpg"/></a></p>
+
+<p>Oh, it's me.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/lightnings.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_lightnings.jpg"/></a></p>
+
+<p>flourescent grills under ultraviolet light :3</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/flourescent.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_flourescent.jpg"/></a></p>
+
+<p>dedicated fan board.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/fan_board.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_fan_board.jpg"/></a></p>
+
+<p>UPD: Hi guys, some updates.. Audio interrupter looks like done. My DR are the guitar amp! ^,..,^</p>
+<p><a href="http://www.youtube.com/watch?v=OQIHKX-TWUo" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/Gutar_drsstc.jpg"/> </a></p>
+
+<p>UPD: Updates on driver. Thanks Steve Ward for <a href="http://stevehv.4hv.org/leadcomp/UD2_1revB/" target="_blank">Universal Driver 2.0revB</a> rev march 26, 2011.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/ud2.1b.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_ud21b.jpg"/></a></p>
+
+<p>Also, a new interrupter. This is <a href="http://stevehv.4hv.org/midi_controller/" target="_blank">duophonic midi controller by Steve Ward</a>, from early 2008. On the high BPS it come to reduce pulse width, and now, highest notes become alive on DR. Thanks again, Steve.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/interrupter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_interrupter.jpg"/></a></p>
+
+
+
+<p>UPD: It was a long time I shared some updates.</p>
+<p>New CDE MMC, driver box, st-st fiber optics, new interrupter in box. Some photo.</p>
+
+<p>audio interrupter's first breadboard-like design</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/Audio_interrupter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_audio_interrupter.jpg"/></a></p>
+
+<p>MMC</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/mmc_macro.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_mmc_macro.jpg"/></a></p>
+
+<p>MMC again</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/mmc_position.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_mmc_position.jpg"/></a></p>
+
+<p>New Noise filter.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/new_noise_filter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_new_noise_filter.jpg"/></a></p>
+
+<p>New huge soviet charge resistor. actually it's green. =\ The old one exploded.</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/new_charge_resistor.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_new_charge_resistor.jpg"/></a></p>
+
+<p>new driver</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/driver.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_driver.jpg"/></a></p>
+
+<p>again</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/driver1.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_driver1.jpg"/></a></p>
+
+<p>interrupter inside</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/midi_controller2.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_midi_controller2.jpg"/></a></p>
+
+<p>interrupter's box</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/midi_controller.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_midi_controller.jpg"/></a></p>
+
+<p>Interrupter and fiber</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/new_interrupter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_new_interrupter.jpg"/></a></p>
+
+<p>DR.. ^,..,^</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/coil_and_interrupter.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_coil_and_interrupter.jpg"/></a></p>
+
+<p>Faraday's cage for laptop</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/faradei.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_faradei.jpg"/></a></p>
+
+<p>ST-ST fiber</p>
+<p><a href="http://www.teslamusicband.com/images/DRSSTC1/stst.jpg" target="_blank"> <img src="http://www.teslamusicband.com/images/DRSSTC1/rsz_stst.jpg"/></a></p>
+<p><a href="http://teslamusicband.com/en/index.html">Back</a></p>
+  </body>
+  </font>
+</html>
