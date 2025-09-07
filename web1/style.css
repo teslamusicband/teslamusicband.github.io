@@ -1,0 +1,69 @@
+/* Стили для всего сайта */
+
+/* Общие правила */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f8;
+    color: #333;
+    margin: 20px;
+}
+
+/* Заголовки */
+h1 {
+    color: #222;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 15px;
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: darkred;
+}
+
+/* Псевдокласс hover для ссылок */
+nav a:hover {
+    color: orange;
+    font-weight: bold;
+}
+
+/* aside с float */
+aside {
+    float: right;
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #aaa;
+    background-color: #fafafa;
+}
+
+/* Очистка обтекания */
+main::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* Картинка внутри figure */
+figure {
+    margin: 20px 0;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    font-siz
+      e: 14px;
+}
