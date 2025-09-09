@@ -55,6 +55,13 @@ main::after {
     clear: both;
 }
 
+p {
+    text-indent: 30px; /* делаем красную строку */
+    margin-top: 10px;  /* небольшой отступ сверху */
+    margin-bottom: 10px; /* небольшой отступ снизу */
+    line-height: 1.5;  /* межстрочный интервал для читаемости */
+}
+
 /* Картинка внутри figure */
 figure {
     margin: 20px 0;
