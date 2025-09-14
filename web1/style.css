@@ -10,12 +10,13 @@ body {
 
 /* Заголовки */
 h1 {
-    color: #222;
+    color: #333;
     text-align: center;
 }
 
 h2 {
     margin-top: 15px;
+    color: #333;
 }
 
 /* Навигация */
@@ -29,13 +30,34 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: darkred;
+    color: #333;
 }
 
 /* Псевдокласс hover для ссылок */
 nav a:hover {
-    color: orange;
+    color: #555;
     font-weight: bold;
+}
+
+/* Контейнер для картинки и текста */
+.content-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 20px 0;
+}
+
+.image-section {
+    flex: 0 0 300px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+}
+
+.text-section {
+    flex: 1;
 }
 
 /* aside с float */
@@ -56,10 +78,10 @@ main::after {
 }
 
 p {
-    text-indent: 30px; /* делаем красную строку */
-    margin-top: 10px;  /* небольшой отступ сверху */
-    margin-bottom: 10px; /* небольшой отступ снизу */
-    line-height: 1.5;  /* межстрочный интервал для читаемости */
+    text-indent: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 /* Картинка внутри figure */
@@ -76,12 +98,12 @@ footer {
 
 /* Классовый селектор */
 .highlight {
-    background-color: yellow;
+    background-color: #ffffcc;
     padding: 5px;
 }
 
 /* ID селектор */
 #unique-element {
-    border: 2px dashed red;
+    border: 2px solid #aaa;
     margin: 15px 0;
 }
