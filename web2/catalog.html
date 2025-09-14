@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Каталог — Трансформаторы и Лампы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <div class="logo">T&L</div>
+        <div>
+          <div style="font-weight:700">Трансформаторы и Лампы</div>
+          <div class="small">Каталог оборудования</div>
+        </div>
+      </a>
+      <nav class="menu">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О компании</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="header-right">
+        <a class="cta" href="contacts.html">Связаться</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <h2>Каталог оборудования</h2>
+
+      <div style="display:flex; gap:12px; align-items:center; margin-bottom:18px; flex-wrap:wrap">
+        <div class="small">Фильтр по категории:</div>
+        <a class="btn ghost" href="#lamps">Ламповое</a>
+        <a class="btn ghost" href="#trans">Транзисторное/Цифровое</a>
+        <a class="btn ghost" href="#tesla">Трансформаторы Тесла</a>
+      </div>
+
+      <section id="lamps">
+        <h3 style="color:var(--gold); margin-bottom:12px">Ламповое оборудование</h3>
+        <div class="grid">
+          <!-- Card sample -->
+          <article class="card">
+            <img src="https://picsum.photos/seed/mic1/600/400" alt="Ламповый микрофон">
+            <h3>Ламповый микрофон LM-1</h3>
+            <div class="meta">Капсюль: 1", теплый характер, ручная сборка</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=lm1">Подробнее</a>
+              <button class="btn primary" data-buy="Ламповый микрофон LM-1">Купить</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/comp1/600/400" alt="Компрессор">
+            <h3>Vari-Mu компрессор VM-Classic</h3>
+            <div class="meta">Оптическая сглаженность, ламповый характер. Отлично для вокала.</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=vmc">Подробнее</a>
+              <button class="btn primary" data-buy="Vari-Mu компрессор VM-Classic">Купить</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/eq1/600/400" alt="Эквалайзер">
+            <h3>Параметрический эквалайзер PEQ-2</h3>
+            <div class="meta">Точная коррекция частот с ламповым насыщением.</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=peq2">Подробнее</a>
+              <button class="btn primary" data-buy="Параметрический эквалайзер PEQ-2">Купить</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="trans" style="margin-top:28px">
+        <h3 style="color:var(--gold); margin-bottom:12px">Транзисторное и цифровое</h3>
+        <div class="grid">
+          <article class="card">
+            <img src="https://picsum.photos/seed/mon/600/400" alt="Монитор">
+            <h3>Активный студийный монитор SM-5</h3>
+            <div class="meta">Чистая АЧХ, точная передача деталей.</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=sm5">Подробнее</a>
+              <button class="btn primary" data-buy="Активный студийный монитор SM-5">Купить</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/synth/600/400" alt="Синтезатор">
+            <h3>Аналоговый синтезатор ASG-8</h3>
+            <div class="meta">Генераторные микросхемы, ретро-звук и современная схема управления.</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=asg8">Подробнее</a>
+              <button class="btn primary" data-buy="Аналоговый синтезатор ASG-8">Купить</button>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://picsum.photos/seed/emul/600/400" alt="Эмулятор кабинета">
+            <h3>Эмулятор кабинета CabSim Pro</h3>
+            <div class="meta">Реактивная нагрузка + моделирование микрофонов</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=cabsim">Подробнее</a>
+              <button class="btn primary" data-buy="Эмулятор кабинета CabSim Pro">Купить</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tesla" style="margin-top:28px">
+        <h3 style="color:var(--gold); margin-bottom:12px">Трансформаторы Тесла</h3>
+        <div class="grid">
+          <article class="card">
+            <img src="https://picsum.photos/seed/tesla1/600/400" alt="Tesla">
+            <h3>DRSSTC MIDI Coil — DMC-1</h3>
+            <div class="meta">Мощная DRSSTC c MIDI-панелью управления</div>
+            <div class="actions">
+              <a class="btn ghost" href="product.html?product=dmc1">Подробнее</a>
+              <button class="btn primary" data-buy="DRSSTC MIDI Coil — DMC-1">Купить</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="cols">
+          <div style="flex:2">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <div class="logo">T&L</div>
+              <div>
+                <div style="font-weight:700">Трансформаторы и Лампы</div>
+                <div class="small">Каталог</div>
+              </div>
+            </div>
+            <div style="margin-top:12px" class="small">© 2025</div>
+          </div>
+          <div style="flex:1">
+            <div class="small" style="margin-bottom:8px"><strong>Контакты</strong></div>
+            <div class="small">info@translamps.example</div>
+            <div class="small">+7 (900) 000-00-00</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- buy modal reused -->
+  <div id="buy-modal" class="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#0c0c0c; padding:18px; border-radius:10px; width:520px; max-width:94%; position:relative;">
+      <button class="close" style="position:absolute; right:12px; top:12px; background:transparent; border:none; color:#ccc; font-size:18px; cursor:pointer">✕</button>
+      <h3 class="modal-title" style="margin-top:0">Купить</h3>
+      <form id="buy-form" class="form">
+        <label>Имя *</label>
+        <input name="name" type="text" required>
+        <label>Телефон *</label>
+        <input name="phone" type="text" required>
+        <label>E-mail *</label>
+        <input name="email" type="email" required>
+        <label>Модель / комментарий</label>
+        <input name="model" type="text">
+        <div style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end">
+          <button type="button" class="btn ghost close">Отмена</button>
+          <button type="submit" class="btn primary">Отправить заявку</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

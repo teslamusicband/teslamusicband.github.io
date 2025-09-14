@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Контакты — Трансформаторы и Лампы</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="brand"><div class="logo">T&L</div><div><div style="font-weight:700">Трансформаторы и Лампы</div><div class="small">Контакты</div></div></a>
+      <nav class="menu">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О компании</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="header-right"><a class="cta" href="catalog.html">Купить</a></div>
+    </div>
+  </header>
+
+  <main class="container section">
+    <h2>Контакты</h2>
+    <div style="display:grid; grid-template-columns:1fr 360px; gap:18px; align-items:start">
+      <div>
+        <h3 class="small">Адрес и связь</h3>
+        <p class="small">г. Москва, ул. Примерная, д. 1</p>
+        <p class="small">Тел: +7 (900) 000-00-00</p>
+        <p class="small">E-mail: info@translamps.example</p>
+
+        <h3 class="small" style="margin-top:12px">Карта</h3>
+        <div style="background:#0f0f0f; height:220px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#999">Здесь будет карта (Google Maps / OpenStreetMap)</div>
+      </div>
+
+      <aside>
+        <div class="form">
+          <h3 style="margin-top:0; color:var(--gold)">Связаться с нами</h3>
+          <form id="contact-form">
+            <label>Имя *</label>
+            <input name="name" type="text" required>
+            <label>E-mail *</label>
+            <input name="email" type="email" required>
+            <label>Сообщение</label>
+            <textarea name="message"></textarea>
+            <div style="margin-top:12px; text-align:right">
+              <button type="submit" class="btn primary">Отправить</button>
+            </div>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">© 2025 Трансформаторы и Лампы</div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
