@@ -1,0 +1,968 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Трансформаторы и Лампы — Главная</title>
+<style>
+/* Базовые переменные */
+:root{
+  --black:#000000;                    /* Цвет: черный (шестнадцатеричный код) */
+  --graphite:#212121;                 /* Цвет: графитовый (темно-серый) */
+  --gold:#FFD700;                     /* Цвет: золотой */
+  --burgundy:#880E4F;                 /* Цвет: бордовый */
+  --muted:#f5f5f5;                    /* Цвет: приглушенный белый (светло-серый) */
+  --card-bg:#1e1e1e;                  /* Цвет фона карточек: темно-серый */
+  --text:#ececec;                     /* Цвет основного текста: светло-серый */
+  --accent:#880E4F;                   /* Акцентный цвет: бордовый */
+  --radius:10px;                      /* Радиус скругления углов: 10 пикселей */
+}
+
+*{box-sizing:border-box; margin:0; padding:0;} /* Для всех элементов: границы и padding включены в ширину/высоту, убраны отступы */
+
+html,body{
+  height:100%;                         /* Высота: 100% окна браузера */
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif; /* Стек шрифтов: предпочтительно Inter */
+  background:linear-gradient(180deg,#0b0b0b 0%, #111111 100%); /* Фон: вертикальный градиент от темно-серого к черному */
+  color:var(--text);                   /* Цвет текста: переменная --text (светло-серый) */
+  line-height:1.45;                    /* Высота строки: 1.45 (относительно размера шрифта) */
+}
+
+/* Скрытие загрузки */
+@keyframes loading-pulse{
+  from{opacity:0.6; transform:scale(0.98);} /* Начало: прозрачность 60%, масштаб 98% */
+  to{opacity:1; transform:scale(1.02);}     /* Конец: непрозрачность, масштаб 102% */
+}
+
+@keyframes loading-fade-out{
+  0%{opacity:1;}                             /* Начало: полностью видим */
+  100%{opacity:0; pointer-events:none;}      /* Конец: полностью прозрачен, события мыши игнорируются */
+}
+
+.loading{
+  position:fixed;                      /* Позиционирование: фиксированное (относительно окна) */
+  inset:0;                            /* Отступы от краев: 0 (занимает весь экран) */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  align-items:center;                 /* Выравнивание по вертикали: по центру */
+  justify-content:center;             /* Выравнивание по горизонтали: по центру */
+  background:linear-gradient(180deg,#000,rgba(0,0,0,0.8)); /* Фон: градиент от черного к полупрозрачному черному */
+  z-index:9999;                       /* Z-индекс: очень высокий (поверх всех элементов) */
+  animation:loading-fade-out 700ms ease-in-out forwards; /* Анимация: исчезновение за 700ms, сохранить конечное состояние */
+}
+
+.loading-inner{
+  text-align:center;                  /* Выравнивание текста: по центру */
+  animation:loading-pulse 900ms ease-in-out infinite alternate; /* Анимация: пульсация бесконечно, чередование направлений */
+}
+
+.loading-text{
+  margin-top:12px;                    /* Внешний отступ сверху: 12px */
+  color:#cfcfcf;                      /* Цвет текста: серый */
+}
+
+/* Контейнер страницы */
+.figma-frame{
+  width:100%;                         /* Ширина: 100% родителя */
+  max-width:1920px;                   /* Максимальная ширина: 1920px */
+  margin:0 auto;                      /* Внешние отступы: сверху-снизу 0, слева-справа авто (центрирование) */
+  background:linear-gradient(180deg,#0b0b0b 0%, #121212 100%); /* Фон: вертикальный градиент */
+  overflow-x:hidden;                  /* Переполнение по X: скрыть (горизонтальная прокрутка отключена) */
+}
+
+/* Header */
+.header{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0 80px 1px;                /* Внутренние отступы: сверху 0, слева-справа 80px, снизу 1px */
+  width:100%;                         /* Ширина: 100% */
+  background:linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%); /* Фон: горизонтальный градиент с прозрачностью */
+  position:sticky;                    /* Позиционирование: липкое (прилипает при прокрутке) */
+  top:0;                              /* Отступ сверху: 0 (прилипает к верху) */
+  z-index:1000;                       /* Z-индекс: высокий (над другими элементами) */
+  border-bottom:1px solid rgba(255,215,0,0.06); /* Граница снизу: 1px золотая с прозрачностью 6% */
+}
+
+.header .container{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  padding:1px 1px;                   /* Внутренние отступы: 1px со всех сторон */
+  gap:1px;                           /* Расстояние между элементами: 1px */
+  width:100%;                         /* Ширина: 100% */
+  max-width:1360px;                   /* Максимальная ширина: 1360px */
+  margin:0 auto;                      /* Внешние отступы: центрирование */
+}
+
+/* Логотип и бренд */
+.brand{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:12px;                          /* Расстояние между элементами: 12px */
+  text-decoration:none;               /* Оформление текста: без подчеркивания */
+  color:var(--text);                  /* Цвет текста: переменная --text */
+  transition:transform 160ms ease;    /* Анимация: трансформация за 160ms с плавным ускорением */
+}
+
+.brand:hover{
+  transform:scale(1.02);              /* При наведении: масштаб 102% */
+}
+
+.logo{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:center;                 /* Выравнивание по поперечной оси: по центру */
+  width:48px;                         /* Ширина: 48px */
+  height:48px;                        /* Высота: 48px */
+  background:linear-gradient(135deg, #FFD700 0%, #880E4F 100%); /* Фон: диагональный градиент от золотого к бордовому */
+  box-shadow:0px 6px 18px rgba(136, 14, 79, 0.15); /* Тень: смещение X 0, Y 6px, размытие 18px, цвет с прозрачностью */
+  border-radius:8px;                  /* Радиус скругления углов: 8px */
+  font-family:'Inter';                /* Шрифт: Inter */
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:18px;                     /* Размер шрифта: 18px */
+  line-height:26px;                   /* Высота строки: 26px */
+  color:#212121;                      /* Цвет текста: графитовый */
+}
+
+.brand > div{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:flex-start;             /* Выравнивание по поперечной оси: по левому краю */
+  padding:0 6px;                     /* Внутренние отступы: сверху-снизу 0, слева-справа 6px */
+}
+
+.brand > div > div:first-child{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  color:#ECECEC;                      /* Цвет текста: светло-серый */
+}
+
+.small{
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+}
+
+/* Навигация */
+.menu{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  flex-wrap:nowrap;                   /* Перенос элементов: без переноса */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  padding:0 0px 0 0px;               /* Внутренние отступы: 0 */
+  gap:0 0px;                         /* Расстояние между элементами: 0 */
+  margin-left:auto;                   /* Внешний отступ слева: авто (прижимает к правому краю) */
+}
+
+.menu a{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:flex-start;             /* Выравнивание элементов: по верхнему краю */
+  padding:6px 8px;                   /* Внутренние отступы: сверху-снизу 6px, слева-справа 8px */
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  color:#CFCFCF;                      /* Цвет текста: серый */
+  text-decoration:none;               /* Оформление текста: без подчеркивания */
+  transition:background 180ms ease, transform 120ms ease; /* Анимация: фон за 180ms, трансформация за 120ms */
+  border-radius:6px;                  /* Радиус скругления углов: 6px */
+}
+
+.menu a:hover{
+  background:rgba(255,255,255,0.04); /* При наведении: фон белый с прозрачностью 4% */
+  transform:translateY(-1px);         /* При наведении: сдвиг вверх на 1px */
+}
+
+/* Кнопка CTA */
+.header-right{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  margin-left:20px;                   /* Внешний отступ слева: 20px */
+}
+
+.btn{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:center;                 /* Выравнивание по поперечной оси: по центру */
+  padding:10.5px 17px 10.8px;        /* Внутренние отступы: сверху 10.5px, слева-справа 17px, снизу 10.8px */
+  border:1px solid rgba(255, 255, 255, 0.1); /* Граница: 1px белая с прозрачностью 10% */
+  border-radius:8px;                  /* Радиус скругления углов: 8px */
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  text-align:center;                  /* Выравнивание текста: по центру */
+  text-decoration:none;               /* Оформление текста: без подчеркивания */
+  cursor:pointer;                     /* Курсор: указатель (рука) */
+  transition:transform 160ms ease, box-shadow 160ms ease; /* Анимация: трансформация и тень за 160ms */
+}
+
+.btn.cta, .btn.primary{
+  background:#880E4F;                 /* Фон: бордовый */
+  color:#ECECEC;                      /* Цвет текста: светло-серый */
+  box-shadow:0 4px 12px rgba(136,14,79,0.2); /* Тень: смещение Y 4px, размытие 12px, цвет с прозрачностью */
+}
+
+.btn.cta:hover, .btn.primary:hover{
+  transform:translateY(-3px);         /* При наведении: сдвиг вверх на 3px */
+  box-shadow:0 8px 20px rgba(136,14,79,0.3); /* При наведении: тень больше и ярче */
+}
+
+.btn.ghost{
+  background:transparent;             /* Фон: прозрачный */
+  color:#FFFFFF;                      /* Цвет текста: белый */
+  border:1px solid rgba(255, 255, 255, 0.1); /* Граница: 1px белая с прозрачностью 10% */
+  filter:drop-shadow(0px 4px 12px rgba(136, 14, 79, 0.2)); /* Фильтр: тень (альтернативный способ) */
+}
+
+.btn.ghost:hover{
+  background:rgba(255,255,255,0.03); /* При наведении: фон белый с прозрачностью 3% */
+  border-color:rgba(255,215,0,0.2);  /* При наведении: цвет границы золотой с прозрачностью */
+  transform:translateY(-2px);         /* При наведении: сдвиг вверх на 2px */
+}
+
+/* Main */
+main{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:center;                 /* Выравнивание элементов: по центру */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:13px;                          /* Расстояние между элементами: 13px */
+  width:100%;                         /* Ширина: 100% */
+}
+
+/* Hero Section */
+.hero{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:flex-end;               /* Выравнивание элементов: по нижнему краю */
+  padding:80px 0;                    /* Внутренние отступы: сверху-снизу 80px, слева-справа 0 */
+  gap:20px;                          /* Расстояние между элементами: 20px */
+  width:100%;                         /* Ширина: 100% */
+  max-width:1360px;                   /* Максимальная ширина: 1360px */
+  margin:0 auto;                      /* Внешние отступы: центрирование */
+}
+
+.hero-grid{
+  display:contents;                   /* Отображение: содержимое (элемент не создает бокс, его дети становятся детьми родителя) */
+}
+
+.hero-grid > div:first-child{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:15.3px;                        /* Расстояние между элементами: 15.3px */
+  width:100%;                        /* Занимает всю доступную ширину */
+  max-width:900px;                   /* Но не больше 900px */
+}
+
+/* H1 */
+.hero h1{
+  width:100%;
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:44px;                     /* Размер шрифта: 44px */
+  line-height:54px;                   /* Высота строки: 54px */
+  letter-spacing:0.6px;               /* Межбуквенное расстояние: 0.6px */
+  color:#FFD700;                      /* Цвет текста: золотой */
+  margin:0;                          /* Внешние отступы: 0 */
+}
+
+/* Lead текст */
+.lead{
+  width:100%;
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#D7D7D7;                      /* Цвет текста: серый */
+  margin:0;                          /* Внешние отступы: 0 */
+}
+
+/* Категории */
+.categories{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  flex-wrap:wrap;                     /* Перенос элементов: с переносом на новую строку */
+  align-items:stretch;                /* Выравнивание элементов: растянуть по высоте */
+  padding:8.7px 0 0;                 /* Внутренние отступы: сверху 8.7px, слева-справа 0, снизу 0 */
+  gap:20px;                          /* Расстояние между элементами: 20px */
+  width:100%;
+}
+
+.category{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:center;                 /* Выравнивание элементов: по центру */
+  padding:17px 19px;                 /* Внутренние отступы: сверху-снизу 17px, слева-справа 19px */
+  width:210px;                        /* Ширина: 210px */
+  min-width:160px;                    /* Минимальная ширина: 160px */
+  background:linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%); /* Фон: вертикальный градиент с прозрачностью */
+  border:1px solid rgba(255, 215, 0, 0.05); /* Граница: 1px золотая с прозрачностью 5% */
+  border-radius:8px;                  /* Радиус скругления углов: 8px */
+  transition:transform 160ms ease, box-shadow 160ms ease; /* Анимация: трансформация и тень за 160ms */
+}
+
+.category:hover{
+  transform:translateY(-4px);         /* При наведении: сдвиг вверх на 4px */
+  box-shadow:0 8px 20px rgba(0,0,0,0.3); /* При наведении: тень */
+  border-color:rgba(255,215,0,0.15); /* При наведении: цвет границы золотой с большей прозрачностью */
+}
+
+.category strong{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  text-align:center;                  /* Выравнивание текста: по центру */
+  color:#ECECEC;                      /* Цвет текста: светло-серый */
+}
+
+.category .small{
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  text-align:center;                  /* Выравнивание текста: по центру */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+  padding:0 0 0.84px;                /* Внутренние отступы: снизу 0.84px */
+}
+
+/* Кнопки героя */
+.hero-grid > div:first-child > div:last-child{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  padding:8.7px 0 0;                 /* Внутренние отступы: сверху 8.7px, слева-справа 0, снизу 0 */
+  gap:20px;                          /* Расстояние между элементами: 20px */
+  width:100%;
+}
+
+/* Aside (популярные продукты) */
+.aside{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:21px;                      /* Внутренние отступы: 21px со всех сторон */
+  gap:16px;                          /* Расстояние между элементами: 16px */
+  width:440px;                        /* Ширина: 440px */
+  background:linear-gradient(180deg, #0F0F0F 0%, #161616 100%); /* Фон: вертикальный градиент от темно-серого к черному */
+  border:1px solid rgba(255, 255, 255, 0.02); /* Граница: 1px белая с очень низкой прозрачностью */
+  border-radius:12px;                 /* Радиус скругления углов: 12px */
+}
+
+.aside h3{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:24px;                     /* Размер шрифта: 24px */
+  line-height:38px;                   /* Высота строки: 38px */
+  color:#FFD700;                      /* Цвет текста: золотой */
+  margin:0;                          /* Внешние отступы: 0 */
+}
+
+.aside > div{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:12px;                          /* Расстояние между элементами: 12px */
+  width:100%;                         /* Ширина: 100% */
+}
+
+/* Карточка продукта */
+.card{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:15px;                      /* Внутренние отступы: 15px со всех сторон */
+  width:100%;                         /* Ширина: 100% */
+  background:#1E1E1E;                 /* Фон: темно-серый */
+  border:1px solid rgba(255, 255, 255, 0.03); /* Граница: 1px белая с очень низкой прозрачностью */
+  border-radius:12px;                 /* Радиус скругления углов: 12px */
+  transition:transform 200ms ease, box-shadow 200ms ease; /* Анимация: трансформация и тень за 200ms */
+}
+
+.card:hover{
+  transform:translateY(-6px);         /* При наведении: сдвиг вверх на 6px */
+  box-shadow:0 16px 32px rgba(0,0,0,0.4); /* При наведении: тень больше и темнее */
+  border-color:rgba(255,215,0,0.1);  /* При наведении: цвет границы золотой с прозрачностью */
+}
+
+.card > div{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  gap:12px;                          /* Расстояние между элементами: 12px */
+  width:100%;                         /* Ширина: 100% */
+}
+
+.card img{
+  width:120px;                        /* Ширина: 120px */
+  height:80px;                        /* Высота: 80px */
+  object-fit:cover;                   /* Объект: обрезать чтобы заполнить область */
+  border-radius:6px;                  /* Радиус скругления углов: 6px */
+  transition:transform 200ms ease;    /* Анимация: трансформация за 200ms */
+}
+
+.card:hover img{
+  transform:scale(1.03);              /* При наведении: масштаб 103% */
+}
+
+.card strong{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  color:#ECECEC;                      /* Цвет текста: светло-серый */
+  display:block;                      /* Отображение: блочный элемент */
+  margin-bottom:4px;                  /* Внешний отступ снизу: 4px */
+}
+
+.card .small{
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+  display:block;                      /* Отображение: блочный элемент */
+}
+
+/* Секции */
+.section{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:50px 0;                    /* Внутренние отступы: сверху-снизу 50px, слева-справа 0 */
+  gap:28px;                          /* Расстояние между элементами: 28px */
+  width:100%;                         /* Ширина: 100% */
+  max-width:1360px;                   /* Максимальная ширина: 1360px */
+  margin:0 auto;                      /* Внешние отступы: центрирование */
+}
+
+.section h2{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:32px;                     /* Размер шрифта: 32px */
+  line-height:46px;                   /* Высота строки: 46px */
+  color:#FFD700;                      /* Цвет текста: золотой */
+  margin:0;                          /* Внешние отступы: 0 */
+  width:100%;                         /* Ширина: 100% */
+}
+
+/* Преимущества */
+.advantages{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:stretch;                /* Выравнивание элементов: растянуть по высоте */
+  gap:20px;                          /* Расстояние между элементами: 20px */
+}
+
+.adv{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:28px 25px 32px;            /* Внутренние отступы: сверху 28px, слева-справа 25px, снизу 32px */
+  gap:10.52px;                       /* Расстояние между элементами: 10.52px */
+  width:440px;                        /* Ширина: 440px */
+  background:linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%); /* Фон: горизонтальный градиент от золотого к бордовому с прозрачностью */
+  border:1px solid rgba(255, 215, 0, 0.08); /* Граница: 1px золотая с прозрачностью 8% */
+  border-radius:10px;                 /* Радиус скругления углов: 10px */
+  transition:transform 160ms ease;    /* Анимация: трансформация за 160ms */
+}
+
+.adv:hover{
+  transform:translateY(-4px);         /* При наведении: сдвиг вверх на 4px */
+  box-shadow:0 8px 20px rgba(136,14,79,0.15); /* При наведении: тень бордового цвета */
+}
+
+.adv strong{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  color:#FFD700;                      /* Цвет текста: золотой */
+}
+
+.adv p{
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+  margin:0;                          /* Внешние отступы: 0 */
+}
+
+/* Отзывы */
+.testimonials{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:flex-start;             /* Выравнивание элементов: по верхнему краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:20px;                          /* Расстояние между элементами: 20px */
+  width:100%;                         /* Ширина: 100% */
+}
+
+.test{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:21px;                      /* Внутренние отступы: 21px со всех сторон */
+  gap:10.61px;                       /* Расстояние между элементами: 10.61px */
+  width:672px;                        /* Ширина: 672px */
+  background:#0F0F0F;                 /* Фон: очень темно-серый */
+  border:1px solid rgba(255, 255, 255, 0.02); /* Граница: 1px белая с очень низкой прозрачностью */
+  border-radius:8px;                  /* Радиус скругления углов: 8px */
+  transition:transform 160ms ease;    /* Анимация: трансформация за 160ms */
+}
+
+.test:hover{
+  transform:translateY(-3px);         /* При наведении: сдвиг вверх на 3px */
+  box-shadow:0 6px 16px rgba(0,0,0,0.3); /* При наведении: тень */
+}
+
+.test strong{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:29px;                   /* Высота строки: 29px */
+  color:#FFD700;                      /* Цвет текста: золотой */
+}
+
+.test p{
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+  margin:0;                          /* Внешние отступы: 0 */
+}
+
+/* Footer */
+.footer{
+  box-sizing:border-box;              /* Размеры включают границы и padding */
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:41px 280px 40px;           /* Внутренние отступы: сверху 41px, слева-справа 280px, снизу 40px */
+  width:100%;                         /* Ширина: 100% */
+  border-top:1px solid rgba(255, 255, 255, 0.03); /* Граница сверху: 1px белая с очень низкой прозрачностью */
+}
+
+.footer .container{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  justify-content:center;             /* Выравнивание по главной оси: по центру */
+  align-items:flex-start;             /* Выравнивание элементов: по верхнему краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:34px;                          /* Расстояние между элементами: 34px */
+  width:100%;                         /* Ширина: 100% */
+  max-width:1360px;                   /* Максимальная ширина: 1360px */
+  margin:0 auto;                      /* Внешние отступы: центрирование */
+}
+
+.footer .cols{
+  display:contents;                   /* Отображение: содержимое (элемент не создает бокс) */
+}
+
+.footer .cols > div:first-child{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0;                         /* Внутренние отступы: 0 */
+  gap:15px;                          /* Расстояние между элементами: 15px */
+  width:639px;                        /* Ширина: 639px */
+}
+
+.footer .cols > div:first-child > div:first-child{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:row;                 /* Направление флекс-элементов: строка */
+  align-items:center;                 /* Выравнивание элементов: по центру по вертикали */
+  padding:0 0 0 24px;                /* Внутренние отступы: слева 24px */
+  gap:12px;                          /* Расстояние между элементами: 12px */
+  width:100%;                         /* Ширина: 100% */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  flex-direction:column;              /* Направление флекс-элементов: колонка */
+  align-items:flex-start;             /* Выравнивание элементов: по левому краю */
+  padding:0 0 0 24px;                /* Внутренние отступы: слева 24px */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child > div:first-child{
+  font-weight:700;                    /* Насыщенность шрифта: жирный (700) */
+  font-size:24px;                     /* Размер шрифта: 24px */
+  line-height:38px;                   /* Высота строки: 38px */
+  color:#ECECEC;                      /* Цвет текста: светло-серый */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child > div:last-child{
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+}
+
+.footer .cols > div:first-child > div:last-child{
+  font-weight:400;                    /* Насыщенность шрифта: нормальный (400) */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  color:#BDBDBD;                      /* Цвет текста: серый */
+  padding:0 0 0.84px;                /* Внутренние отступы: снизу 0.84px */
+}
+
+.footer .cols > div:nth-child(2),
+.footer .cols > div:nth-child(3){
+  width:320px;                        /* Ширина: 320px */
+  position:relative;                  /* Позиционирование: относительное */
+}
+
+.footer a{
+  color:#cfcfcf;                      /* Цвет ссылок: серый */
+  text-decoration:none;               /* Оформление текста: без подчеркивания */
+  font-size:20px;                     /* Размер шрифта: 20px */
+  line-height:34px;                   /* Высота строки: 34px */
+  transition:color 160ms ease;        /* Анимация: изменение цвета за 160ms */
+}
+
+.footer a:hover{
+  color:var(--gold);                  /* При наведении: цвет золотой (переменная) */
+}
+
+/* Modal */
+.modal{
+  display:none;                       /* Отображение: скрыт */
+  position:fixed;                     /* Позиционирование: фиксированное (относительно окна) */
+  inset:0;                           /* Отступы от краев: 0 (занимает весь экран) */
+  background:rgba(0,0,0,0.7);        /* Фон: черный с прозрачностью 70% */
+  z-index:2000;                       /* Z-индекс: очень высокий (поверх всех элементов) */
+  align-items:center;                 /* Выравнивание по вертикали: по центру */
+  justify-content:center;             /* Выравнивание по горизонтали: по центру */
+  animation:modal-fade-in 240ms ease; /* Анимация: появление за 240ms */
+}
+
+.modal[style*="display: flex"],
+.modal[style*="display:flex"]{
+  display:flex !important;            /* Принудительное отображение: флекс-контейнер (важно) */
+}
+
+@keyframes modal-fade-in{
+  from{opacity:0;}                    /* Начало: полностью прозрачен */
+  to{opacity:1;}                      /* Конец: полностью видим */
+}
+
+.modal-inner{
+  background:#0c0c0c;                 /* Фон: очень темно-серый */
+  padding:28px;                      /* Внутренние отступы: 28px со всех сторон */
+  border-radius:12px;                 /* Радиус скругления углов: 12px */
+  width:520px;                        /* Ширина: 520px */
+  max-width:94%;                      /* Максимальная ширина: 94% от окна браузера */
+  position:relative;                  /* Позиционирование: относительное */
+  animation:modal-slide-in 280ms ease; /* Анимация: выезжание за 280ms */
+  border:1px solid rgba(255,215,0,0.08); /* Граница: 1px золотая с прозрачностью 8% */
+}
+
+@keyframes modal-slide-in{
+  from{transform:translateY(20px) scale(0.96); opacity:0;} /* Начало: сдвиг вниз 20px, масштаб 96%, прозрачен */
+  to{transform:translateY(0) scale(1); opacity:1;}        /* Конец: нормальное положение, непрозрачен */
+}
+
+.modal .close{
+  position:absolute;                  /* Позиционирование: абсолютное (относительно родителя) */
+  right:16px;                         /* Отступ справа: 16px */
+  top:16px;                           /* Отступ сверху: 16px */
+  background:transparent;             /* Фон: прозрачный */
+  border:none;                        /* Граница: нет */
+  color:#ccc;                         /* Цвет: светло-серый */
+  font-size:24px;                     /* Размер шрифта: 24px */
+  cursor:pointer;                     /* Курсор: указатель (рука) */
+  transition:transform 160ms ease, color 160ms ease; /* Анимация: трансформация и цвет за 160ms */
+}
+
+.modal .close:hover{
+  color:var(--gold);                  /* При наведении: цвет золотой (переменная) */
+  transform:rotate(90deg);            /* При наведении: поворот на 90 градусов */
+}
+
+.modal-title{
+  color:var(--gold);                  /* Цвет текста: золотой (переменная) */
+  margin-top:0;                       /* Внешний отступ сверху: 0 */
+}
+
+/* Form */
+.form{
+  background:#0e0e0e;                 /* Фон: очень темно-серый */
+  padding:20px;                      /* Внутренние отступы: 20px со всех сторон */
+  border-radius:8px;                  /* Радиус скругления углов: 8px */
+  border:1px solid rgba(255,255,255,0.02); /* Граница: 1px белая с очень низкой прозрачностью */
+}
+
+.form label{
+  display:block;                      /* Отображение: блочный элемент */
+  font-size:13px;                     /* Размер шрифта: 13px */
+  color:#cfcfcf;                      /* Цвет текста: серый */
+  margin:12px 0 6px;                 /* Внешние отступы: сверху 12px, слева-справа 0, снизу 6px */
+  font-weight:500;                    /* Насыщенность шрифта: средний (500) */
+}
+
+.form input,
+.form textarea{
+  width:100%;                         /* Ширина: 100% родителя */
+  padding:12px;                      /* Внутренние отступы: 12px со всех сторон */
+  border-radius:6px;                  /* Радиус скругления углов: 6px */
+  background:#121212;                 /* Фон: темно-серый */
+  border:1px solid rgba(255,255,255,0.05); /* Граница: 1px белая с низкой прозрачностью */
+  color:var(--text);                  /* Цвет текста: переменная --text */
+  font-family:inherit;                /* Шрифт: наследовать от родителя */
+  font-size:14px;                     /* Размер шрифта: 14px */
+  transition:border-color 180ms ease, box-shadow 180ms ease; /* Анимация: цвет границы и тень за 180ms */
+}
+
+.form input:focus,
+.form textarea:focus{
+  outline:none;                       /* Контур: нет (убирает стандартное выделение) */
+  border-color:rgba(255,215,0,0.3);  /* Цвет границы: золотой с прозрачностью 30% */
+  box-shadow:0 0 0 3px rgba(255,215,0,0.08); /* Тень: размытие 0, размер 3px, золотой с прозрачностью */
+}
+
+.form input:hover,
+.form textarea:hover{
+  border-color:rgba(255,255,255,0.1); /* При наведении: цвет границы белый с прозрачностью 10% */
+}
+
+.form-actions{
+  display:flex;                       /* Отображение: флекс-контейнер */
+  gap:10px;                          /* Расстояние между элементами: 10px */
+  justify-content:flex-end;           /* Выравнивание по главной оси: по правому краю */
+  margin-top:20px;                    /* Внешний отступ сверху: 20px */
+}
+
+/* Responsive */
+@media (max-width:1920px){
+  .figma-frame{
+    width:100%;                       /* Ширина: 100% (адаптация под большие экраны) */
+  }
+}
+
+@media (max-width:1400px){
+  .header{
+    padding:0 40px 1px;              /* Внутренние отступы: слева-справа 40px (уменьшение для планшетов) */
+  }
+  .footer{
+    padding:41px 40px 40px;          /* Внутренние отступы: слева-справа 40px (уменьшение для планшетов) */
+  }
+}
+
+@media (max-width:880px){
+  .hero{
+    flex-direction:column;            /* Направление флекс-элементов: колонка (мобильная версия) */
+    align-items:flex-start;           /* Выравнивание элементов: по левому краю */
+  }
+  .hero-grid > div:first-child,
+  .aside{
+    width:100%;                       /* Ширина: 100% (занимают всю ширину на мобильных) */
+  }
+  .footer .cols{
+    display:flex;                     /* Отображение: флекс-контейнер */
+    flex-direction:column;            /* Направление флекс-элементов: колонка */
+  }
+  .footer .cols > div{
+    width:100% !important;            /* Ширина: 100% (важно, переопределяет другие стили) */
+  }
+  .menu{
+    display:none;                     /* Отображение: скрыт (навигация скрыта на мобильных) */
+  }
+  .advantages,
+  .testimonials{
+    flex-direction:column;            /* Направление флекс-элементов: колонка (вертикальное расположение) */
+  }
+  .adv,
+  .test{
+    width:100%;                       /* Ширина: 100% (занимают всю ширину на мобильных) */
+  }
+}
+</style>
+</head>
+<body>
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+  <div class="loading-inner">
+    <div class="logo">T&L</div>
+    <div class="loading-text">Загрузка...</div>
+  </div>
+</div>
+
+<!-- Figma frame wrapper -->
+<div class="figma-frame">
+  <header class="header" data-component="Header/Main">
+    <div class="container">
+      <a href="index.html" class="brand" data-component="Brand/Logo">
+        <div class="logo">T&L</div>
+        <div>
+          <div>Трансформаторы и Лампы</div>
+          <div class="small">Производство профессионального аудиооборудования</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Главное меню" data-component="Nav/Main">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О компании</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="header-right" data-component="Header/CTA">
+        <a class="btn cta" href="catalog.html" data-component="Button/Primary">Смотреть каталог</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero" data-component="Section/Hero">
+      <div class="hero-grid">
+        <div data-component="Hero/Lead">
+          <h1>Тепло ламп. Сила трансформаторов. Звук, который вдохновляет.</h1>
+          <p class="lead">Разработка и изготовление лампового и современного аудиооборудования: микрофоны, компрессоры, эквалайзеры, усилители, студийные мониторы, синтезаторы и MIDI-управляемые трансформаторы Тесла.</p>
+          <div class="categories" data-component="List/Categories">
+            <div class="category" data-component="Category/Item">
+              <strong>Ламповое</strong>
+              <div class="small">Микрофоны, компрессоры, эквалайзеры</div>
+            </div>
+            <div class="category" data-component="Category/Item">
+              <strong>Цифровое</strong>
+              <div class="small">Мониторы, ПО, эмуляторы</div>
+            </div>
+            <div class="category" data-component="Category/Item">
+              <strong>Инструменты</strong>
+              <div class="small">Синтезаторы, усилители, Tesla coils</div>
+            </div>
+          </div>
+          <div>
+            <a class="btn primary" href="catalog.html" data-component="Button/Primary">Посмотреть каталог</a>
+            <a class="btn ghost" href="projects.html" data-component="Button/Ghost">Смотреть проекты</a>
+          </div>
+        </div>
+        <aside class="aside" data-component="Aside/Popular">
+          <h3>Популярные продукты</h3>
+          <div>
+            <div class="card" data-component="Card/Product" data-variant="list">
+              <div>
+                <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="mic">
+                <div>
+                  <strong>Ламповый микрофон</strong>
+                  <div class="small">Тёплый винтажный тон</div>
+                  <div style="margin-top:8px;">
+                    <button class="btn primary" data-component="Button/Primary" data-buy="Ламповый микрофон">Купить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" data-component="Card/Product" data-variant="list">
+              <div>
+                <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/amp.jpg" alt="amp">
+                <div>
+                  <strong>Гитарная голова</strong>
+                  <div class="small">Ламповый драйв</div>
+                  <div style="margin-top:8px;">
+                    <a class="btn primary" href="product.html?product=lm1">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="advantages" class="section" data-component="Section/Advantages">
+      <h2>Наши преимущества</h2>
+      <div class="advantages">
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Ручная сборка</strong>
+          <p>Каждый прибор собирается и тестируется вручную опытными инженерами.</p>
+        </div>
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Кастомизация</strong>
+          <p>Индивидуальные настройки под ваш звук и задачи студии.</p>
+        </div>
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Поддержка</strong>
+          <p>Сервис и гарантия на оборудование — до 5 лет.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section" data-component="Section/Testimonials">
+      <h2>Отзывы клиентов</h2>
+      <div class="testimonials">
+        <div class="test" data-component="Testimonial/Item">
+          <strong>Студия «Альфа»</strong>
+          <p>«Микрофоны и компрессоры от Трансформаторы и Лампы дали нашим записям тёплый и живой характер»</p>
+        </div>
+        <div class="test" data-component="Testimonial/Item">
+          <strong>Музыкант — Иван</strong>
+          <p>«Гитарная голова прекрасно держит динамику и не теряет тело при высоких уровнях»</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-component="Footer/Main">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div>
+            <div class="logo">T&L</div>
+            <div>
+              <div>Трансформаторы и Лампы</div>
+              <div>Профессиональное аудиооборудование</div>
+            </div>
+          </div>
+          <div>© 2025 Все права защищены</div>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:12px; color:#BDBDBD;">Меню</div>
+          <a href="catalog.html">Каталог</a><br>
+          <a href="projects.html">Проекты</a><br>
+          <a href="about.html">О компании</a><br>
+          <a href="contacts.html">Контакты</a>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:12px; color:#BDBDBD;">Контакты</div>
+          <div style="font-size:20px; line-height:34px; color:#BDBDBD;">email: info@translamps.example</div>
+          <div style="font-size:20px; line-height:34px; color:#BDBDBD;">тел: +7 (900) 000-00-00</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно "Купить" -->
+  <div id="modal-buy" class="modal" data-component="Modal/Buy">
+    <div class="modal-inner">
+      <button class="close" aria-label="Закрыть окно">&times;</button>
+      <h2 class="modal-title">Оформление заказа</h2>
+      <form class="form" id="buy-form">
+        <label for="product">Продукт</label>
+        <input type="text" id="product" name="product" readonly />
+
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" name="name" placeholder="Введите имя" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Введите email" required />
+
+        <label for="message">Комментарий</label>
+        <textarea id="message" name="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Отправить</button>
+          <button type="button" class="btn ghost close">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> <!-- /figma-frame -->
+</body>
+</html>
