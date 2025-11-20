@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Трансформаторы и Лампы — Главная</title>
+<style>
+/* Базовые переменные */
+:root{
+  --black:#000000; /* Чёрный цвет в HEX */
+  --graphite:#212121; /* Тёмно-серый (графитовый) цвет */
+  --gold:#FFD700; /* Золотой цвет */
+  --burgundy:#880E4F; /* Бордовый цвет */
+  --muted:#f5f5f5; /* Светлый, приглушённый серо-белый */
+  --card-bg:#1e1e1e; /* Цвет фона для карточек - тёмно-серый */
+  --text:#ececec; /* Основной цвет текста - светло-серый */
+  --accent:#880E4F; /* Акцентный цвет (здесь совпадает с бордовым) */
+  --radius:10px; /* Базовая величина скругления углов */
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+/* 
+  box-sizing: border-box; - Размер элемента включает padding и border. Ширина не "плывет" от padding и border элементов.
+  margin:0; padding:0; - Убирает все стандартные отступы, которые браузеры автоматически добавляют к элементам..
+*/
+
+html,body{
+  height:100%; /* Высота html и body равна 100% высоты окна просмотра (viewport) */
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif; /* Набор шрифтов, от самого желаемого к запасным */
+  background:linear-gradient(180deg,#0b0b0b 0%, #111111 100%); /* Градиентный фон от тёмно-серого к чуть более светлому, направление - сверху вниз (180deg) */
+  color:var(--text); /* Цвет текста берётся из CSS-переменной --text */
+  line-height:1.45; /* Высота строки (интерлиньяж) - 1.45 от размера шрифта */
+}
+
+/* Скрытие загрузки */
+@keyframes loading-pulse{ /* Анимация для прелоадера, пульсация загрузки */
+  from{opacity:0.6; transform:scale(0.98);} /* Начало: полупрозрачность 60%, масштаб 98% */
+  to{opacity:1; transform:scale(1.02);} /* Конец: непрозрачность 100%, масштаб 102% */
+}
+
+@keyframes loading-fade-out{ /* Вторая анимация прелоадера - исчезновение экрана загрузки */
+  0%{opacity:1;} /* Начало: полностью непрозрачно */
+  100%{opacity:0; pointer-events:none;} /* Конец: полностью прозрачно, и элемент не блокирует клики (pointer-events: none) */
+}
+
+.loading{
+  position:fixed; /* Фиксированное позиционирование относительно окна браузера */
+  inset:0; /* Сокращение для top:0; right:0; bottom:0; left:0; - растягивает элемент на весь экран */
+  display:grid; /* Использует CSS Grid для выравнивания дочерних элементов */
+  place-items:center; /* Центрирует дочерние элементы по горизонтали и вертикали */
+  background:linear-gradient(180deg,#000,rgba(0,0,0,0.8)); /* Градиент от чёрного к полупрозрачному чёрному */
+  z-index:9999; /* Очень высокий слой, чтобы быть поверх всех других элементов */
+  animation:loading-fade-out 700ms ease-in-out forwards; /* Применяет анимацию исчезновения длительностью 700ms с плавным ускорением и замедлением, остаётся в конечном состоянии (forwards) */
+}
+
+.loading-inner{
+  text-align:center; /* Выравнивание текста по центру */
+  animation:loading-pulse 900ms ease-in-out infinite alternate; /* Бесконечно повторяющаяся (infinite) пульсирующая анимация, которая чередуется между from и to (alternate) */
+}
+
+.loading-text{
+  margin-top:12px; /* Внешний отступ сверху 12 пикселей */
+  color:#cfcfcf; /* Цвет текста - светло-серый */
+}
+
+/* Контейнер страницы */
+.figma-frame{
+  width:100%; /* Ширина 100% от родителя */
+  max-width:1920px; /* Максимальная ширина 1920 пикселей (для очень широких экранов) */
+  margin:0 auto; /* Автоматические отступы слева и справа центрируют блок по горизонтали */
+  background:linear-gradient(180deg,#0b0b0b 0%, #121212 100%); /* Градиентный фон */
+  overflow-x:hidden; /* Скрывает горизонтальную прокрутку, если контент выходит за границы */
+}
+
+/* Header */
+.header{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:1fr; /* Одна колонка, занимающая всё доступное пространство */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0 80px 1px; /* Внутренние отступы: сверху 0, справа/слева 80px, снизу 1px */
+  width:100%; /* Ширина 100% от родителя */
+  background:linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%); /* Градиентный фон с прозрачностью 95%, направление слева направо (90deg) */
+  position:sticky; /* "Липкое" позиционирование - элемент прилипает при прокрутке */
+  top:0; /* Прилипает к верху окна просмотра */
+  z-index:1000; /* Высокий z-index, чтобы шапка была поверх другого контента */
+  border-bottom:1px solid rgba(255,215,0,0.06); /* Тонкая нижняя граница золотого цвета с очень низкой прозрачностью (6%) */
+}
+
+.header .container{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:auto 1fr auto; /* Три колонки: первая и третья под контент, вторая занимает оставшееся пространство */
+  align-items:center; /* Выравнивает элементы по центру по вертикали */
+  padding:1px 1px; /* Внутренние отступы 1px со всех сторон */
+  gap:1px; /* Расстояние между элементами grid - 1px */
+  width:100%; /* Ширина 100% от родителя */
+  max-width:1360px; /* Максимальная ширина 1360px */
+  margin:0 auto; /* Центрирование по горизонтали */
+}
+
+/* Логотип и бренд */
+.brand{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:auto 1fr; /* Две колонки: первая подстраивается под контент, вторая занимает оставшееся место */
+  align-items:center; /* Выравнивает элементы по центру по вертикали */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:12px; /* Расстояние между колонками grid - 12px */
+  text-decoration:none; /* Убирает подчёркивание у ссылки */
+  color:var(--text); /* Устанавливает цвет текста, используя CSS-переменную --text, объявленную в :root */
+  transition:transform 160ms ease; /* Плавное изменение трансформации (например, масштаба) за 160 миллисекунд */
+}
+
+.brand:hover{
+  transform:scale(1.02); /* При наведении курсора элемент увеличивается до 102% */
+}
+
+.logo{
+  display:grid; /* Использует Grid layout */
+  place-items:center; /* Центрирует содержимое по горизонтали и вертикали */
+  width:48px; /* Фиксированная ширина */
+  height:48px; /* Фиксированная высота */
+  background:linear-gradient(135deg, #FFD700 0%, #880E4F 100%); /* Диагональный градиент (135deg) от золотого к бордовому */
+  box-shadow:0px 6px 18px rgba(136, 14, 79, 0.15); /* Тень: смещение по X 0px, по Y 6px, размытие 18px, цвет бордовый с прозрачностью 15% */
+  border-radius:8px; /* Скругление углов на 8px */
+  font-family:'Inter'; /* Набор шрифтов, от самого желаемого к запасным */
+  font-weight:700; /* Жирное начертание */
+  font-size:18px; /* Размер шрифта */
+  line-height:26px; /* Высота строки */
+  color:#212121; /* Цвет текста внутри логотипа - тёмно-серый */
+}
+
+.brand > div{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto; /* Две строки, высота подстраивается под контент */
+  justify-items:start; /* Выравнивание содержимого по левому краю */
+  align-content:center; /* Выравнивание содержимого по центру по вертикали */
+  padding:0 6px; /* Внутренние отступы: слева/справа 6px */
+}
+
+.brand > div > div:first-child{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей */
+  color:#ECECEC; /* Цвет текста - светло-серый (почти белый) */
+}
+
+.small{
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя (больше межстрочный интервал) */
+  color:#BDBDBD; /* Цвет текста - серый (менее заметный чем основной текст) */
+}
+
+/* Навигация */
+.menu{
+  display:grid; /* Использует Grid layout */
+  grid-auto-flow:column; /* Автоматически размещает элементы в колонки (в одну строку) */
+  grid-auto-columns:auto; /* Ширина каждой колонки подстраивается под контент */
+  align-items:center; /* Выравнивание по центру */
+  padding:0 0px 0 0px; /* Отступы */
+  gap:0px; /* Расстояние между элементами grid */
+  justify-self:end; /* Выравнивает весь grid-контейнер по правому краю своей ячейки */
+}
+
+.menu a{
+  display:grid; /* Использует Grid layout для элемента ссылки */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:6px 8px; /* Внутренние отступы: 6px сверху/снизу, 8px слева/справа */
+  font-weight:700; /* Жирное начертание текста (эквивалентно bold) */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей для лучшего вертикального выравнивания */
+  color:#CFCFCF; /* Цвет текста - светло-серый */
+  text-decoration:none; /* Убирает стандартное подчеркивание ссылки */
+  transition:background 180ms ease, transform 120ms ease; /* Плавные анимации: фона за 180ms и трансформации за 120ms */
+  border-radius:6px; /* Скругление углов радиусом 6 пикселей */
+}
+
+.menu a:hover{
+  background:rgba(255,255,255,0.04); /* При наведении появляется полупрозрачный белый фон */
+  transform:translateY(-1px); /* При наведении ссылка слегка сдвигается вверх на 1px */
+}
+
+/* Кнопка CTA */
+.header-right{
+  display:grid; /* Использует Grid layout */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  margin-left:20px; /* Внешний отступ слева 20px */
+}
+
+.btn{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:inline-grid; /* Создает inline-grid контейнер (как inline-block, но с grid) */
+  grid-auto-flow:column; /* Автоматическое размещение дочерних элементов в строку (колонку) */
+  justify-content:center; /* Горизонтальное выравнивание содержимого по центру */
+  align-items:center; /* Вертикальное выравнивание содержимого по центру */
+  padding:10.5px 17px 10.8px; /* Внутренние отступы: верх 10.5px, право/лево 17px, низ 10.8px */
+  border:1px solid rgba(255, 255, 255, 0.1); /* Граница 1px сплошная белая с 10% непрозрачностью */
+  border-radius:8px; /* Скругление углов радиусом 8 пикселей */
+  font-weight:700; /* Жирное начертание шрифта (bold) */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей */
+  text-align:center; /* Горизонтальное выравнивание текста по центру */
+  text-decoration:none; /* Убирает подчеркивание (актуально для ссылок-кнопок) */
+  cursor:pointer; /* Курсор в виде руки при наведении, указывает на кликабельность */
+  transition:transform 160ms ease, box-shadow 160ms ease; /* Анимации: трансформация и тень по 160ms */
+  width:auto; /* Ширина автоматически подстраивается под содержимое */
+  white-space:nowrap; /* Запрещает перенос текста, весь текст в одной строке */
+}
+
+.btn.cta, .btn.primary{
+  background:#880E4F; /* Фон бордового цвета */
+  color:#ECECEC; /* светло-серый */
+  box-shadow:0 4px 12px rgba(136,14,79,0.2); /* Тень: смещение по Y 4px, размытие 12px, цвет бордовый с прозрачностью 20% */
+}
+
+.btn.cta:hover, .btn.primary:hover{
+  transform:translateY(-3px); /* При наведении кнопка "всплывает", сдвигаясь вверх на 3px */
+  box-shadow:0 8px 20px rgba(136,14,79,0.3); /* Тень становится больше и ярче */
+}
+
+.btn.ghost{
+  background:transparent; /* Прозрачный фон */
+  color:#FFFFFF; /* Белый */
+  border:1px solid rgba(255, 255, 255, 0.1); /* Тонкая белая рамка с низкой прозрачностью для легкого контура */
+  filter:drop-shadow(0px 4px 12px rgba(136, 14, 79, 0.2)); /* Тень с розовым оттенком для создания глубины и свечения. Учитывает альфа-канал, применяется ко всему элементу включая псевдоэлементы */
+}
+
+.btn.ghost:hover{
+  background:rgba(255,255,255,0.03); /* Появляется едва заметный белый фон */
+  border-color:rgba(255,215,0,0.2); /* Граница становится золотой с прозрачностью 20% */
+  transform:translateY(-2px); /* Лёгкий сдвиг вверх */
+}
+
+/* Main */
+main{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:1fr; /* Одна колонка на всю ширину */
+  justify-items:center; /* Центрирует содержимое по горизонтали */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:13px; /* Расстояние между дочерними элементами */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+/* Hero Section */
+.hero{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:1fr auto; /* Две колонки: первая занимает всё свободное место, вторая подстраивается под контент (aside) */
+  align-items:end; /* Выравнивает содержимое колонок по нижнему краю */
+  padding:80px 0; /* Внутренние отступы: сверху/снизу 80px, слева/справа 0 */
+  gap:20px; /* Расстояние между колонками */
+  width:100%; /* Ширина 100% от родителя */
+  max-width:1360px; /* Максимальная ширина контейнера */
+  margin:0 auto; /* Центрирование контейнера */
+}
+
+.hero-grid{
+  display:contents; /* Дочерние элементы становятся прямыми детьми grid-контейнера .hero */
+}
+
+.hero-grid > div:first-child{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto auto auto; /* Четыре строки, высота подстраивается под контент */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:15.3px; /* Расстояние между строками */
+  width:100%; /* Ширина 100% от родителя */
+  max-width:900px; /* Максимальная ширина блока */
+}
+
+/* H1 */
+.hero h1{
+  width:100%; /* Ширина 100% от родителя */
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:44px; /* Размер шрифта 44 пикселя */
+  line-height:54px; /* Высота строки 54 пикселя */
+  letter-spacing:0.6px; /* Межбуквенное расстояние 0.6px */
+  color:#FFD700; /* Золотой цвет текста */
+  margin:0; /* Убирает внешние отступы */
+}
+
+/* Lead текст */
+.lead{
+  width:100%; /* Ширина 100% от родителя */
+  font-weight:400; /* Нормальное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#D7D7D7; /* Светло-серый цвет текста */
+  margin:0; /* Убирает внешние отступы */
+}
+
+/* Категории */
+.categories{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:repeat(auto-fit, minmax(160px, 210px)); /* Автоматически создаёт колонки шириной от 160px до 210px, чтобы заполнить строку */
+  align-items:stretch; /* Растягивает элементы на всю высоту строки */
+  padding:8.7px 0 0; /* Внутренние отступы: сверху 8.7px, слева/справа 0 */
+  gap:20px; /* Расстояние между карточками категорий */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+.category{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto; /* Две строки, высота под контент */
+  align-items:center; /* Выравнивание по вертикали по центру */
+  justify-items:center; /* Центрирует содержимое по горизонтали */
+  padding:17px 19px; /* Внутренние отступы: сверху/снизу 17px, слева/справа 19px */
+  width:210px; /* Ширина */
+  min-width:160px; /* Минимальная ширина 160px */
+  background:linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%); /* Градиент от более прозрачного к менее прозрачному */
+  border:1px solid rgba(255, 215, 0, 0.05); /* Граница золотого цвета с прозрачностью 5% */
+  border-radius:8px; /* Скругление углов 8px */
+  transition:transform 160ms ease, box-shadow 160ms ease; /* Анимация трансформации и тени */
+}
+
+.category:hover{
+  transform:translateY(-4px); /* При наведении карточка сдвигается вверх на 4px */
+  box-shadow:0 8px 20px rgba(0,0,0,0.3); /* Появляется тень */
+  border-color:rgba(255,215,0,0.15); /* Граница становится более заметной */
+}
+
+.category strong{
+  font-weight:700; /* Жирное начертание шрифта (эквивалентно bold) */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей (межстрочный интервал) */
+  text-align:center; /* Горизонтальное выравнивание текста по центру */
+  color:#ECECEC; /* Цвет текста - светло-серый (почти белый) */
+}
+
+.category .small{
+  font-weight:400; /* Обычное начертание шрифта (не жирное) */
+  font-size:20px; /* Размер шрифта 20 пикселей (такой же как у strong) */
+  line-height:34px; /* Большая высота строки 34px для лучшей читабельности */
+  text-align:center; /* Горизонтальное выравнивание текста по центру */
+  color:#BDBDBD; /* Цвет текста - серый (темнее чем у strong) */
+  padding:0 0 0.84px; /* Отступы: сверху 0, справа 0, снизу 0.84px, слева 0 */
+}
+
+/* Кнопки героя */
+.hero-grid > div:first-child > div:last-child{
+  display:grid; /* Использует Grid layout */
+  grid-auto-flow:column; /* Элементы выстраиваются в строку */
+  grid-auto-columns:max-content; /* Ширина колонок подстраивается под содержимое */
+  align-items:center; /* Выравнивание элементов по вертикали по центру */
+  padding:8.7px 0 0; /* Внутренние отступы: сверху 8.7px, слева/справа 0, снизу 0 */
+  gap:20px; /* Расстояние между кнопками */
+  width:auto; /* Ширина определяется содержимым */
+  justify-content:start; /* Выравнивание по левому краю */
+}
+
+/* Aside (популярные продукты) */
+.aside{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto 1fr; /* Две строки: первая под контент, вторая занимает оставшееся пространство */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:21px; /* Внутренние отступы 21px со всех сторон */
+  gap:16px; /* Расстояние между элементами */
+  width:440px; /* Фиксированная ширина 440px */
+  background:linear-gradient(180deg, #0F0F0F 0%, #161616 100%); /* Градиентный фон от тёмного к чуть светлее */
+  border:1px solid rgba(255, 255, 255, 0.02); /* Очень тонкая почти невидимая граница */
+  border-radius:12px; /* Скругление углов 12px */
+}
+
+.aside h3{
+  font-weight:700; /* Жирное начертание шрифта (bold) для заголовка */
+  font-size:24px; /* Размер шрифта 24 пикселя - крупный для подзаголовка */
+  line-height:38px; /* Высота строки 38 пикселей для хорошей читаемости */
+  color:#FFD700; /* Золотой цвет текста (желто-золотистый оттенок) */
+  margin:0; /* Убирает все внешние отступы вокруг заголовка */
+}
+
+.aside > div{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto; /* Две строки, высота под контент */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:12px; /* Расстояние между карточками продуктов */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+/* Карточка продукта */
+.card{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto; /* Одна строка, высота подстраивается под контент */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:15px; /* Внутренние отступы 15px со всех сторон */
+  width:100%; /* Ширина 100% от родителя */
+  background:#1E1E1E; /* Тёмно-серый фон */
+  border:1px solid rgba(255, 255, 255, 0.03); /* Очень тонкая, почти невидимая граница */
+  border-radius:12px; /* Скругление углов */
+  transition:transform 200ms ease, box-shadow 200ms ease; /* Анимация трансформации и тени */
+}
+
+.card:hover{
+  transform:translateY(-6px); /* При наведении карточка "подпрыгивает" вверх на 6px */
+  box-shadow:0 16px 32px rgba(0,0,0,0.4); /* Появляется большая размытая тень */
+  border-color:rgba(255,215,0,0.1); /* Граница становится золотой */
+}
+
+.card > div{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:auto 1fr; /* Две колонки: первая под изображение, вторая под текст */
+  align-items:center; /* Выравнивание элементов по вертикали по центру */
+  gap:12px; /* Расстояние между изображением и текстом */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+.card img{
+  width:120px; /* Фиксированная ширина изображения */
+  height:80px; /* Фиксированная высота изображения */
+  object-fit:cover; /* Обрезает изображение, чтобы оно заполнило область, сохраняя пропорции */
+  border-radius:6px; /* Скругление углов */
+  transition:transform 200ms ease; /* Плавное увеличение изображения */
+}
+
+.card:hover img{
+  transform:scale(1.03); /* Изображение слегка увеличивается при наведении на карточку */
+}
+
+.card strong{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей */
+  color:#ECECEC; /* Светло-серый цвет текста */
+  display:block; /* Блочное отображение (занимает всю ширину) */
+  margin-bottom:4px; /* Внешний отступ снизу 4px */
+}
+
+.card .small{
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#BDBDBD; /* Серый цвет текста */
+  display:block; /* Блочное отображение (занимает всю ширину) */
+}
+
+.card .btn.primary {
+  width:max-content; /* Ширина подстраивается под содержимое */
+  padding:8px 16px; /* Внутренние отступы: сверху/снизу 8px, слева/справа 16px */
+  font-size:16px; /* Размер шрифта 16 пикселей */
+  line-height:24px; /* Высота строки 24 пикселя */
+}
+
+/* Секции */
+.section{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto 1fr; /* Две строки: заголовок и контент */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:50px 0; /* Внутренние отступы: сверху/снизу 50px, слева/справа 0 */
+  gap:28px; /* Расстояние между заголовком и контентом */
+  width:100%; /* Ширина 100% от родителя */
+  max-width:1360px; /* Максимальная ширина 1360px */
+  margin:0 auto; /* Центрирование секции по горизонтали */
+}
+
+.section h2{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:32px; /* Размер шрифта 32 пикселя */
+  line-height:46px; /* Высота строки 46 пикселей */
+  color:#FFD700; /* Золотой цвет текста */
+  margin:0; /* Убирает внешние отступы */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+/* Преимущества */
+.advantages{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:repeat(auto-fit, minmax(320px, 440px)); /* Автоматически вставляет колонки. minmax: минимальная ширина колонки 320px, максимальная 440px. auto-fit старается заполнить строку полностью. */
+  justify-content:center; /* Центрирует всю сетку колонок, если они не занимают всю ширину */
+  align-items:stretch; /* Растягивает карточки преимуществ на всю высоту строки */
+  gap:20px; /* Расстояние между карточками */
+}
+
+.adv{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto 1fr; /* Две строки: заголовок и текст */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:28px 25px 32px; /* Внутренние отступы: сверху 28px, слева/справа 25px, снизу 32px */
+  gap:10.52px; /* Расстояние между заголовком и текстом */
+  width:440px; /* Фиксированная ширина 440px */
+  background:linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%); /* Градиент слева направо от золотого к бордовому с прозрачностью */
+  border:1px solid rgba(255, 215, 0, 0.08); /* Граница золотого цвета с прозрачностью 8% */
+  border-radius:10px; /* Скругление углов */
+  transition:transform 160ms ease; /* Анимация только трансформации */
+}
+
+.adv:hover{
+  transform:translateY(-4px); /* Сдвиг вверх при наведении */
+  box-shadow:0 8px 20px rgba(136,14,79,0.15); /* Тень бордового цвета */
+}
+
+.adv strong{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей */
+  color:#FFD700; /* Золотой цвет текста */
+}
+
+.adv p{
+  font-weight:400; /* Нормальное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#BDBDBD; /* Серый цвет текста */
+  margin:0; /* Убирает внешние отступы */
+}
+
+/* Отзывы */
+.testimonials{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:repeat(2, 1fr); /* Две колонки равной ширины */
+  justify-content:center;
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:20px; /* Расстояние между элементами */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+.test{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto 1fr; /* Две строки: автор и текст отзыва */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:21px; /* Внутренние отступы 21px со всех сторон */
+  gap:10.61px; /* Расстояние между автором и текстом */
+  width:100%; /* Ширина 100% от родителя */
+  background:#0F0F0F; /* Цвет фона элемента */
+  border:1px solid rgba(255, 255, 255, 0.02); /* Очень тонкая почти невидимая граница */
+  border-radius:8px; /* Скругление углов */
+  transition:transform 160ms ease; /* Анимация трансформации */
+}
+
+.test:hover{
+  transform:translateY(-3px); /* Лёгкий сдвиг вверх при наведении */
+  box-shadow:0 6px 16px rgba(0,0,0,0.3); /* Тень при наведении */
+}
+
+.test strong{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:29px; /* Высота строки 29 пикселей */
+  color:#FFD700; /* Золотой цвет текста */
+}
+
+.test p{
+  font-weight:400; /* Нормальное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#BDBDBD; /* Серый цвет текста */
+  margin:0; /* Убирает внешние отступы */
+}
+
+/* Footer */
+.footer{
+  box-sizing:border-box; /* Padding и border включаются в общую ширину/высоту элемента */
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:1fr; /* Одна колонка */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:41px 280px 40px; /* Внутренние отступы: сверху 41px, слева/справа 280px, снизу 40px */
+  width:100%; /* Ширина 100% от родителя */
+  border-top:1px solid rgba(255, 255, 255, 0.03); /* Верхняя граница */
+}
+
+.footer .container{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:1fr; /* Одна колонка, занимающая всё доступное пространство */
+  justify-content:center; /* Выравнивание содержимого по горизонтали по центру */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:34px; /* Расстояние между элементами */
+  width:100%; /* Ширина 100% от родителя */
+  max-width:1360px; /* Максимальная ширина 1360px */
+  margin:0 auto; /* Центрирование контейнера по горизонтали */
+}
+
+.footer .cols{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:639px 320px 320px; /* Три колонки с фиксированной шириной */
+  gap:34px; /* Расстояние между колонками */
+}
+
+.footer .cols > div:first-child{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto; /* Две строки: логотип и копирайт */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0; /* Убирает внутренние отступы со всех сторон элемента */
+  gap:15px; /* Расстояние между строками */
+  width:639px; /* Ширина */
+}
+
+.footer .cols > div:first-child > div:first-child{
+  display:grid; /* Использует Grid layout */
+  grid-template-columns:auto 1fr; /* Две колонки: логотип и текст */
+  align-items:center; /* Выравнивание элементов по вертикали по центру */
+  padding:0 0 0 24px; /* Внутренний отступ слева 24px */
+  gap:12px; /* Расстояние */
+  width:100%; /* Ширина 100% от родителя */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child{
+  display:grid; /* Использует Grid layout */
+  grid-template-rows:auto auto; /* Две строки: название и описание */
+  align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  padding:0 0 0 24px; /* Внутренний отступ слева 24px */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child > div:first-child{
+  font-weight:700; /* Жирное начертание шрифта */
+  font-size:24px; /* Размер шрифта 24 пикселя */
+  line-height:38px; /* Высота строки 38 пикселей */
+  color:#ECECEC; /* Светло-серый цвет текста */
+}
+
+.footer .cols > div:first-child > div:first-child > div:last-child > div:last-child{
+  font-weight:400; /* Нормальное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#BDBDBD; /* Серый цвет текста */
+}
+
+.footer .cols > div:first-child > div:last-child{
+  font-weight:400; /* Нормальное начертание шрифта */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  color:#BDBDBD; /* Серый цвет текста */
+  padding:0 0 0.84px; /* Внутренний отступ снизу 0.84px */
+}
+
+.footer .cols > div:nth-child(2),
+.footer .cols > div:nth-child(3){
+  width:320px; /* Фиксированная ширина 320px */
+  position:relative; /* Относительное позиционирование */
+}
+
+.footer a{
+  color:#cfcfcf; /* Светло-серый цвет ссылок */
+  text-decoration:none; /* Убирает подчеркивание ссылок */
+  font-size:20px; /* Размер шрифта 20 пикселей */
+  line-height:34px; /* Высота строки 34 пикселя */
+  transition:color 160ms ease; /* Плавное изменение цвета */
+}
+
+.footer a:hover{
+  color:var(--gold); /* При наведении цвет становится золотым */
+}
+
+/* Modal */
+.modal{
+  display:none; /* По умолчанию скрыто */
+  position:fixed; /* Фиксированное позиционирование */
+  inset:0; /* Растягивает модальное окно на весь экран (top:0, right:0, bottom:0, left:0) */
+  background:rgba(0,0,0,0.7); /* Полупрозрачный чёрный фон (оверлей) */
+  z-index:2000; /* Очень высокий z-index, чтобы быть поверх всех элементов, включая шапку */
+  place-items:center; /* Центрирует содержимое модального окна ( .modal-inner ) */
+  animation:modal-fade-in 240ms ease; /* Анимация плавного появления фона */
+}
+
+.modal[style*="display: flex"],
+.modal[style*="display:flex"]{
+  display:grid !important; /* Принудительно меняет display на grid при любом flex-отображении */
+}
+
+@keyframes modal-fade-in{
+  from{opacity:0;} /* Начало: полностью прозрачно */
+  to{opacity:1;} /* Конец: полностью непрозрачно */
+}
+
+.modal-inner{
+  background:#0c0c0c;
+  padding:28px; /* Внутренние отступы 28px со всех сторон */
+  border-radius:12px; /* Скругление углов */
+  width:520px; /* Ширина */
+  max-width:94%; /* Максимальная ширина 94% от родителя (для адаптивности) */
+  position:relative; /* Относительное позиционирование */
+  animation:modal-slide-in 280ms ease; /* Анимация появления модального окна */
+  border:1px solid rgba(255,215,0,0.08); /* Граница золотого цвета с прозрачностью 8% */
+}
+
+@keyframes modal-slide-in{
+  from{transform:translateY(20px) scale(0.96); opacity:0;} /* Начало: сдвинуто вниз на 20px, масштаб 96%, прозрачно */
+  to{transform:translateY(0) scale(1); opacity:1;} /* Конец: на своём месте, нормальный масштаб, непрозрачно */
+}
+
+.modal .close{
+  position:absolute; /* Абсолютное позиционирование относительно .modal-inner */
+  right:16px; /* Отступ справа 16px */
+  top:16px; /* Отступ сверху 16px */
+  background:transparent; /* Прозрачный фон */
+  border:none; /* Убирает границу кнопки */
+  color:#ccc; /* Серый цвет иконки */
+  font-size:24px; /* Размер шрифта 24 пикселя */
+  cursor:pointer; /* Курсор-указатель при наведении */
+  transition:transform 160ms ease, color 160ms ease; /* Анимация трансформации и цвета */
+}
+
+.modal .close:hover{
+  color:var(--gold); /* Цвет становится золотым при наведении */
+  transform:rotate(90deg); /* Поворот на 90 градусов при наведении */
+}
+
+.modal-title{
+  color:var(--gold); /* Золотой цвет заголовка */
+  margin-top:0; /* Убирает верхний отступ */
+}
+
+/* Form */
+.form{
+  background:#0e0e0e; /* Темный фон формы */
+  padding:20px; /* Внутренние отступы 20px со всех сторон */
+  border-radius:8px; /* Скругление углов */
+  border:1px solid rgba(255,255,255,0.02); /* Тонкая почти невидимая граница */
+}
+
+.form label{
+  display:block; /* Блочное отображение */
+  font-size:13px; /* Размер шрифта 13 пикселей */
+  color:#cfcfcf; /* Светло-серый цвет текста */
+  margin:12px 0 6px; /* Внешние отступы: сверху 12px, слева/справа 0, снизу 6px */
+  font-weight:500; /* Среднее начертание шрифта */
+}
+
+.form input,
+.form textarea{
+  width:100%; /* Ширина 100% от родителя */
+  padding:12px; /* Внутренние отступы 12px со всех сторон */
+  border-radius:6px; /* Скругление углов */
+  background:#121212; /* Темный фон полей ввода */
+  border:1px solid rgba(255,255,255,0.05); /* Тонкая полупрозрачная граница */
+  color:var(--text); /* Цвет текста из CSS-переменной */
+  font-family:inherit; /* Наследует шрифт от родителя */
+  font-size:14px; /* Размер шрифта 14 пикселей */
+  transition:border-color 180ms ease, box-shadow 180ms ease; /* Анимация границы и тени */
+}
+
+.form input:focus,
+.form textarea:focus{
+  outline:none; /* Убирает стандартный outline */
+  border-color:rgba(255,215,0,0.3); /* Граница становится золотой при фокусе */
+  box-shadow:0 0 0 3px rgba(255,215,0,0.08); /* Свечение вокруг элемента при фокусе */
+}
+
+.form input:hover,
+.form textarea:hover{
+  border-color:rgba(255,255,255,0.1); /* Граница становится светлее при наведении */
+}
+
+.form-actions{
+  display:grid; /* Использует Grid layout */
+  grid-auto-flow:column; /* Элементы выстраиваются в строку */
+  gap:10px; /* Расстояние между кнопками */
+  justify-content:end; /* Выравнивание по правому краю */
+  margin-top:20px; /* Внешний отступ сверху 20px */
+}
+
+/* Responsive */
+@media (max-width:1920px){
+  .figma-frame{
+    width:100%; /* Ширина 100% от родителя */
+  }
+}
+
+@media (max-width:1400px){
+  .header{
+    padding:0 40px 1px; /* Уменьшает боковые отступы на экранах до 1400px */
+  }
+  .footer{
+    padding:41px 40px 40px; /* Уменьшает боковые отступы на экранах до 1400px */
+  }
+}
+
+@media (max-width:880px){ /* Стили применяются, когда ширина окна браузера 880px или меньше */
+  .hero{
+    grid-template-columns:1fr; /* Меняет layout героя на одну колонку */
+    align-items:start; /* Выравнивает содержимое по верхнему краю внутри grid-контейнера */
+  }
+  .hero-grid > div:first-child,
+  .aside{
+    width:100%; /* Ширина 100% от родителя */
+  }
+  .footer .cols{
+    grid-template-columns:1fr; /* Меняет три колонки на одну */
+  }
+  .footer .cols > div{
+    width:100% !important; /* Принудительно устанавливает ширину 100% */
+  }
+  .menu{
+    display:none; /* Скрывает главное меню на мобильных устройствах */
+  }
+  .advantages,
+  .testimonials{
+    grid-template-columns:1fr; /* Меняет сетку преимуществ и отзывов на одну колонку */
+  }
+  .adv,
+  .test{
+    width:100%; /* Ширина 100% от родителя */
+  }
+  .hero-grid > div:first-child > div:last-child{
+    grid-auto-flow:row; /* Кнопки в герое выстраиваются в колонку, а не в строку */
+    gap:12px; /* Расстояние */
+    justify-content:stretch; /* Растягивает кнопки на всю доступную ширину */
+  }
+  .hero-grid > div:first-child > div:last-child .btn{
+    width:100%; /* Кнопки занимают 100% ширины */
+    justify-content:center; /* Текст внутри кнопок остаётся по центру */
+  }
+}
+</style>
+</head>
+<body>
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+  <div class="loading-inner">
+    <div class="logo">T&L</div>
+    <div class="loading-text">Загрузка...</div>
+  </div>
+</div>
+
+<!-- Figma frame wrapper -->
+<div class="figma-frame">
+  <header class="header" data-component="Header/Main">
+    <div class="container">
+      <a href="index.html" class="brand" data-component="Brand/Logo">
+        <div class="logo">T&L</div>
+        <div>
+          <div>Трансформаторы и Лампы</div>
+          <div class="small">Производство профессионального аудиооборудования</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Главное меню" data-component="Nav/Main">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="projects.html">Проекты</a>
+        <a href="about.html">О компании</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+      <div class="header-right" data-component="Header/CTA">
+        <a class="btn cta" href="catalog.html" data-component="Button/Primary">Смотреть каталог</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero" data-component="Section/Hero">
+      <div class="hero-grid">
+        <div data-component="Hero/Lead">
+          <h1>Тепло ламп. Сила трансформаторов. Звук, который вдохновляет.</h1>
+          <p class="lead">Разработка и изготовление лампового и современного аудиооборудования: микрофоны, компрессоры, эквалайзеры, усилители, студийные мониторы, синтезаторы и MIDI-управляемые трансформаторы Тесла.</p>
+          <div class="categories" data-component="List/Categories">
+            <div class="category" data-component="Category/Item">
+              <strong>Ламповое</strong>
+              <div class="small">Микрофоны, компрессоры, эквалайзеры</div>
+            </div>
+            <div class="category" data-component="Category/Item">
+              <strong>Цифровое</strong>
+              <div class="small">Мониторы, ПО, эмуляторы</div>
+            </div>
+            <div class="category" data-component="Category/Item">
+              <strong>Инструменты</strong>
+              <div class="small">Синтезаторы, усилители, Tesla coils</div>
+            </div>
+          </div>
+          <div>
+            <a class="btn primary" href="catalog.html" data-component="Button/Primary">Посмотреть каталог</a>
+            <a class="btn ghost" href="projects.html" data-component="Button/Ghost">Смотреть проекты</a>
+          </div>
+        </div>
+        <aside class="aside" data-component="Aside/Popular">
+          <h3>Популярные продукты</h3>
+          <div>
+            <div class="card" data-component="Card/Product" data-variant="list">
+              <div>
+                <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="mic">
+                <div>
+                  <strong>Ламповый микрофон</strong>
+                  <div class="small">Тёплый винтажный тон</div>
+                  <div style="margin-top:8px;">
+                    <button class="btn primary" data-component="Button/Primary" data-buy="Ламповый микрофон">Купить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" data-component="Card/Product" data-variant="list">
+              <div>
+                <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/amp.jpg" alt="amp">
+                <div>
+                  <strong>Гитарная голова</strong>
+                  <div class="small">Ламповый драйв</div>
+                  <div style="margin-top:8px;">
+                    <a class="btn primary" href="product.html?product=lm1">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="advantages" class="section" data-component="Section/Advantages">
+      <h2>Наши преимущества</h2>
+      <div class="advantages">
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Ручная сборка</strong>
+          <p>Каждый прибор собирается и тестируется вручную опытными инженерами.</p>
+        </div>
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Кастомизация</strong>
+          <p>Индивидуальные настройки под ваш звук и задачи студии.</p>
+        </div>
+        <div class="adv" data-component="Advantage/Item">
+          <strong>Поддержка</strong>
+          <p>Сервис и гарантия на оборудование — до 5 лет.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="section" data-component="Section/Testimonials">
+      <h2>Отзывы клиентов</h2>
+      <div class="testimonials">
+        <div class="test" data-component="Testimonial/Item">
+          <strong>Студия «Альфа»</strong>
+          <p>«Микрофоны и компрессоры от Трансформаторы и Лампы дали нашим записям тёплый и живой характер»</p>
+        </div>
+        <div class="test" data-component="Testimonial/Item">
+          <strong>Музыкант — Иван</strong>
+          <p>«Гитарная голова прекрасно держит динамику и не теряет тело при высоких уровнях»</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-component="Footer/Main">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <div>
+            <div class="logo">T&L</div>
+            <div>
+              <div>Трансформаторы и Лампы</div>
+              <div>Профессиональное аудиооборудование</div>
+            </div>
+          </div>
+          <div>© 2025 Все права защищены</div>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:12px; color:#BDBDBD;">Меню</div>
+          <a href="catalog.html">Каталог</a><br>
+          <a href="projects.html">Проекты</a><br>
+          <a href="about.html">О компании</a><br>
+          <a href="contacts.html">Контакты</a>
+        </div>
+        <div>
+          <div style="font-weight:600; margin-bottom:12px; color:#BDBDBD;">Контакты</div>
+          <div style="font-size:20px; line-height:34px; color:#BDBDBD;">email: info@translamps.example</div>
+          <div style="font-size:20px; line-height:34px; color:#BDBDBD;">тел: +7 (900) 000-00-00</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно "Купить" -->
+  <div id="modal-buy" class="modal" data-component="Modal/Buy">
+    <div class="modal-inner">
+      <button class="close" aria-label="Закрыть окно">&times;</button>
+      <h2 class="modal-title">Оформление заказа</h2>
+      <form class="form" id="buy-form">
+        <label for="product">Продукт</label>
+        <input type="text" id="product" name="product" readonly />
+
+        <label for="name">Ваше имя</label>
+        <input type="text" id="name" name="name" placeholder="Введите имя" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Введите email" required />
+
+        <label for="message">Комментарий</label>
+        <textarea id="message" name="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Отправить</button>
+          <button type="button" class="btn ghost close">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> <!-- /figma-frame -->
+</body>
+</html>
