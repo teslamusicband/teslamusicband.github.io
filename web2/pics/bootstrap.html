@@ -344,6 +344,40 @@
       transform: rotate(90deg);
     }
 
+    /* Стили для аккордеона */
+    .accordion-custom {
+      --bs-accordion-bg: transparent;
+      --bs-accordion-border-color: rgba(255,215,0,0.1);
+      --bs-accordion-btn-color: #FFD700;
+      --bs-accordion-btn-bg: rgba(255,215,0,0.05);
+      --bs-accordion-active-bg: rgba(136,14,79,0.1);
+      --bs-accordion-active-color: #FFD700;
+      --bs-accordion-btn-focus-border-color: rgba(255,215,0,0.3);
+      --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(255,215,0,0.1);
+    }
+
+    .accordion-button-custom {
+      font-weight: 700;
+      font-size: 20px;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,215,0,0.1);
+    }
+
+    .accordion-button-custom:not(.collapsed) {
+      background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, rgba(136,14,79,0.05) 100%);
+      box-shadow: 0 4px 12px rgba(136,14,79,0.1);
+    }
+
+    .accordion-body-custom {
+      background: rgba(30,30,30,0.5);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-top: none;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #BDBDBD;
+      padding: 1.5rem 1.25rem;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 768px) {
       .hero h1 {
@@ -500,6 +534,80 @@
             <div class="advantage-card">
               <strong>Поддержка</strong>
               <p class="mt-2 mb-0">Сервис и гарантия на оборудование — до 5 лет.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ С АККОРДЕОНОМ -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title mb-4">Часто задаваемые вопросы</h2>
+        
+        <div class="accordion accordion-custom" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                Какая гарантия на оборудование?
+              </button>
+            </h2>
+            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Мы предоставляем расширенную гарантию до 5 лет на всё наше оборудование. Гарантия покрывает производственные дефекты и проблемы с компонентами. Для лампового оборудования дополнительно предоставляем пожизненную поддержку по техническому обслуживанию.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                Возможна ли кастомизация оборудования под мои нужды?
+              </button>
+            </h2>
+            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Да, мы специализируемся на индивидуальных решениях. Вы можете заказать модификации по характеристикам звука, дизайну панелей управления, дополнительным функциям. Наши инженеры проконсультируют и реализуют именно то звучание, которое вы ищете.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                Какие сроки изготовления и доставки?
+              </button>
+            </h2>
+            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Стандартное оборудование изготавливается за 2-4 недели. Индивидуальные заказы - 4-8 недель в зависимости от сложности. Доставка по России осуществляется в течение 7-14 рабочих дней. Для срочных заказов доступна экспресс-доставка.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                Предоставляете ли вы обучение работе с оборудованием?
+              </button>
+            </h2>
+            <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Да, мы проводим бесплатные онлайн-семинары и индивидуальные консультации по работе с нашим оборудованием. Для студий доступны выездные мастер-классы от наших звукоинженеров. Также предоставляем подробные видео-инструкции и техническую документацию.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                Есть ли различия в звучании между серийными моделями?
+              </button>
+            </h2>
+            <div id="faqFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Благодаря ручной сборке и тщательному подбору компонентов, каждая единица оборудования проходит строгий контроль качества. Мы добиваемся консистентности звучания между экземплярами, сохраняя при этом уникальные характеристики, за которые ценят аналоговую технику.
+              </div>
             </div>
           </div>
         </div>
