@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Каталог — Трансформаторы и Лампы</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Slick Carousel CSS -->
+<!-- https://kenwheeler.github.io/slick/ -->
+<!-- https://github.com/kenwheeler/slick/ -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<style>
+:root {
+--black: #000000;
+--graphite: #212121;
+--gold: #FFD700;
+--burgundy: #880E4F;
+--muted: #f5f5f5;
+--card-bg: #1e1e1e;
+--text: #ececec;
+--accent: #880E4F;
+--radius: 10px;
+}
+
+body {
+font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+color: var(--text);
+line-height: 1.45;
+min-height: 100vh;
+}
+
+/* Loading Screen */
+@keyframes loading-pulse {
+from { opacity: 0.6; transform: scale(0.98); }
+to { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes loading-fade-out {
+0% { opacity: 1; }
+100% { opacity: 0; pointer-events: none; }
+}
+
+.loading {
+position: fixed;
+inset: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+background: linear-gradient(180deg, #000, rgba(0,0,0,0.8));
+z-index: 9999;
+animation: loading-fade-out 700ms ease-in-out forwards;
+}
+
+.loading-inner {
+text-align: center;
+animation: loading-pulse 900ms ease-in-out infinite alternate;
+}
+
+.loading-text {
+margin-top: 12px;
+color: #cfcfcf;
+}
+
+/* Custom Components */
+.logo {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+width: 48px;
+height: 48px;
+background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%);
+box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15);
+border-radius: 8px;
+font-family: 'Inter';
+font-weight: 700;
+font-size: 18px;
+line-height: 26px;
+color: #212121;
+}
+
+.btn-custom {
+padding: 10.5px 17px 10.8px;
+border-radius: 8px;
+font-weight: 700;
+font-size: 20px;
+line-height: 29px;
+text-decoration: none;
+transition: transform 160ms ease, box-shadow 160ms ease;
+white-space: nowrap;
+}
+
+.btn-primary-custom {
+background: #880E4F;
+color: #ECECEC;
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: 0 4px 12px rgba(136,14,79,0.2);
+}
+
+.btn-primary-custom:hover {
+transform: translateY(-3px);
+box-shadow: 0 8px 20px rgba(136,14,79,0.3);
+color: #ECECEC;
+}
+
+.btn-ghost-custom {
+background: transparent;
+color: #FFFFFF;
+border: 1px solid rgba(255, 255, 255, 0.1);
+filter: drop-shadow(0px 4px 12px rgba(136, 14, 79, 0.2));
+}
+
+.btn-ghost-custom:hover {
+background: rgba(255,255,255,0.03);
+border-color: rgba(255,215,0,0.2);
+transform: translateY(-2px);
+color: #FFFFFF;
+}
+
+.product-card {
+background: #1E1E1E;
+border: 1px solid rgba(255, 255, 255, 0.03);
+border-radius: 12px;
+padding: 15px;
+transition: transform 200ms ease, box-shadow 200ms ease;
+height: 100%;
+margin: 10px;
+}
+
+.product-card:hover {
+transform: translateY(-6px);
+box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+border-color: rgba(255,215,0,0.1);
+}
+
+.product-card img {
+width: 100%;
+height: 250px;
+object-fit: cover;
+border-radius: 8px;
+transition: transform 200ms ease;
+}
+
+.product-card:hover img {
+transform: scale(1.03);
+}
+
+/* Header */
+.header {
+background: linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
+position: sticky;
+top: 0;
+z-index: 1000;
+border-bottom: 1px solid rgba(255,215,0,0.06);
+}
+
+.brand-link {
+text-decoration: none;
+color: var(--text);
+transition: transform 160ms ease;
+}
+
+.brand-link:hover {
+transform: scale(1.02);
+color: var(--text);
+}
+
+.nav-link-custom {
+font-weight: 700;
+font-size: 18px;
+line-height: 29px;
+color: #CFCFCF;
+padding: 6px 8px;
+border-radius: 6px;
+transition: background 180ms ease, transform 120ms ease;
+}
+
+.nav-link-custom:hover {
+background: rgba(255,255,255,0.04);
+transform: translateY(-1px);
+color: #CFCFCF;
+}
+
+.section-title {
+font-weight: 700;
+font-size: 32px;
+line-height: 46px;
+color: #FFD700;
+}
+
+/* Footer */
+.footer {
+border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer a {
+color: #cfcfcf;
+text-decoration: none;
+font-size: 20px;
+line-height: 34px;
+transition: color 160ms ease;
+}
+
+.footer a:hover {
+color: var(--gold);
+}
+
+/* Modal */
+.modal-custom {
+background: rgba(0,0,0,0.7);
+z-index: 2000;
+}
+
+.modal-content-custom {
+background: #0c0c0c;
+border-radius: 12px;
+border: 1px solid rgba(255,215,0,0.08);
+}
+
+.modal-title-custom {
+color: var(--gold);
+}
+
+.form-custom {
+background: #0e0e0e;
+padding: 20px;
+border-radius: 8px;
+border: 1px solid rgba(255,255,255,0.02);
+}
+
+.form-custom label {
+display: block;
+font-size: 13px;
+color: #cfcfcf;
+margin: 12px 0 6px;
+font-weight: 500;
+}
+
+.form-custom input, .form-custom textarea {
+width: 100%;
+padding: 12px;
+border-radius: 6px;
+background: #121212;
+border: 1px solid rgba(255,255,255,0.05);
+color: var(--text);
+font-family: inherit;
+font-size: 14px;
+transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.form-custom input:focus, .form-custom textarea:focus {
+outline: none;
+border-color: rgba(255,215,0,0.3);
+box-shadow: 0 0 0 3px rgba(255,215,0,0.08);
+}
+
+.close-btn {
+background: transparent;
+border: none;
+color: #ccc;
+font-size: 24px;
+cursor: pointer;
+transition: transform 160ms ease, color 160ms ease;
+}
+
+.close-btn:hover {
+color: var(--gold);
+transform: rotate(90deg);
+}
+
+/* Slick Carousel кастомизация */
+.slick-slider {
+margin-bottom: 30px;
+}
+
+.slick-prev, .slick-next {
+width: 50px;
+height: 50px;
+z-index: 100;
+}
+
+.slick-prev {
+left: -60px;
+}
+
+.slick-next {
+right: -60px;
+}
+
+.slick-prev:before, .slick-next:before {
+font-size: 40px;
+color: #FFD700;
+opacity: 0.8;
+}
+
+.slick-prev:hover:before, .slick-next:hover:before {
+opacity: 1;
+color: #880E4F;
+}
+
+.slick-dots {
+bottom: -40px;
+}
+
+.slick-dots li button:before {
+font-size: 12px;
+color: #FFD700;
+opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+color: #880E4F;
+opacity: 1;
+}
+
+/* Фильтры */
+.filters {
+margin-bottom: 32px;
+}
+
+.filter-btn {
+display: inline-block;
+padding: 8px 16px;
+margin: 0 8px 8px 0;
+border-radius: 6px;
+background: rgba(255, 215, 0, 0.05);
+border: 1px solid rgba(255, 215, 0, 0.1);
+color: #FFD700;
+font-weight: 600;
+cursor: pointer;
+transition: all 160ms ease;
+text-decoration: none;
+}
+
+.filter-btn:hover {
+background: rgba(255, 215, 0, 0.1);
+border-color: rgba(255, 215, 0, 0.3);
+transform: translateY(-2px);
+color: #FFD700;
+}
+
+.filter-btn.active {
+background: #880E4F;
+border-color: #880E4F;
+color: #ECECEC;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+.slick-prev {
+left: 10px;
+}
+.slick-next {
+right: 10px;
+}
+}
+</style>
+</head>
+<body>
+<!-- Loading Screen -->
+<div id="loading-screen" class="loading" aria-hidden="false">
+<div class="loading-inner">
+<div class="logo">T&L</div>
+<div class="loading-text">Загрузка...</div>
+</div>
+</div>
+
+<!-- Main Content -->
+<div class="container-fluid p-0">
+<!-- Header -->
+<header class="header py-2">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-md-4">
+<a href="index.html" class="brand-link d-flex align-items-center text-decoration-none">
+<div class="logo me-3">T&L</div>
+<div>
+<div class="fw-bold fs-5 text-light">Трансформаторы и Лампы</div>
+<div class="small text-secondary">Каталог оборудования</div>
+</div>
+</a>
+</div>
+<div class="col-md-5">
+<nav class="navbar navbar-expand-md p-0">
+<div class="collapse navbar-collapse" id="navbarNav">
+<div class="navbar-nav flex-nowrap">
+<a class="nav-link nav-link-custom me-2" href="index.html">Главная</a>
+<a class="nav-link nav-link-custom me-2" href="catalog.html">Каталог</a>
+<a class="nav-link nav-link-custom me-2" href="projects.html">Проекты</a>
+<a class="nav-link nav-link-custom me-2" href="about.html">О компании</a>
+<a class="nav-link nav-link-custom" href="contacts.html">Контакты</a>
+</div>
+</div>
+</nav>
+</div>
+<div class="col-md-3 text-md-end">
+<a class="btn btn-primary-custom btn-custom" href="contacts.html">Связаться</a>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Main Content -->
+<main>
+<section class="py-5">
+<div class="container">
+<h2 class="section-title mb-4">Каталог оборудования</h2>
+
+<!-- Фильтры -->
+<div class="filters">
+<div class="small mb-3" style="color: #BDBDBD;">Фильтр по категории:</div>
+<div class="d-flex flex-wrap">
+<a class="filter-btn active" href="#" data-filter="all">Все</a>
+<a class="filter-btn" href="#" data-filter="lamps">Ламповое</a>
+<a class="filter-btn" href="#" data-filter="digital">Транзисторное/Цифровое</a>
+<a class="filter-btn" href="#" data-filter="tesla">Трансформаторы Тесла</a>
+</div>
+</div>
+
+<!-- Популярные продукты (Карусель) -->
+<section class="mb-5">
+<h3 class="mb-4" style="color: #FFD700;">🔥 Популярные продукты</h3>
+<div class="featured-products-carousel">
+<!-- Карточка 1 -->
+<div>
+<div class="product-card" data-category="lamps">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="Ламповый микрофон">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Ламповый микрофон LM-1</h3>
+<div class="small text-secondary mb-3">Капсюль: 1", теплый характер, ручная сборка</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=lm1">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Ламповый микрофон LM-1">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Карточка 2 -->
+<div>
+<div class="product-card" data-category="lamps">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/vari-mu.jpg" alt="Компрессор">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Vari-Mu компрессор VM-Classic</h3>
+<div class="small text-secondary mb-3">Оптическая сглаженность, ламповый характер</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=vmc">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Vari-Mu компрессор VM-Classic">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Карточка 3 -->
+<div>
+<div class="product-card" data-category="digital">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/amp.jpg" alt="Гитарная голова">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Гитарная голова GT-50</h3>
+<div class="small text-secondary mb-3">Ламповый драйв, 50W мощности</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=gt50">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Гитарная голова GT-50">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Карточка 4 -->
+<div>
+<div class="product-card" data-category="tesla">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/drsstc.jpg" alt="Трансформатор Тесла">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">DRSSTC MIDI Coil DMC-1</h3>
+<div class="small text-secondary mb-3">MIDI интерфейс, безопасные режимы</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=dmc1">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="DRSSTC MIDI Coil DMC-1">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Карточка 5 -->
+<div>
+<div class="product-card" data-category="digital">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/synt.jpg" alt="Синтезатор">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Аналоговый синтезатор ASG-8</h3>
+<div class="small text-secondary mb-3">Многообразие волновых форм</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=asg8">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Аналоговый синтезатор ASG-8">Купить</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Ламповое оборудование -->
+<section id="lamps" class="mb-5" data-category-section="lamps">
+<h3 class="mb-4" style="color: #FFD700;">Ламповое оборудование</h3>
+<div class="row">
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="lamps">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="Ламповый микрофон">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Ламповый микрофон LM-1</h3>
+<div class="small text-secondary mb-3">Капсюль: 1", теплый характер, ручная сборка</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=lm1">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Ламповый микрофон LM-1">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="lamps">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/vari-mu.jpg" alt="Компрессор">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Vari-Mu компрессор VM-Classic</h3>
+<div class="small text-secondary mb-3">Оптическая сглаженность, ламповый характер</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=vmc">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Vari-Mu компрессор VM-Classic">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="lamps">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/eq.jpg" alt="Эквалайзер">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Параметрический эквалайзер PEQ-2</h3>
+<div class="small text-secondary mb-3">Точная коррекция частот с ламповым насыщением</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=peq2">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Параметрический эквалайзер PEQ-2">Купить</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Транзисторное/Цифровое оборудование -->
+<section id="trans" class="mb-5" data-category-section="digital">
+<h3 class="mb-4" style="color: #FFD700;">Транзисторное/Цифровое оборудование</h3>
+<div class="row">
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="digital">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/mon.jpg" alt="Студийный монитор">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Активный студийный монитор SM-5</h3>
+<div class="small text-secondary mb-3">Точный контроль, линейная АЧХ</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=sm5">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Активный студийный монитор SM-5">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="digital">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/synt.jpg" alt="Синтезатор">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Аналоговый синтезатор ASG-8</h3>
+<div class="small text-secondary mb-3">Многообразие волновых форм</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=asg8">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Аналоговый синтезатор ASG-8">Купить</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="digital">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/cabsim.jpg" alt="Эмулятор кабинета">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">Эмулятор кабинета CabSim Pro</h3>
+<div class="small text-secondary mb-3">Реактивная нагрузка + моделирование микрофонов</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=cabsim">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Эмулятор кабинета CabSim Pro">Купить</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Трансформаторы Тесла -->
+<section id="tesla" class="mb-5" data-category-section="tesla">
+<h3 class="mb-4" style="color: #FFD700;">Трансформаторы Тесла</h3>
+<div class="row">
+<div class="col-md-4 mb-4">
+<div class="product-card" data-category="tesla">
+<img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/drsstc.jpg" alt="Трансформатор Тесла">
+<div style="padding: 16px 0;">
+<h3 style="margin: 0 0 8px; font-size: 18px; color: #FFD700;">DRSSTC MIDI Coil DMC-1</h3>
+<div class="small text-secondary mb-3">Высокопроизводительная DRSSTC с MIDI интерфейсом</div>
+<div class="d-flex gap-2">
+<a class="btn btn-ghost-custom btn-sm" href="product.html?product=dmc1">Подробнее</a>
+<button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="DRSSTC MIDI Coil DMC-1">Купить</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="footer py-5">
+<div class="container">
+<div class="row">
+<div class="col-lg-6 mb-4 mb-lg-0">
+<div class="d-flex align-items-center mb-3">
+<div class="logo me-3">T&L</div>
+<div>
+<div class="fw-bold fs-5 text-light">Трансформаторы и Лампы</div>
+<div class="text-secondary">Профессиональное аудиооборудование</div>
+</div>
+</div>
+<div class="text-secondary">© 2025 Все права защищены</div>
+</div>
+<div class="col-lg-3 mb-4 mb-lg-0">
+<div class="fw-semibold mb-2 text-secondary">Меню</div>
+<div class="d-flex flex-column">
+<a href="catalog.html" class="mb-1">Каталог</a>
+<a href="projects.html" class="mb-1">Проекты</a>
+<a href="about.html" class="mb-1">О компании</a>
+<a href="contacts.html">Контакты</a>
+</div>
+</div>
+<div class="col-lg-3">
+<div class="fw-semibold mb-2 text-secondary">Контакты</div>
+<div class="text-secondary">email: info@translamps.example</div>
+<div class="text-secondary">тел: +7 (900) 000-00-00</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+<!-- Buy Modal -->
+<div class="modal fade modal-custom" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content modal-content-custom">
+<div class="modal-header border-0 pb-0">
+<h5 class="modal-title modal-title-custom" id="buyModalLabel">Оформление заказа</h5>
+<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+</div>
+<div class="modal-body">
+<form class="form-custom" id="buy-form">
+<div class="mb-3">
+<label for="product" class="form-label">Продукт</label>
+<input type="text" class="form-control" id="product" name="product" readonly>
+</div>
+<div class="mb-3">
+<label for="name" class="form-label">Ваше имя</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required>
+</div>
+<div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Введите email" required>
+</div>
+<div class="mb-3">
+    <label for="message" class="form-label">Комментарий</label>
+    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
+</div>
+<div class="d-flex justify-content-end gap-2">
+    <button type="submit" class="btn btn-primary-custom btn-custom">Отправить</button>
+    <button type="button" class="btn btn-ghost-custom btn-custom" data-bs-dismiss="modal">Отмена</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Slick Carousel JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+// Hide loading screen
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('loading-screen').style.display = 'none';
+    }, 1000);
+});
+
+// Initialize Slick Carousel
+$(document).ready(function(){
+    $('.featured-products-carousel').slick({
+        dots: true,
+        arrows: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
+
+// Handle buy button clicks
+document.addEventListener('DOMContentLoaded', function() {
+    const buyButtons = document.querySelectorAll('[data-bs-target="#buyModal"]');
+    const productInput = document.getElementById('product');
+    
+    buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productName = this.getAttribute('data-product');
+            productInput.value = productName;
+        });
+    });
+});
+
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    const categorySections = document.querySelectorAll('[data-category-section]');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Show/hide category sections
+            categorySections.forEach(section => {
+                if (filter === 'all' || section.getAttribute('data-category-section') === filter) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Filter individual cards in carousel
+            productCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Refresh slick carousel after filtering
+            if (filter !== 'all') {
+                $('.featured-products-carousel').slick('slickUnfilter');
+                $('.featured-products-carousel').slick('slickFilter', 
+                    `[data-category="${filter}"]`
+                );
+            } else {
+                $('.featured-products-carousel').slick('slickUnfilter');
+            }
+        });
+    });
+});
+
+// Smooth scroll to sections
+document.addEventListener('DOMContentLoaded', function() {
+    const filterLinks = document.querySelectorAll('.filter-btn');
+    
+    filterLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const filter = this.getAttribute('data-filter');
+            if (filter !== 'all') {
+                const targetSection = document.getElementById(filter);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
