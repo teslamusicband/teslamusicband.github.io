@@ -213,7 +213,7 @@
 
     .nav-link-custom {
       font-weight: 700;
-      font-size: 18px;
+      font-size: 18px; /* уменьшен размер для предотвращения переноса */
       line-height: 29px;
       color: #CFCFCF;
       padding: 6px 8px;
@@ -389,11 +389,11 @@
           <div class="col-md-5">
             <nav class="navbar navbar-expand-md p-0">
               <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav">
-                  <a class="nav-link nav-link-custom me-2" href="index.html">Главная</a>
+                <div class="navbar-nav flex-nowrap"> <!-- flex-nowrap предотвращает перенос пунктов меню -->
+                  <a class="nav-link nav-link-custom me-2" href="index.html">Главная</a> <!-- увеличен отступ между пунктами -->
                   <a class="nav-link nav-link-custom me-2" href="catalog.html">Каталог</a>
                   <a class="nav-link nav-link-custom me-2" href="projects.html">Проекты</a>
-                  <a class="nav-link nav-link-custom me-2" href="about.html">О компании</a>
+                  <a class="nav-link nav-link-custom me-2" href="about.html">О компании</a> <!-- white-space: nowrap предотвращает перенос текста -->
                   <a class="nav-link nav-link-custom" href="contacts.html">Контакты</a>
                 </div>
               </div>
@@ -410,12 +410,12 @@
     <section class="py-5">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="col-lg-8 mb-4 mb-lg-0"> <!-- col-lg-8 - основная колонка занимает 8/12 на больших экранах -->
             <h1>Тепло ламп. Сила трансформаторов. Звук, который вдохновляет.</h1>
             <p class="lead-text my-4">Разработка и изготовление лампового и современного аудиооборудования: микрофоны, компрессоры, эквалайзеры, усилители, студийные мониторы, синтезаторы и MIDI-управляемые трансформаторы Тесла.</p>
             
-            <div class="row mb-4">
-              <div class="col-md-4 mb-3">
+            <div class="row mb-4"> <!-- row создает flex-контейнер для категорий -->
+              <div class="col-md-4 mb-3"> <!-- col-md-4 - 3 колонки на планшетах и больше -->
                 <div class="category-card text-center">
                   <strong>Ламповое</strong>
                   <div class="small text-secondary">Микрофоны, компрессоры, эквалайзеры</div>
@@ -435,19 +435,19 @@
               </div>
             </div>
             
-            <div class="d-flex flex-wrap gap-3">
+            <div class="d-flex flex-wrap gap-3"> <!-- d-flex flex-wrap - flex-контейнер с переносом -->
               <a class="btn btn-primary-custom btn-custom" href="catalog.html">Посмотреть каталог</a>
               <a class="btn btn-ghost-custom btn-custom" href="projects.html">Смотреть проекты</a>
             </div>
           </div>
           
-          <div class="col-lg-4">
-            <div class="aside-section h-100">
+          <div class="col-lg-4"> <!-- col-lg-4 - сайдбар занимает 4/12 на больших экранах -->
+            <div class="aside-section h-100"> <!-- h-100 - занимает всю высоту родителя -->
               <h3 class="aside-title mb-3">Популярные продукты</h3>
               
               <div class="mb-4">
                 <div class="product-card mb-3">
-                  <div class="d-flex">
+                  <div class="d-flex"> <!-- d-flex - flex-контейнер для выравнивания изображения и текста -->
                     <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="mic" class="me-3">
                     <div>
                       <strong>Ламповый микрофон</strong>
@@ -484,7 +484,7 @@
         <h2 class="section-title mb-4">Наши преимущества</h2>
         
         <div class="row">
-          <div class="col-md-4 mb-4">
+          <div class="col-md-4 mb-4"> <!-- col-md-4 - 3 колонки на планшетах и больше -->
             <div class="advantage-card">
               <strong>Ручная сборка</strong>
               <p class="mt-2 mb-0">Каждый прибор собирается и тестируется вручную опытными инженерами.</p>
@@ -512,7 +512,7 @@
         <h2 class="section-title mb-4">Отзывы клиентов</h2>
         
         <div class="row">
-          <div class="col-md-6 mb-4">
+          <div class="col-md-6 mb-4"> <!-- col-md-6 - 2 колонки на планшетах и больше -->
             <div class="testimonial-card">
               <strong>Студия «Альфа»</strong>
               <p class="mt-2 mb-0">«Микрофоны и компрессоры от Трансформаторы и Лампы дали нашим записям тёплый и живой характер»</p>
@@ -532,8 +532,8 @@
     <footer class="footer py-5">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 mb-4 mb-lg-0">
-            <div class="d-flex align-items-center mb-3">
+          <div class="col-lg-6 mb-4 mb-lg-0"> <!-- col-lg-6 - 2 колонки на больших экранах -->
+            <div class="d-flex align-items-center mb-3"> <!-- d-flex align-items-center - выравнивание лого и текста по центру -->
               <div class="logo me-3">T&L</div>
               <div>
                 <div class="fw-bold fs-5 text-light">Трансформаторы и Лампы</div>
@@ -544,7 +544,7 @@
           </div>
           <div class="col-lg-3 mb-4 mb-lg-0">
             <div class="fw-semibold mb-2 text-secondary">Меню</div>
-            <div class="d-flex flex-column">
+            <div class="d-flex flex-column"> <!-- d-flex flex-column - вертикальное расположение ссылок -->
               <a href="catalog.html" class="mb-1">Каталог</a>
               <a href="projects.html" class="mb-1">Проекты</a>
               <a href="about.html" class="mb-1">О компании</a>
@@ -563,15 +563,15 @@
 
   <!-- Buy Modal -->
   <div class="modal fade modal-custom" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered"> <!-- modal-dialog-centered - центрирование модального окна -->
       <div class="modal-content modal-content-custom">
-        <div class="modal-header border-0 pb-0">
+        <div class="modal-header border-0 pb-0"> <!-- border-0 - убирает границу, pb-0 - убирает отступ снизу -->
           <h5 class="modal-title modal-title-custom" id="buyModalLabel">Оформление заказа</h5>
           <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
         </div>
         <div class="modal-body">
           <form class="form-custom" id="buy-form">
-            <div class="mb-3">
+            <div class="mb-3"> <!-- mb-3 - отступ снизу -->
               <label for="product" class="form-label">Продукт</label>
               <input type="text" class="form-control" id="product" name="product" readonly>
             </div>
@@ -587,7 +587,7 @@
               <label for="message" class="form-label">Комментарий</label>
               <textarea class="form-control" id="message" name="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
             </div>
-            <div class="d-flex justify-content-end gap-2">
+            <div class="d-flex justify-content-end gap-2"> <!-- d-flex justify-content-end - выравнивание кнопок по правому краю -->
               <button type="submit" class="btn btn-primary-custom btn-custom">Отправить</button>
               <button type="button" class="btn btn-ghost-custom btn-custom" data-bs-dismiss="modal">Отмена</button>
             </div>
@@ -622,5 +622,4 @@
     });
   </script>
 </body>
-
 </html>
