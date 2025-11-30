@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Трансформаторы и Лампы — Главная</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --black: #000000;
+      --graphite: #212121;
+      --gold: #FFD700;
+      --burgundy: #880E4F;
+      --muted: #f5f5f5;
+      --card-bg: #1e1e1e;
+      --text: #ececec;
+      --accent: #880E4F;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+      color: var(--text);
+      line-height: 1.45;
+      min-height: 100vh;
+    }
+
+    /* Loading Screen */
+    @keyframes loading-pulse {
+      from { opacity: 0.6; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1.02); }
+    }
+
+    @keyframes loading-fade-out {
+      0% { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; }
+    }
+
+    .loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #000, rgba(0,0,0,0.8));
+      z-index: 9999;
+      animation: loading-fade-out 700ms ease-in-out forwards;
+    }
+
+    .loading-inner {
+      text-align: center;
+      animation: loading-pulse 900ms ease-in-out infinite alternate;
+    }
+
+    .loading-text {
+      margin-top: 12px;
+      color: #cfcfcf;
+    }
+
+    /* Custom Components */
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%);
+      box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15);
+      border-radius: 8px;
+      font-family: 'Inter';
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 26px;
+      color: #212121;
+    }
+
+    .btn-custom {
+      padding: 10.5px 17px 10.8px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 29px;
+      text-decoration: none;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary-custom {
+      background: #880E4F;
+      color: #ECECEC;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(136,14,79,0.2);
+    }
+
+    .btn-primary-custom:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(136,14,79,0.3);
+      color: #ECECEC;
+    }
+
+    .btn-ghost-custom {
+      background: transparent;
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      filter: drop-shadow(0px 4px 12px rgba(136, 14, 79, 0.2));
+    }
+
+    .btn-ghost-custom:hover {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,215,0,0.2);
+      transform: translateY(-2px);
+      color: #FFFFFF;
+    }
+
+    .category-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.05);
+      border-radius: 8px;
+      padding: 17px 19px;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+      height: 100%;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-color: rgba(255,215,0,0.15);
+    }
+
+    .product-card {
+      background: #1E1E1E;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      height: 100%;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+      border-color: rgba(255,215,0,0.1);
+    }
+
+    .product-card img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 200ms ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .advantage-card {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      border-radius: 10px;
+      padding: 28px 25px 32px;
+      transition: transform 160ms ease;
+      height: 100%;
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(136,14,79,0.15);
+    }
+
+    .testimonial-card {
+      background: #0F0F0F;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 21px;
+      transition: transform 160ms ease;
+      height: 100%;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .aside-section {
+      background: linear-gradient(180deg, #0F0F0F 0%, #161616 100%);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      padding: 21px;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,215,0,0.06);
+    }
+
+    .brand-link {
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 160ms ease;
+    }
+
+    .brand-link:hover {
+      transform: scale(1.02);
+      color: var(--text);
+    }
+
+    .nav-link-custom {
+      font-weight: 700;
+      font-size: 18px; /* уменьшен размер для предотвращения переноса */
+      line-height: 29px;
+      color: #CFCFCF;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 180ms ease, transform 120ms ease;
+    }
+
+    .nav-link-custom:hover {
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+      color: #CFCFCF;
+    }
+
+    /* Hero Section */
+    .hero h1 {
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 54px;
+      letter-spacing: 0.6px;
+      color: #FFD700;
+    }
+
+    .lead-text {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 34px;
+      color: #D7D7D7;
+    }
+
+    .section-title {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 46px;
+      color: #FFD700;
+    }
+
+    .aside-title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 38px;
+      color: #FFD700;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .footer a {
+      color: #cfcfcf;
+      text-decoration: none;
+      font-size: 20px;
+      line-height: 34px;
+      transition: color 160ms ease;
+    }
+
+    .footer a:hover {
+      color: var(--gold);
+    }
+
+    /* Modal */
+    .modal-custom {
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+    }
+
+    .modal-content-custom {
+      background: #0c0c0c;
+      border-radius: 12px;
+      border: 1px solid rgba(255,215,0,0.08);
+    }
+
+    .modal-title-custom {
+      color: var(--gold);
+    }
+
+    .form-custom {
+      background: #0e0e0e;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.02);
+    }
+
+    .form-custom label {
+      display: block;
+      font-size: 13px;
+      color: #cfcfcf;
+      margin: 12px 0 6px;
+      font-weight: 500;
+    }
+
+    .form-custom input,
+    .form-custom textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      background: #121212;
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 14px;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .form-custom input:focus,
+    .form-custom textarea:focus {
+      outline: none;
+      border-color: rgba(255,215,0,0.3);
+      box-shadow: 0 0 0 3px rgba(255,215,0,0.08);
+    }
+
+    .form-custom input:hover,
+    .form-custom textarea:hover {
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: #ccc;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 160ms ease, color 160ms ease;
+    }
+
+    .close-btn:hover {
+      color: var(--gold);
+      transform: rotate(90deg);
+    }
+
+    /* Стили для аккордеона */
+    .accordion-custom {
+      --bs-accordion-bg: transparent;
+      --bs-accordion-border-color: rgba(255,215,0,0.1);
+      --bs-accordion-btn-color: #FFD700;
+      --bs-accordion-btn-bg: rgba(255,215,0,0.05);
+      --bs-accordion-active-bg: rgba(136,14,79,0.1);
+      --bs-accordion-active-color: #FFD700;
+      --bs-accordion-btn-focus-border-color: rgba(255,215,0,0.3);
+      --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(255,215,0,0.1);
+    }
+
+    .accordion-button-custom {
+      font-weight: 700;
+      font-size: 20px;
+      padding: 1rem 1.25rem;
+      border: 1px solid rgba(255,215,0,0.1);
+    }
+
+    .accordion-button-custom:not(.collapsed) {
+      background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, rgba(136,14,79,0.05) 100%);
+      box-shadow: 0 4px 12px rgba(136,14,79,0.1);
+    }
+
+    .accordion-body-custom {
+      background: rgba(30,30,30,0.5);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-top: none;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #BDBDBD;
+      padding: 1.5rem 1.25rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+        line-height: 42px;
+      }
+      
+      .btn-custom {
+        font-size: 18px;
+        padding: 8px 16px;
+      }
+      
+      .nav-link-custom {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+    <div class="loading-inner">
+      <div class="logo">T&L</div>
+      <div class="loading-text">Загрузка...</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <header class="header py-2">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <a href="index.html" class="brand-link d-flex align-items-center text-decoration-none">
+              <div class="logo me-3">T&L</div>
+              <div>
+                <div class="fw-bold fs-5 text-light">Трансформаторы и Лампы</div>
+                <div class="small text-secondary">Производство профессионального аудиооборудования</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-5">
+            <nav class="navbar navbar-expand-md p-0">
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav flex-nowrap"> <!-- flex-nowrap предотвращает перенос пунктов меню -->
+                  <a class="nav-link nav-link-custom me-2" href="index.html">Главная</a> <!-- увеличен отступ между пунктами -->
+                  <a class="nav-link nav-link-custom me-2" href="catalog.html">Каталог</a>
+                  <a class="nav-link nav-link-custom me-2" href="projects.html">Проекты</a>
+                  <a class="nav-link nav-link-custom me-2" href="about.html">О компании</a> <!-- white-space: nowrap предотвращает перенос текста -->
+                  <a class="nav-link nav-link-custom" href="contacts.html">Контакты</a>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <div class="col-md-3 text-md-end">
+            <a class="btn btn-primary-custom btn-custom" href="catalog.html">Смотреть каталог</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mb-4 mb-lg-0"> <!-- col-lg-8 - основная колонка занимает 8/12 на больших экранах -->
+            <h1>Тепло ламп. Сила трансформаторов. Звук, который вдохновляет.</h1>
+            <p class="lead-text my-4">Разработка и изготовление лампового и современного аудиооборудования: микрофоны, компрессоры, эквалайзеры, усилители, студийные мониторы, синтезаторы и MIDI-управляемые трансформаторы Тесла.</p>
+            
+            <div class="row mb-4"> <!-- row создает flex-контейнер для категорий -->
+              <div class="col-md-4 mb-3"> <!-- col-md-4 - 3 колонки на планшетах и больше -->
+                <div class="category-card text-center">
+                  <strong>Ламповое</strong>
+                  <div class="small text-secondary">Микрофоны, компрессоры, эквалайзеры</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="category-card text-center">
+                  <strong>Цифровое</strong>
+                  <div class="small text-secondary">Мониторы, ПО, эмуляторы</div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="category-card text-center">
+                  <strong>Инструменты</strong>
+                  <div class="small text-secondary">Синтезаторы, усилители, Tesla coils</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="d-flex flex-wrap gap-3"> <!-- d-flex flex-wrap - flex-контейнер с переносом -->
+              <a class="btn btn-primary-custom btn-custom" href="catalog.html">Посмотреть каталог</a>
+              <a class="btn btn-ghost-custom btn-custom" href="projects.html">Смотреть проекты</a>
+            </div>
+          </div>
+          
+          <div class="col-lg-4"> <!-- col-lg-4 - сайдбар занимает 4/12 на больших экранах -->
+            <div class="aside-section h-100"> <!-- h-100 - занимает всю высоту родителя -->
+              <h3 class="aside-title mb-3">Популярные продукты</h3>
+              
+              <div class="mb-4">
+                <div class="product-card mb-3">
+                  <div class="d-flex"> <!-- d-flex - flex-контейнер для выравнивания изображения и текста -->
+                    <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/tube_mic.jpg" alt="mic" class="me-3">
+                    <div>
+                      <strong>Ламповый микрофон</strong>
+                      <div class="small text-secondary">Тёплый винтажный тон</div>
+                      <div class="mt-2">
+                        <button class="btn btn-primary-custom btn-sm" data-bs-toggle="modal" data-bs-target="#buyModal" data-product="Ламповый микрофон">Купить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="product-card">
+                  <div class="d-flex">
+                    <img src="https://raw.githubusercontent.com/teslamusicband/teslamusicband.github.io/refs/heads/master/web2/pics/amp.jpg" alt="amp" class="me-3">
+                    <div>
+                      <strong>Гитарная голова</strong>
+                      <div class="small text-secondary">Ламповый драйв</div>
+                      <div class="mt-2">
+                        <a class="btn btn-primary-custom btn-sm" href="product.html?product=lm1">Подробнее</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title mb-4">Наши преимущества</h2>
+        
+        <div class="row">
+          <div class="col-md-4 mb-4"> <!-- col-md-4 - 3 колонки на планшетах и больше -->
+            <div class="advantage-card">
+              <strong>Ручная сборка</strong>
+              <p class="mt-2 mb-0">Каждый прибор собирается и тестируется вручную опытными инженерами.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="advantage-card">
+              <strong>Кастомизация</strong>
+              <p class="mt-2 mb-0">Индивидуальные настройки под ваш звук и задачи студии.</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="advantage-card">
+              <strong>Поддержка</strong>
+              <p class="mt-2 mb-0">Сервис и гарантия на оборудование — до 5 лет.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ С АККОРДЕОНОМ -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title mb-4">Часто задаваемые вопросы</h2>
+        
+        <div class="accordion accordion-custom" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true" aria-controls="faqOne">
+                Какая гарантия на оборудование?
+              </button>
+            </h2>
+            <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Мы предоставляем расширенную гарантию до 5 лет на всё наше оборудование. Гарантия покрывает производственные дефекты и проблемы с компонентами. Для лампового оборудования дополнительно предоставляем пожизненную поддержку по техническому обслуживанию.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                Возможна ли кастомизация оборудования под мои нужды?
+              </button>
+            </h2>
+            <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Да, мы специализируемся на индивидуальных решениях. Вы можете заказать модификации по характеристикам звука, дизайну панелей управления, дополнительным функциям. Наши инженеры проконсультируют и реализуют именно то звучание, которое вы ищете.
+              </div>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                Какие сроки изготовления и доставки?
+              </button>
+            </h2>
+            <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Стандартное оборудование изготавливается за 2-4 недели. Индивидуальные заказы - 4-8 недель в зависимости от сложности. Доставка по России осуществляется в течение 7-14 рабочих дней. Для срочных заказов доступна экспресс-доставка.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFour" aria-expanded="false" aria-controls="faqFour">
+                Предоставляете ли вы обучение работе с оборудованием?
+              </button>
+            </h2>
+            <div id="faqFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Да, мы проводим бесплатные онлайн-семинары и индивидуальные консультации по работе с нашим оборудованием. Для студий доступны выездные мастер-классы от наших звукоинженеров. Также предоставляем подробные видео-инструкции и техническую документацию.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button accordion-button-custom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqFive" aria-expanded="false" aria-controls="faqFive">
+                Есть ли различия в звучании между серийными моделями?
+              </button>
+            </h2>
+            <div id="faqFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body accordion-body-custom">
+                Благодаря ручной сборке и тщательному подбору компонентов, каждая единица оборудования проходит строгий контроль качества. Мы добиваемся консистентности звучания между экземплярами, сохраняя при этом уникальные характеристики, за которые ценят аналоговую технику.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-title mb-4">Отзывы клиентов</h2>
+        
+        <div class="row">
+          <div class="col-md-6 mb-4"> <!-- col-md-6 - 2 колонки на планшетах и больше -->
+            <div class="testimonial-card">
+              <strong>Студия «Альфа»</strong>
+              <p class="mt-2 mb-0">«Микрофоны и компрессоры от Трансформаторы и Лампы дали нашим записям тёплый и живой характер»</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="testimonial-card">
+              <strong>Музыкант — Иван</strong>
+              <p class="mt-2 mb-0">«Гитарная голова прекрасно держит динамику и не теряет тело при высоких уровнях»</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0"> <!-- col-lg-6 - 2 колонки на больших экранах -->
+            <div class="d-flex align-items-center mb-3"> <!-- d-flex align-items-center - выравнивание лого и текста по центру -->
+              <div class="logo me-3">T&L</div>
+              <div>
+                <div class="fw-bold fs-5 text-light">Трансформаторы и Лампы</div>
+                <div class="text-secondary">Профессиональное аудиооборудование</div>
+              </div>
+            </div>
+            <div class="text-secondary">© 2025 Все права защищены</div>
+          </div>
+          <div class="col-lg-3 mb-4 mb-lg-0">
+            <div class="fw-semibold mb-2 text-secondary">Меню</div>
+            <div class="d-flex flex-column"> <!-- d-flex flex-column - вертикальное расположение ссылок -->
+              <a href="catalog.html" class="mb-1">Каталог</a>
+              <a href="projects.html" class="mb-1">Проекты</a>
+              <a href="about.html" class="mb-1">О компании</a>
+              <a href="contacts.html">Контакты</a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="fw-semibold mb-2 text-secondary">Контакты</div>
+            <div class="text-secondary">email: info@translamps.example</div>
+            <div class="text-secondary">тел: +7 (900) 000-00-00</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Buy Modal -->
+  <div class="modal fade modal-custom" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"> <!-- modal-dialog-centered - центрирование модального окна -->
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header border-0 pb-0"> <!-- border-0 - убирает границу, pb-0 - убирает отступ снизу -->
+          <h5 class="modal-title modal-title-custom" id="buyModalLabel">Оформление заказа</h5>
+          <button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form class="form-custom" id="buy-form">
+            <div class="mb-3"> <!-- mb-3 - отступ снизу -->
+              <label for="product" class="form-label">Продукт</label>
+              <input type="text" class="form-control" id="product" name="product" readonly>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Ваше имя</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Введите имя" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Введите email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Комментарий</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Комментарий (необязательно)"></textarea>
+            </div>
+            <div class="d-flex justify-content-end gap-2"> <!-- d-flex justify-content-end - выравнивание кнопок по правому краю -->
+              <button type="submit" class="btn btn-primary-custom btn-custom">Отправить</button>
+              <button type="button" class="btn btn-ghost-custom btn-custom" data-bs-dismiss="modal">Отмена</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Hide loading screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loading-screen').style.display = 'none';
+      }, 1000);
+    });
+
+    // Handle buy button clicks
+    document.addEventListener('DOMContentLoaded', function() {
+      const buyButtons = document.querySelectorAll('[data-bs-target="#buyModal"]');
+      const productInput = document.getElementById('product');
+      
+      buyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const productName = this.getAttribute('data-product');
+          productInput.value = productName;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
