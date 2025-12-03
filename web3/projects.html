@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Проекты — Трансформаторы и Лампы</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    /* Custom CSS based on Figma design */
+    :root {
+      --black: #000000;
+      --graphite: #212121;
+      --gold: #FFD700;
+      --burgundy: #880E4F;
+      --muted: #f5f5f5;
+      --card-bg: #1E1E1E;
+      --text: #ECECEC;
+      --accent: #880E4F;
+      --radius: 12px;
+      --silver: #BDBDBD;
+      --alto: #CFCFCF;
+      --d7d7d7: #D7D7D7;
+    }
+    
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    
+    /* Custom classes for Figma design */
+    .figma-frame {
+      width: 1920px;
+      max-width: 100%;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+    }
+    
+    @media (max-width: 1920px) {
+      .figma-frame {
+        width: 100%;
+        min-height: 1080px;
+      }
+    }
+    
+    /* Typography */
+    .semantic-heading-1 {
+      font-weight: 700;
+      font-size: 38px;
+      line-height: 46px;
+      letter-spacing: 0.6px;
+      color: var(--gold);
+    }
+    
+    .semantic-heading-2 {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 46px;
+      color: var(--gold);
+    }
+    
+    .semantic-heading-3 {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 38px;
+      color: var(--text);
+    }
+    
+    .inter-regular {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 34px;
+    }
+    
+    .inter-bold {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 26px;
+    }
+    
+    .text-silver {
+      color: var(--silver) !important;
+    }
+    
+    .text-alto {
+      color: var(--alto) !important;
+    }
+    
+    .text-d7d7d7 {
+      color: var(--d7d7d7) !important;
+    }
+    
+    /* Loading Screen */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #000, rgba(0,0,0,0.8));
+      z-index: 9999;
+      animation: loading-fade-out 700ms ease-in-out forwards;
+    }
+    
+    @keyframes loading-fade-out {
+      0% { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; }
+    }
+    
+    /* Header */
+    .header-custom {
+      background: linear-gradient(90deg, rgba(33,33,33,0.95), rgba(0,0,0,0.95));
+      border-bottom: 1px solid rgba(255,215,0,0.06);
+    }
+    
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--gold), var(--burgundy));
+      color: var(--graphite);
+      font-weight: 700;
+      border-radius: 8px;
+      font-size: 18px;
+      box-shadow: 0 6px 18px rgba(136,14,79,0.15);
+    }
+    
+    /* Buttons */
+    .btn-custom-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 4px 12px rgba(136,14,79,0.2);
+      border-radius: 8px;
+      padding: 9.5px 16px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 29px;
+      border: none;
+    }
+    
+    .btn-custom-primary:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(136,14,79,0.3);
+    }
+    
+    .btn-custom-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 11px 17px;
+    }
+    
+    .btn-custom-ghost:hover {
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,215,0,0.2);
+      color: var(--text);
+    }
+    
+    /* Cards */
+    .card-custom {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: var(--radius);
+      padding: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .card-custom:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+      border-color: rgba(255,215,0,0.1);
+    }
+    
+    .card-img-custom {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    /* Sections */
+    .section-projects {
+      padding: 50px 0;
+    }
+    
+    .section-clients {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    
+    /* Footer */
+    .footer-custom {
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .semantic-heading-1 { font-size: 32px; line-height: 40px; }
+      .semantic-heading-2 { font-size: 28px; line-height: 40px; }
+      .semantic-heading-3 { font-size: 22px; line-height: 32px; }
+      .inter-regular { font-size: 18px; line-height: 30px; }
+    }
+    
+    @media (max-width: 768px) {
+      .semantic-heading-1 { font-size: 28px; line-height: 36px; }
+      .semantic-heading-2 { font-size: 24px; line-height: 36px; }
+      .semantic-heading-3 { font-size: 20px; line-height: 30px; }
+      .inter-regular { font-size: 16px; line-height: 26px; }
+      .section-clients { padding: 30px 20px; }
+      .card-img-custom { height: 180px; }
+    }
+    
+    @media (max-width: 576px) {
+      .semantic-heading-1 { font-size: 24px; line-height: 32px; }
+      .semantic-heading-2 { font-size: 20px; line-height: 30px; }
+      .semantic-heading-3 { font-size: 18px; line-height: 28px; }
+      .inter-regular { font-size: 14px; line-height: 24px; }
+      .btn-custom-primary { font-size: 16px; padding: 8px 14px; }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen (анимированный) -->
+  <div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+    <div class="loading-inner text-center">
+      <div class="brand-logo d-inline-flex">T&L</div>
+      <div class="loading-text mt-3 text-alto">Загрузка...</div>
+    </div>
+  </div>
+
+  <!-- Figma frame wrapper -->
+  <div class="figma-frame">
+    <!-- Header -->
+    <header class="header-custom sticky-top" data-component="Header/Main">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-3">
+          <a href="index.html" class="brand text-decoration-none d-flex align-items-center gap-3" data-component="Brand/Logo">
+            <div class="brand-logo">T&L</div>
+            <div>
+              <div class="semantic-heading-3">Трансформаторы и Лампы</div>
+              <div class="inter-regular text-silver">Проекты</div>
+            </div>
+          </a>
+          
+          <nav class="d-none d-lg-flex align-items-center gap-3" aria-label="Главное меню" data-component="Nav/Main">
+            <a href="index.html" class="text-decoration-none text-alto inter-regular">Главная</a>
+            <a href="catalog.html" class="text-decoration-none text-alto inter-regular">Каталог</a>
+            <a href="projects.html" class="text-decoration-none text-alto inter-regular">Проекты</a>
+            <a href="about.html" class="text-decoration-none text-alto inter-regular">О компании</a>
+            <a href="contacts.html" class="text-decoration-none text-alto inter-regular">Контакты</a>
+          </nav>
+          
+          <div class="header-right" data-component="Header/CTA">
+            <a class="btn btn-custom-primary" href="contacts.html" data-component="Button/Primary">Связаться</a>
+          </div>
+          
+          <!-- Mobile menu toggle -->
+          <button class="btn d-lg-none text-alto" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+            ☰
+          </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="collapse d-lg-none" id="mobileMenu">
+          <div class="d-flex flex-column gap-2 py-3">
+            <a href="index.html" class="text-decoration-none text-alto inter-regular py-2">Главная</a>
+            <a href="catalog.html" class="text-decoration-none text-alto inter-regular py-2">Каталог</a>
+            <a href="projects.html" class="text-decoration-none text-alto inter-regular py-2">Проекты</a>
+            <a href="about.html" class="text-decoration-none text-alto inter-regular py-2">О компании</a>
+            <a href="contacts.html" class="text-decoration-none text-alto inter-regular py-2">Контакты</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Projects Section -->
+      <section class="section-projects container" data-component="Section/Projects">
+        <div class="animate-fade-in">
+          <h2 class="semantic-heading-1 mb-4">Проекты и клиенты</h2>
+          <p class="inter-regular text-d7d7d7 mb-5" style="max-width: 854px;">
+            Примеры инсталляций, студийных интеграций и шоу с трансформаторами Тесла.
+          </p>
+          
+          <!-- Projects Grid -->
+          <div class="row g-4 mb-5">
+            <!-- Project 1 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p1/800/600" alt="Студия Omega" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Студия «Omega»</h3>
+                  <p class="inter-regular text-silver mb-3">Интеграция ламповых микрофонов и процессоров</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Полная интеграция лампового оборудования в студию звукозаписи. Установлены микрофоны LM-1, компрессоры VM-Classic и эквалайзеры PEQ-2.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="omega">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p2/800/600" alt="Гитарный риг" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Гитарный риг для тура</h3>
+                  <p class="inter-regular text-silver mb-3">Кастомная гитарная голова и обработка</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Разработка и изготовление кастомной гитарной головы для международного тура. Интеграция с эмуляторами кабинета CabSim Pro.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="guitar-rig">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p3/800/600" alt="Tesla шоу" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Tesla Art Шоу</h3>
+                  <p class="inter-regular text-silver mb-3">DMC-1 с MIDI-управлением</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Организация музыкального шоу с трансформаторами Тесла DMC-1. Синхронизация разрядов с музыкой через MIDI-интерфейс.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="tesla-show">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p4/800/600" alt="Радиостанция" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Радиостанция «Волна»</h3>
+                  <p class="inter-regular text-silver mb-3">Модернизация эфирного оборудования</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Полная модернизация эфирного комплекса с установкой ламповых процессоров и мониторов SM-5 для контроля качества звука.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="radio">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p5/800/600" alt="Концертный зал" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Концертный зал «Филармония»</h3>
+                  <p class="inter-regular text-silver mb-3">Система мониторинга и обработки</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Установка системы студийных мониторов и ламповых процессоров для контроля звука в репетиционных залах и студиях.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="philharmonic">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="col-12 col-lg-4" data-component="Card/Project">
+              <div class="card-custom h-100">
+                <img src="https://picsum.photos/seed/p6/800/600" alt="Киностудия" class="card-img-custom mb-3">
+                <div class="card-body p-0">
+                  <h3 class="semantic-heading-3 mb-2">Киностудия «Космос»</h3>
+                  <p class="inter-regular text-silver mb-3">Оборудование для пост-продакшена</p>
+                  <p class="inter-regular text-silver mb-4">
+                    Оснащение студии звукового пост-продакшена для создания саундтреков и звуковых эффектов к фильмам.
+                  </p>
+                  <div class="actions">
+                    <button class="btn btn-custom-ghost" data-view-project="cinema">Подробнее</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- CTA Button -->
+          <div class="text-center mt-5">
+            <a class="btn btn-custom-primary" href="contacts.html" data-component="Button/Primary">Обсудить ваш проект</a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Clients Section -->
+      <section class="section-clients container mt-5" data-component="Section/Clients">
+        <div class="animate-fade-in">
+          <h2 class="semantic-heading-2 text-center mb-5">Наши клиенты</h2>
+          <div class="row justify-content-center g-4 text-center">
+            <div class="col-6 col-md-4 col-lg">
+              <p class="inter-regular text-silver mb-0">Студия «Omega»</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <p class="inter-regular text-silver mb-0">Радио «Волна»</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <p class="inter-regular text-silver mb-0">Филармония</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <p class="inter-regular text-silver mb-0">Киностудия «Космос»</p>
+            </div>
+            <div class="col-6 col-md-4 col-lg">
+              <p class="inter-regular text-silver mb-0">Театр «Современник»</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Footer -->
+      <footer class="footer-custom mt-5" data-component="Footer/Main">
+        <div class="container py-5">
+          <div class="row g-5">
+            <div class="col-12 col-lg-6">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <div class="brand-logo">T&L</div>
+                <div>
+                  <div class="semantic-heading-3">Трансформаторы и Лампы</div>
+                  <div class="inter-regular text-silver">Профессиональное аудиооборудование</div>
+                </div>
+              </div>
+              <p class="inter-regular text-silver mb-0">© 2025 Все права защищены</p>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-3">
+              <h4 class="semantic-heading-3 text-silver mb-3">Меню</h4>
+              <div class="d-flex flex-column gap-2">
+                <a href="catalog.html" class="text-decoration-none inter-regular text-alto">Каталог</a>
+                <a href="projects.html" class="text-decoration-none inter-regular text-alto">Проекты</a>
+                <a href="about.html" class="text-decoration-none inter-regular text-alto">О компании</a>
+                <a href="contacts.html" class="text-decoration-none inter-regular text-alto">Контакты</a>
+              </div>
+            </div>
+            
+            <div class="col-12 col-md-6 col-lg-3">
+              <h4 class="semantic-heading-3 text-silver mb-3">Контакты</h4>
+              <div class="d-flex flex-column gap-2">
+                <p class="inter-regular text-silver mb-0">email: info@translamps.example</p>
+                <p class="inter-regular text-silver mb-0">тел: +7 (900) 000-00-00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div id="project-modal" class="modal fade" data-component="Modal/Project" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border border-light border-opacity-10">
+        <div class="modal-header border-bottom border-light border-opacity-10">
+          <h3 class="modal-title semantic-heading-2" id="project-modal-title">Детали проекта</h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div id="project-modal-content">
+            <!-- Content will be loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Общие утилиты
+    window.TransLamps = window.TransLamps || {};
+    window.TransLamps.utils = window.TransLamps.utils || {};
+    window.TransLamps.projects = window.TransLamps.projects || {};
+    
+    window.TransLamps.projects = {
+      'omega': {
+        title: 'Студия «Omega» — интеграция лампового оборудования',
+        content: `
+          <img src="https://picsum.photos/seed/p1/800/400" alt="Студия Omega" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Оснащение новой студии звукозаписи профессиональным ламповым оборудованием для работы с вокалом и акустическими инструментами.</p>
+            <p><strong>Решение:</strong> Установлен комплект из 4 ламповых микрофонов LM-1, 2 компрессоров VM-Classic и параметрического эквалайзера PEQ-2.</p>
+            <p><strong>Результат:</strong> Студия получила уникальный тёплый звук, что позволило привлечь артистов, работающих в жанрах джаз, блюз и акустическая музыка.</p>
+            <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded">
+              <strong>Использованное оборудование:</strong>
+              <ul class="mt-2 mb-0">
+                <li>Ламповые микрофоны LM-1 × 4</li>
+                <li>Vari-Mu компрессоры VM-Classic × 2</li>
+                <li>Параметрические эквалайзеры PEQ-2 × 1</li>
+              </ul>
+            </div>
+          </div>
+        `
+      },
+      'guitar-rig': {
+        title: 'Гитарный риг для международного тура',
+        content: `
+          <img src="https://picsum.photos/seed/p2/800/400" alt="Гитарный риг" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Создание мобильного и надежного гитарного оборудования для гастрольного тура с сохранением качества студийного звука.</p>
+            <p><strong>Решение:</strong> Разработка кастомной гитарной головы с ламповым каскадом и интеграция с эмуляторами кабинета CabSim Pro для прямого подключения к PA-системе.</p>
+            <p><strong>Результат:</strong> Музыканты получили стабильное и качественное звучание на всех концертных площадках без потери характерного лампового тона.</p>
+          </div>
+        `
+      },
+      'tesla-show': {
+        title: 'Tesla Art Шоу с MIDI-управлением',
+        content: `
+          <img src="https://picsum.photos/seed/p3/800/400" alt="Tesla шоу" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Организация зрелищного музыкального шоу с визуальными эффектами от трансформаторов Тесла.</p>
+            <p><strong>Решение:</strong> Использование DRSSTC катушек DMC-1 с MIDI-интерфейсом для синхронизации электрических разрядов с музыкой.</p>
+            <p><strong>Результат:</strong> Уникальное аудио-визуальное шоу, где каждая нота сопровождается соответствующим электрическим разрядом.</p>
+          </div>
+        `
+      },
+      'radio': {
+        title: 'Радиостанция «Волна» — модернизация оборудования',
+        content: `
+          <img src="https://picsum.photos/seed/p4/800/400" alt="Радиостанция" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Модернизация эфирного комплекса радиостанции для повышения качества вещания.</p>
+            <p><strong>Решение:</strong> Установка ламповых процессоров и мониторов SM-5 для контроля качества звука.</p>
+            <p><strong>Результат:</strong> Значительное улучшение качества звучания эфира и повышение удобства работы звукорежиссеров.</p>
+          </div>
+        `
+      },
+      'philharmonic': {
+        title: 'Концертный зал «Филармония»',
+        content: `
+          <img src="https://picsum.photos/seed/p5/800/400" alt="Концертный зал" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Создание системы мониторинга и обработки для контроля звука в репетиционных залах и студиях.</p>
+            <p><strong>Решение:</strong> Установка системы студийных мониторов и ламповых процессоров.</p>
+            <p><strong>Результат:</strong> Повышение точности звуковоспроизведения и удобства работы музыкантов и звукорежиссеров.</p>
+          </div>
+        `
+      },
+      'cinema': {
+        title: 'Киностудия «Космос»',
+        content: `
+          <img src="https://picsum.photos/seed/p6/800/400" alt="Киностудия" class="img-fluid rounded mb-3" style="height: 300px; object-fit: cover;">
+          <div class="inter-regular">
+            <p><strong>Задача:</strong> Оснащение студии звукового пост-продакшена для создания саундтреков и звуковых эффектов.</p>
+            <p><strong>Решение:</strong> Установка профессионального лампового и цифрового оборудования для пост-продакшена.</p>
+            <p><strong>Результат:</strong> Возможность создания качественных саундтреков и звуковых эффектов для фильмов.</p>
+          </div>
+        `
+      }
+    };
+
+    // Инициализация при загрузке DOM
+    document.addEventListener('DOMContentLoaded', function() {
+      // Скрыть загрузку
+      const loading = document.getElementById('loading-screen');
+      if (loading) {
+        setTimeout(() => {
+          loading.style.display = 'none';
+        }, 700);
+      }
+      
+      // Инициализация модальных окон проектов
+      initProjectsFunctionality();
+    });
+
+    // Функционал для страницы проектов
+    function initProjectsFunctionality() {
+      // Обработчики для кнопок проектов
+      document.querySelectorAll('[data-view-project]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const projectId = this.getAttribute('data-view-project');
+          showProjectModal(projectId);
+        });
+      });
+      
+      function showProjectModal(projectId) {
+        const project = window.TransLamps.projects[projectId];
+        if (!project) return;
+        
+        const title = document.getElementById('project-modal-title');
+        const content = document.getElementById('project-modal-content');
+        
+        if (title) title.textContent = project.title;
+        if (content) content.innerHTML = project.content;
+        
+        // Используем Bootstrap modal
+        const modal = new bootstrap.Modal(document.getElementById('project-modal'));
+        modal.show();
+      }
+    }
+  </script>
+</body>
+</html>
