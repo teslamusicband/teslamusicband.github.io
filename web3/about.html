@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>О компании — Трансформаторы и Лампы</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --graphite: #212121;
+            --gold: #FFD700;
+            --burgundy: #880E4F;
+            --muted: #f5f5f5;
+            --card-bg: #1e1e1e;
+            --text: #ececec;
+            --accent: #880E4F;
+            --radius: 10px;
+            --silver: #BDBDBD;
+            --alto: #CFCFCF;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+            color: var(--text);
+            line-height: 1.45;
+            min-height: 100vh;
+        }
+
+        .figma-frame {
+            width: 100%;
+            min-height: 1080px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, rgba(33,33,33,0.95), rgba(0,0,0,0.95));
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,215,0,0.06);
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--gold), var(--burgundy));
+            color: var(--graphite);
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 18px;
+            box-shadow: 0 6px 18px rgba(136,14,79,0.15);
+        }
+
+        /* Navigation */
+        .menu a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: all 180ms ease;
+        }
+
+        .menu a:hover {
+            background: rgba(255,255,255,0.04);
+            transform: translateY(-1px);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(136,14,79,0.2);
+        }
+
+        .btn-primary:hover {
+            background: #9a1159;
+            border-color: #9a1159;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(136,14,79,0.3);
+        }
+
+        .btn-outline-light {
+            border-color: rgba(255,255,255,0.1);
+            color: var(--text);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,215,0,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Typography */
+        .text-gold {
+            color: var(--gold) !important;
+        }
+
+        .text-silver {
+            color: var(--silver) !important;
+        }
+
+        .text-alto {
+            color: var(--alto) !important;
+        }
+
+        .display-4 {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 46px;
+            letter-spacing: 0.6px;
+        }
+
+        .display-5 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 46px;
+        }
+
+        .lead {
+            font-size: 20px;
+            line-height: 34px;
+            color: var(--silver);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 46px;
+            margin-bottom: 28px;
+        }
+
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 29px;
+        }
+
+        /* Cards */
+        .philosophy-card {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 24px;
+            height: 100%;
+        }
+
+        .value-icon {
+            font-size: 32px;
+            line-height: 46px;
+            margin-bottom: 12px;
+        }
+
+        /* Achievement Section */
+        .achievement-section {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+            border-radius: 12px;
+        }
+
+        .achievement-number {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 46px;
+            letter-spacing: 0.6px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding: 40px 0;
+        }
+
+        /* Utilities */
+        .min-vh-80 {
+            min-height: 80vh;
+        }
+
+        .object-fit-cover {
+            object-fit: cover;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
+        /* Loading */
+        .loading {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg,#000,rgba(0,0,0,0.8));
+            z-index: 9999;
+        }
+
+        /* Modal */
+        .modal-content {
+            background: #0c0c0c;
+            border: 1px solid rgba(255,215,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 28px;
+                line-height: 36px;
+            }
+            
+            .display-5 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+            
+            .lead {
+                font-size: 16px;
+                line-height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+        <div class="text-center">
+            <div class="logo d-inline-flex">T&L</div>
+            <div class="text-silver mt-3">Загрузка...</div>
+        </div>
+    </div>
+
+    <!-- Figma frame wrapper -->
+    <div class="figma-frame">
+        <!-- Header -->
+        <header class="header">
+            <div class="container py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="index.html" class="brand text-decoration-none text-white d-flex align-items-center gap-3">
+                        <div class="logo">T&L</div>
+                        <div>
+                            <div class="fw-bold fs-5">Трансформаторы и Лампы</div>
+                            <div class="text-silver small">О компании</div>
+                        </div>
+                    </a>
+                    
+                    <nav class="menu d-none d-md-flex align-items-center gap-3">
+                        <a href="index.html">Главная</a>
+                        <a href="catalog.html">Каталог</a>
+                        <a href="projects.html">Проекты</a>
+                        <a href="about.html">О компании</a>
+                        <a href="contacts.html">Контакты</a>
+                    </nav>
+                    
+                    <div class="header-right">
+                        <a class="btn btn-primary" href="contacts.html">Связаться</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="py-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <h1 class="display-4 text-gold mb-4">Наша история</h1>
+                            <p class="lead mb-5">
+                                «Трансформаторы и Лампы» — мастерская инженеров и звуколюбов. Мы соединяем традиции лампового звучания с современными технологиями, включая цифровое управление и MIDI-интеграцию для экспериментальных проектов.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <img src="https://picsum.photos/seed/workshop/600/400" 
+                                 alt="Наша мастерская" 
+                                 class="img-fluid rounded-3">
+                        </div>
+                        <div class="col-lg-6">
+                            <h3 class="subsection-title text-gold mb-4">С чего всё начиналось</h3>
+                            <p class="lead">
+                                Основанная в 2015 году, наша компания начинала с небольшой мастерской по ремонту винтажного аудиооборудования. Постепенно мы перешли к созданию собственных разработок, сочетающих лучшие традиции лампового звука с современными технологиями.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="py-5">
+                <div class="container">
+                    <h2 class="section-title text-gold mb-5">Философия бренда</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-4">
+                            <div class="philosophy-card">
+                                <h3 class="subsection-title text-gold mb-3">Традиции и инновации</h3>
+                                <p class="lead mb-0">
+                                    Мы верим, что тёплый характер ламп и точность цифровых решений могут существовать вместе, давая инженеру и музыканту максимум контроля и эмоциональной выразительности.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="philosophy-card">
+                                <h3 class="subsection-title text-gold mb-3">Качество выше всего</h3>
+                                <p class="lead mb-0">
+                                    Каждый прибор проходит многоэтапный контроль качества и тестирование в реальных условиях. Мы используем только проверенные компоненты от мировых производителей.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="philosophy-card">
+                                <h3 class="subsection-title text-gold mb-3">Индивидуальный подход</h3>
+                                <p class="lead mb-0">
+                                    Мы готовы разработать индивидуальное решение под конкретные задачи клиента — от кастомизации существующих моделей до создания полностью уникальных приборов.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="py-5">
+                <div class="container">
+                    <h2 class="section-title text-gold mb-5">Наши ценности</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="value-card">
+                                <div class="value-icon text-gold">🎯</div>
+                                <h4 class="subsection-title text-white mb-3">Точность</h4>
+                                <p class="lead mb-0">Каждый децибел имеет значение в создании идеального звука</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="value-card">
+                                <div class="value-icon text-gold">❤️</div>
+                                <h4 class="subsection-title text-white mb-3">Страсть</h4>
+                                <p class="lead mb-0">Мы любим то, что делаем, и это чувствуется в каждом нашем продукте</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="value-card">
+                                <div class="value-icon text-gold">⚡</div>
+                                <h4 class="subsection-title text-white mb-3">Инновации</h4>
+                                <p class="lead mb-0">Постоянно исследуем новые технологии для улучшения звука</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="value-card">
+                                <div class="value-icon text-gold">🤝</div>
+                                <h4 class="subsection-title text-white mb-3">Поддержка</h4>
+                                <p class="lead mb-0">Всегда помогаем нашим клиентам в решении любых задач</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="py-5">
+                <div class="container">
+                    <h2 class="section-title text-gold mb-5">Наша команда</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-4">
+                            <div class="team-card cursor-pointer" data-component="Card/Person">
+                                <img src="https://picsum.photos/seed/eng1/400/250" alt="Иван П.">
+                                <div class="p-4">
+                                    <h4 class="subsection-title text-white mb-1">Иван Петров</h4>
+                                    <p class="text-gold mb-3">Главный инженер</p>
+                                    <p class="lead mb-0">
+                                        Основатель компании. Более 15 лет опыта в разработке аудиооборудования. Специализируется на ламповых схемах и аналоговой обработке сигналов.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="team-card cursor-pointer" data-component="Card/Person">
+                                <img src="https://picsum.photos/seed/eng2/400/250" alt="Мария Л.">
+                                <div class="p-4">
+                                    <h4 class="subsection-title text-white mb-1">Мария Лебедева</h4>
+                                    <p class="text-gold mb-3">DSP и ПО</p>
+                                    <p class="lead mb-0">
+                                        Разработчик цифровых сигнальных процессоров и программного обеспечения. Отвечает за интеграцию аналоговых и цифровых технологий.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="team-card cursor-pointer" data-component="Card/Person">
+                                <img src="https://picsum.photos/seed/eng3/400/250" alt="Алексей С.">
+                                <div class="p-4">
+                                    <h4 class="subsection-title text-white mb-1">Алексей Смирнов</h4>
+                                    <p class="text-gold mb-3">Инженер-конструктор</p>
+                                    <p class="lead mb-0">
+                                        Специалист по механическим конструкциям и промышленному дизайну. Создаёт эргономичные и функциональные корпуса для нашего оборудования.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="py-5 achievement-section">
+                <div class="container">
+                    <h2 class="section-title text-gold text-center mb-5">Наши достижения</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="text-center">
+                                <div class="achievement-number text-gold mb-2">150+</div>
+                                <p class="lead mb-0">Успешных проектов</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="text-center">
+                                <div class="achievement-number text-gold mb-2">5 лет</div>
+                                <p class="lead mb-0">Гарантии на оборудование</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="text-center">
+                                <div class="achievement-number text-gold mb-2">98%</div>
+                                <p class="lead mb-0">Довольных клиентов</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="text-center">
+                                <div class="achievement-number text-gold mb-2">24/7</div>
+                                <p class="lead mb-0">Техническая поддержка</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-5">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="logo">T&L</div>
+                            <div>
+                                <h5 class="text-white mb-1">Трансформаторы и Лампы</h5>
+                                <p class="text-silver mb-0">Профессиональное аудиооборудование</p>
+                            </div>
+                        </div>
+                        <p class="text-silver mb-0">© 2025 Все права защищены</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-silver mb-3">Меню</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="catalog.html" class="text-alto text-decoration-none">Каталог</a></li>
+                            <li><a href="projects.html" class="text-alto text-decoration-none">Проекты</a></li>
+                            <li><a href="about.html" class="text-alto text-decoration-none">О компании</a></li>
+                            <li><a href="contacts.html" class="text-alto text-decoration-none">Контакты</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-silver mb-3">Контакты</h5>
+                        <p class="text-silver mb-2">email: info@translamps.example</p>
+                        <p class="text-silver mb-0">тел: +7 (900) 000-00-00</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Team Member Modal -->
+    <div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-gold" id="teamModalTitle">Участник команды</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body" id="teamModalContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Инициализация при загрузке DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Скрыть загрузку
+            const loading = document.getElementById('loading-screen');
+            if (loading) {
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 700);
+            }
+
+            // Инициализация модального окна команды
+            const teamModal = new bootstrap.Modal(document.getElementById('teamModal'));
+            
+            // Обработчики для карточек команды
+            document.querySelectorAll('[data-component="Card/Person"]').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const name = this.querySelector('h4').textContent;
+                    const role = this.querySelector('.text-gold').textContent;
+                    const description = this.querySelector('.lead').textContent;
+                    const imageSrc = this.querySelector('img').src;
+                    
+                    // Обновление содержимого модального окна
+                    document.getElementById('teamModalTitle').textContent = name;
+                    document.getElementById('teamModalContent').innerHTML = `
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="${imageSrc}" alt="${name}" class="img-fluid rounded-3 mb-3 mb-md-0">
+                            </div>
+                            <div class="col-md-8">
+                                <h6 class="text-gold mb-2">${role}</h6>
+                                <p class="lead">${description}</p>
+                                <p class="text-silver">Образование: МГТУ им. Баумана, факультет Радиоэлектроники</p>
+                                <p class="text-silver">Специализация: ламповые схемы, аналоговая обработка сигналов</p>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Показать модальное окно
+                    teamModal.show();
+                });
+            });
+
+            // Общий функционал для всех страниц
+            function initCommonFunctionality() {
+                // Обработка кнопок покупки
+                document.querySelectorAll('[data-buy]').forEach(btn => {
+                    btn.addEventListener('click', function(e) {
+                        const name = this.dataset.buy || '';
+                        // Здесь будет логика открытия модального окна покупки
+                        console.log('Купить:', name);
+                    });
+                });
+            }
+
+            initCommonFunctionality();
+        });
+    </script>
+</body>
+</html>
