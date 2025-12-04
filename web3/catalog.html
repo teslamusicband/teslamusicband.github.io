@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Каталог — Трансформаторы и Лампы</title>
-<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Slick Carousel CSS -->
 <!-- https://kenwheeler.github.io/slick/ -->
@@ -32,7 +31,6 @@ line-height: 1.45;
 min-height: 100vh;
 }
 
-/* Loading Screen */
 @keyframes loading-pulse {
 from { opacity: 0.6; transform: scale(0.98); }
 to { opacity: 1; transform: scale(1.02); }
@@ -64,7 +62,6 @@ margin-top: 12px;
 color: #cfcfcf;
 }
 
-/* Custom Components */
 .logo {
 display: inline-flex;
 align-items: center;
@@ -147,7 +144,6 @@ transition: transform 200ms ease;
 transform: scale(1.03);
 }
 
-/* Header */
 .header {
 background: linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
 position: sticky;
@@ -190,7 +186,6 @@ line-height: 46px;
 color: #FFD700;
 }
 
-/* Footer */
 .footer {
 border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
@@ -207,7 +202,6 @@ transition: color 160ms ease;
 color: var(--gold);
 }
 
-/* Modal */
 .modal-custom {
 background: rgba(0,0,0,0.7);
 z-index: 2000;
@@ -271,51 +265,59 @@ transform: rotate(90deg);
 }
 
 /* Slick Carousel кастомизация */
+/* Основной контейнер слайдера */
 .slick-slider {
-margin-bottom: 30px;
+    margin-bottom: 30px; /* Отступ снизу 30px для отделения от следующего контента */
 }
 
+/* Стили для кнопок "назад" и "вперед" */
 .slick-prev, .slick-next {
-width: 50px;
-height: 50px;
-z-index: 100;
+    width: 50px;          /* Ширина кнопки 50px */
+    height: 50px;         /* Высота кнопки 50px */
+    z-index: 100;         /* z-index (стековый порядок наложения элементов по оси Z): 100 - поднимаем над другими элементами */
 }
 
+/* Конкретно кнопка "назад" (предыдущий слайд) */
 .slick-prev {
-left: -60px;
+    left: -60px;          /* Позиционирование слева за пределами слайдера на 60px */
 }
 
+/* Конкретно кнопка "вперед" (следующий слайд) */
 .slick-next {
-right: -60px;
+    right: -60px;         /* Позиционирование справа за пределами слайдера на 60px */
 }
 
+/* Псевдоэлементы :before для иконок внутри кнопок */
 .slick-prev:before, .slick-next:before {
-font-size: 40px;
-color: #FFD700;
-opacity: 0.8;
+    font-size: 40px;      /* Размер иконки стрелки 40px */
+    color: #FFD700;       /* Золотой цвет иконки (переменная --gold) */
+    opacity: 0.8;         /* Полупрозрачность 80% */
 }
 
+/* Эффект при наведении на кнопки */
 .slick-prev:hover:before, .slick-next:hover:before {
-opacity: 1;
-color: #880E4F;
+    opacity: 1;           /* Убираем прозрачность при наведении */
+    color: #880E4F;       /* Меняем цвет на бордовый (переменная --burgundy) */
 }
 
+/* Контейнер точек навигации (индикаторы слайдов) */
 .slick-dots {
-bottom: -40px;
+    bottom: -40px;        /* Позиционирование снизу слайдера, выносим на 40px ниже */
 }
 
+/* Стили для каждой отдельной точки */
 .slick-dots li button:before {
-font-size: 12px;
-color: #FFD700;
-opacity: 0.5;
+    font-size: 12px;      /* Размер точки 12px */
+    color: #FFD700;       /* Золотой цвет точки */
+    opacity: 0.5;         /* Полупрозрачность 50% для неактивных точек */
 }
 
+/* Стили для активной (текущей) точки */
 .slick-dots li.slick-active button:before {
-color: #880E4F;
-opacity: 1;
+    color: #880E4F;       /* Бордовый цвет для активной точки */
+    opacity: 1;           /* Полная непрозрачность активной точки */
 }
 
-/* Фильтры */
 .filters {
 margin-bottom: 32px;
 }
@@ -347,7 +349,6 @@ border-color: #880E4F;
 color: #ECECEC;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
 .slick-prev {
 left: 10px;
@@ -359,7 +360,6 @@ right: 10px;
 </style>
 </head>
 <body>
-<!-- Loading Screen -->
 <div id="loading-screen" class="loading" aria-hidden="false">
 <div class="loading-inner">
 <div class="logo">T&L</div>
@@ -367,9 +367,7 @@ right: 10px;
 </div>
 </div>
 
-<!-- Main Content -->
 <div class="container-fluid p-0">
-<!-- Header -->
 <header class="header py-2">
 <div class="container">
 <div class="row align-items-center">
@@ -402,13 +400,11 @@ right: 10px;
 </div>
 </header>
 
-<!-- Main Content -->
 <main>
 <section class="py-5">
 <div class="container">
 <h2 class="section-title mb-4">Каталог оборудования</h2>
 
-<!-- Фильтры -->
 <div class="filters">
 <div class="small mb-3" style="color: #BDBDBD;">Фильтр по категории:</div>
 <div class="d-flex flex-wrap">
@@ -421,7 +417,7 @@ right: 10px;
 
 <!-- Популярные продукты (Карусель) -->
 <section class="mb-5">
-<h3 class="mb-4" style="color: #FFD700;">🔥 Популярные продукты</h3>
+<h3 class="mb-4" style="color: #FFD700;">🔥&#128293; Популярные продукты</h3>
 <div class="featured-products-carousel">
 <!-- Карточка 1 -->
 <div>
@@ -500,7 +496,6 @@ right: 10px;
 </div>
 </section>
 
-<!-- Ламповое оборудование -->
 <section id="lamps" class="mb-5" data-category-section="lamps">
 <h3 class="mb-4" style="color: #FFD700;">Ламповое оборудование</h3>
 <div class="row">
@@ -548,7 +543,6 @@ right: 10px;
 </div>
 </section>
 
-<!-- Транзисторное/Цифровое оборудование -->
 <section id="trans" class="mb-5" data-category-section="digital">
 <h3 class="mb-4" style="color: #FFD700;">Транзисторное/Цифровое оборудование</h3>
 <div class="row">
@@ -596,7 +590,6 @@ right: 10px;
 </div>
 </section>
 
-<!-- Трансформаторы Тесла -->
 <section id="tesla" class="mb-5" data-category-section="tesla">
 <h3 class="mb-4" style="color: #FFD700;">Трансформаторы Тесла</h3>
 <div class="row">
@@ -620,7 +613,6 @@ right: 10px;
 </section>
 </main>
 
-<!-- Footer -->
 <footer class="footer py-5">
 <div class="container">
 <div class="row">
@@ -653,7 +645,6 @@ right: 10px;
 </footer>
 </div>
 
-<!-- Buy Modal -->
 <div class="modal fade modal-custom" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
 <div class="modal-content modal-content-custom">
@@ -689,22 +680,18 @@ right: 10px;
 </div>
 </div>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Slick Carousel JS -->
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script>
-// Hide loading screen
 window.addEventListener('load', function() {
     setTimeout(function() {
         document.getElementById('loading-screen').style.display = 'none';
     }, 1000);
 });
 
-// Initialize Slick Carousel
+// Для Slick Carousel
 $(document).ready(function(){
     $('.featured-products-carousel').slick({
         dots: true,
@@ -732,7 +719,6 @@ $(document).ready(function(){
     });
 });
 
-// Handle buy button clicks
 document.addEventListener('DOMContentLoaded', function() {
     const buyButtons = document.querySelectorAll('[data-bs-target="#buyModal"]');
     const productInput = document.getElementById('product');
@@ -745,7 +731,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Filter functionality
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const productCards = document.querySelectorAll('.product-card');
@@ -755,14 +740,14 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             
-            // Remove active class from all buttons
+            // Убрать активный класс со всех кнопок
             filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
+            // Добавить активный класс на нажимаемую кнопку
             this.classList.add('active');
             
             const filter = this.getAttribute('data-filter');
             
-            // Show/hide category sections
+            // Показать или скрыть секции категорий
             categorySections.forEach(section => {
                 if (filter === 'all' || section.getAttribute('data-category-section') === filter) {
                     section.style.display = 'block';
@@ -771,7 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Filter individual cards in carousel
+            // Фильтр индивидуальных карт в carousel
             productCards.forEach(card => {
                 if (filter === 'all' || card.getAttribute('data-category') === filter) {
                     card.style.display = 'block';
@@ -780,7 +765,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Refresh slick carousel after filtering
+            // Перезагрузка slick carousel после применения фильтра
             if (filter !== 'all') {
                 $('.featured-products-carousel').slick('slickUnfilter');
                 $('.featured-products-carousel').slick('slickFilter', 
@@ -793,7 +778,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Smooth scroll to sections
+// Плавная прокрутка секций
 document.addEventListener('DOMContentLoaded', function() {
     const filterLinks = document.querySelectorAll('.filter-btn');
     
