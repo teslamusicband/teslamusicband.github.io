@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Контакты — Трансформаторы и Лампы</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --graphite: #212121;
+            --gold: #FFD700;
+            --burgundy: #880E4F;
+            --muted: #f5f5f5;
+            --card-bg: #1e1e1e;
+            --text: #ececec;
+            --accent: #880E4F;
+            --radius: 10px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        /* Custom styles matching Figma design */
+        .gold-text {
+            color: var(--gold) !important;
+        }
+        
+        .silver-text {
+            color: #BDBDBD !important;
+        }
+        
+        .alto-text {
+            color: #CFCFCF !important;
+        }
+        
+        .gallery-text {
+            color: #ECECEC !important;
+        }
+        
+        .dusty-gray {
+            color: #999999 !important;
+        }
+        
+        .bg-cod-gray {
+            background-color: #0F0F0F !important;
+        }
+        
+        .bg-dark-gray {
+            background-color: #0E0E0E !important;
+        }
+        
+        .bg-darker {
+            background-color: #121212 !important;
+        }
+        
+        .bg-card {
+            background-color: #1E1E1E !important;
+        }
+        
+        /* Gradient backgrounds from Figma */
+        .gradient-bg {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%) !important;
+        }
+        
+        .gradient-light {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.03) 0%, rgba(136, 14, 79, 0.02) 100%) !important;
+        }
+        
+        /* Border styles */
+        .border-gold-light {
+            border: 1px solid rgba(255, 215, 0, 0.08) !important;
+        }
+        
+        .border-white-light {
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .border-white-vlight {
+            border: 1px solid rgba(255, 255, 255, 0.03) !important;
+        }
+        
+        .border-gold-vlight {
+            border: 1px solid rgba(255, 215, 0, 0.1) !important;
+        }
+        
+        /* Shadows */
+        .shadow-gold {
+            box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.4) !important;
+        }
+        
+        .shadow-burgundy {
+            box-shadow: 0px 4px 12px rgba(136, 14, 79, 0.2) !important;
+        }
+        
+        /* Logo gradient */
+        .logo-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%) !important;
+            box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15) !important;
+        }
+        
+        /* Form inputs */
+        .form-control-custom {
+            background-color: #BDBDBD !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #212121 !important;
+            border-radius: 6px !important;
+        }
+        
+        .form-control-custom:focus {
+            background-color: #BDBDBD !important;
+            border-color: rgba(255, 215, 0, 0.3) !important;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08) !important;
+            color: #212121 !important;
+        }
+        
+        .form-select-custom {
+            background-color: #121212 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ECECEC !important;
+            border-radius: 6px !important;
+        }
+        
+        .form-select-custom:focus {
+            border-color: rgba(255, 215, 0, 0.3) !important;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08) !important;
+        }
+        
+        .textarea-custom {
+            background-color: #121212 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: #ECECEC !important;
+            border-radius: 6px !important;
+        }
+        
+        .textarea-custom:focus {
+            border-color: rgba(255, 215, 0, 0.3) !important;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08) !important;
+        }
+        
+        /* Button styles */
+        .btn-burgundy {
+            background-color: #880E4F !important;
+            color: white !important;
+            box-shadow: 0px 4px 12px rgba(136, 14, 79, 0.2) !important;
+        }
+        
+        .btn-burgundy:hover {
+            background-color: #9a1059 !important;
+            box-shadow: 0px 8px 20px rgba(136, 14, 79, 0.3) !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700 !important;
+        }
+        
+        .heading-1 {
+            font-size: 38px;
+            line-height: 46px;
+            letter-spacing: 0.6px;
+        }
+        
+        .heading-2 {
+            font-size: 36px;
+            line-height: 58px;
+        }
+        
+        .heading-3 {
+            font-size: 20px;
+            line-height: 29px;
+        }
+        
+        .heading-4 {
+            font-size: 24px;
+            line-height: 38px;
+        }
+        
+        .body-text {
+            font-size: 20px;
+            line-height: 34px;
+            font-weight: 400;
+        }
+        
+        .small-text {
+            font-size: 16px;
+            line-height: 23px;
+        }
+        
+        /* Contact cards */
+        .contact-card {
+            height: 100%;
+            padding: 25px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.08);
+        }
+        
+        /* FAQ accordion */
+        .faq-item {
+            background-color: #1E1E1E;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .faq-header {
+            padding: 15px;
+            cursor: pointer;
+        }
+        
+        /* Map placeholder */
+        .map-placeholder {
+            height: 270px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer links */
+        .footer-link {
+            color: #CFCFCF;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .footer-link:hover {
+            color: var(--gold);
+        }
+        
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, #000, rgba(0,0,0,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.7s ease-in-out;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .heading-1 {
+                font-size: 32px;
+                line-height: 40px;
+            }
+            
+            .heading-2 {
+                font-size: 28px;
+                line-height: 42px;
+            }
+            
+            .body-text {
+                font-size: 18px;
+                line-height: 30px;
+            }
+        }
+        
+        /* Custom spacing */
+        .gap-40 {
+            gap: 40px;
+        }
+        
+        .gap-27 {
+            gap: 27.3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="text-center">
+            <div class="logo-gradient d-inline-flex align-items-center justify-content-center rounded-3" style="width: 48px; height: 48px;">
+                <span class="text-dark fw-bold">T&L</span>
+            </div>
+            <div class="mt-3 alto-text">Загрузка...</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky-top" style="background: linear-gradient(90deg, rgba(33,33,33,0.95), rgba(0,0,0,0.95)); border-bottom: 1px solid rgba(255,215,0,0.06);">
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Brand/Logo -->
+                <a href="index.html" class="text-decoration-none d-flex align-items-center gap-3">
+                    <div class="logo-gradient d-flex align-items-center justify-content-center rounded-3" style="width: 48px; height: 48px;">
+                        <span class="text-dark fw-bold">T&L</span>
+                    </div>
+                    <div>
+                        <div class="fw-bold gallery-text">Трансформаторы и Лампы</div>
+                        <div class="silver-text small-text">Контакты</div>
+                    </div>
+                </a>
+                
+                <!-- Navigation -->
+                <nav class="d-none d-md-flex align-items-center gap-3">
+                    <a href="index.html" class="text-decoration-none alto-text px-3 py-2 rounded-3" style="font-size: 15px;">Главная</a>
+                    <a href="catalog.html" class="text-decoration-none alto-text px-3 py-2 rounded-3" style="font-size: 15px;">Каталог</a>
+                    <a href="projects.html" class="text-decoration-none alto-text px-3 py-2 rounded-3" style="font-size: 15px;">Проекты</a>
+                    <a href="about.html" class="text-decoration-none alto-text px-3 py-2 rounded-3" style="font-size: 15px;">О компании</a>
+                    <a href="contacts.html" class="text-decoration-none gold-text px-3 py-2 rounded-3" style="font-size: 15px;">Контакты</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <a href="#contact-form" class="btn btn-burgundy rounded-3 px-4 py-2 text-decoration-none">
+                    Написать нам
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="py-5">
+        <!-- Main Section -->
+        <div class="container py-5">
+            <!-- Section with contact info -->
+            <section class="mb-5">
+                <h1 class="heading-1 gold-text mb-4">Контакты</h1>
+                <p class="body-text silver-text mb-5" style="max-width: 752px;">
+                    Свяжитесь с нами для консультации, заказа оборудования или обсуждения вашего проекта
+                </p>
+                
+                <!-- Contact Cards Grid -->
+                <div class="row mb-5 gap-4">
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <h3 class="heading-3 gold-text mb-3">Адрес</h3>
+                            <p class="body-text silver-text mb-0">
+                                г. Москва, ул. Примерная, д. 1<br>
+                                Бизнес-центр «Аудио»
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <h3 class="heading-3 gold-text mb-3">Телефон</h3>
+                            <p class="body-text silver-text mb-0">
+                                +7 (900) 000-00-00<br>
+                                +7 (495) 123-45-67
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <h3 class="heading-3 gold-text mb-3">Email</h3>
+                            <p class="body-text silver-text mb-0">
+                                info@translamps.example<br>
+                                sales@translamps.example
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="contact-card">
+                            <h3 class="heading-3 gold-text mb-3">Режим работы</h3>
+                            <p class="body-text silver-text mb-0">
+                                Пн-Пт: 9:00-18:00<br>
+                                Сб-Вс: выходной
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- How to get there section -->
+                <div class="row align-items-start gap-40">
+                    <div class="col-lg-8">
+                        <h2 class="heading-2 gold-text mb-4">Как добраться</h2>
+                        
+                        <!-- Map placeholder -->
+                        <div class="map-placeholder bg-cod-gray mb-4">
+                            <div class="text-center">
+                                <div class="dusty-gray body-text mb-3">🗺️</div>
+                                <h3 class="heading-3 dusty-gray mb-2">Здесь будет интерактивная карта</h3>
+                                <p class="body-text silver-text mb-0">м. Проспект Мира, 5 минут пешком</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Departments -->
+                        <div class="row">
+                            <div class="col-md-6 mb-4 mb-md-0">
+                                <h4 class="heading-4 gold-text mb-3">Отдел продаж</h4>
+                                <p class="body-text silver-text mb-3">
+                                    Консультации по оборудованию<br>
+                                    Подбор решений<br>
+                                    Коммерческие предложения
+                                </p>
+                                <p class="body-text gold-text mb-0">sales@translamps.example</p>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <h4 class="heading-4 gold-text mb-3">Техподдержка</h4>
+                                <p class="body-text silver-text mb-3">
+                                    Консультации по эксплуатации<br>
+                                    Гарантийное обслуживание<br>
+                                    Ремонт и сервис
+                                </p>
+                                <p class="body-text gold-text mb-0">support@translamps.example</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="col-lg-4">
+                        <div class="bg-dark-gray border-gold-vlight shadow-gold rounded-3">
+                            <div class="p-4 border-bottom border-white-light">
+                                <h3 class="heading-3 gold-text mb-2">Связаться с нами</h3>
+                                <p class="body-text silver-text mb-0">
+                                    Заполните форму и мы ответим в течение дня
+                                </p>
+                            </div>
+                            
+                            <form id="contact-form" class="p-4">
+                                <div class="mb-3">
+                                    <label class="form-label alto-text body-text mb-2">Имя *</label>
+                                    <input type="text" class="form-control form-control-custom py-3" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label alto-text body-text mb-2">E-mail *</label>
+                                    <input type="email" class="form-control form-control-custom py-3" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label alto-text body-text mb-2">Телефон</label>
+                                    <input type="tel" class="form-control form-control-custom py-3">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label alto-text body-text mb-2">Тема обращения</label>
+                                    <select class="form-select form-select-custom py-3">
+                                        <option selected>Выберите тему</option>
+                                        <option value="sales">Консультация по оборудованию</option>
+                                        <option value="support">Техническая поддержка</option>
+                                        <option value="project">Обсуждение проекта</option>
+                                        <option value="cooperation">Сотрудничество</option>
+                                        <option value="other">Другое</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label class="form-label alto-text body-text mb-2">Сообщение *</label>
+                                    <textarea class="form-control textarea-custom" rows="4" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-burgundy w-100 py-3 rounded-3">
+                                    <span class="heading-3">Отправить сообщение</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- FAQ Section -->
+            <section class="gradient-light rounded-4 p-4 p-md-5 mt-5">
+                <h2 class="heading-2 gold-text text-center mb-5">Часто задаваемые вопросы</h2>
+                
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <!-- FAQ Item 1 -->
+                        <div class="faq-item mb-3">
+                            <div class="faq-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <h3 class="heading-3 gallery-text mb-0">Какой срок изготовления оборудования?</h3>
+                                <span class="gold-text small-text">+</span>
+                            </div>
+                            <div class="collapse" id="faq1">
+                                <div class="p-4 pt-0">
+                                    <p class="body-text silver-text mb-0">
+                                        Стандартный срок изготовления — 2-4 недели в зависимости от сложности заказа. 
+                                        Срочные заказы обсуждаются индивидуально.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="faq-item mb-3">
+                            <div class="faq-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <h3 class="heading-3 gallery-text mb-0">Предоставляете ли вы гарантию?</h3>
+                                <span class="gold-text small-text">+</span>
+                            </div>
+                            <div class="collapse" id="faq2">
+                                <div class="p-4 pt-0">
+                                    <p class="body-text silver-text mb-0">
+                                        Да, на всё оборудование мы предоставляем гарантию 5 лет. 
+                                        Также доступно пост-гарантийное обслуживание.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 3 -->
+                        <div class="faq-item">
+                            <div class="faq-header d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <h3 class="heading-3 gallery-text mb-0">Возможна ли кастомизация оборудования?</h3>
+                                <span class="gold-text small-text">+</span>
+                            </div>
+                            <div class="collapse" id="faq3">
+                                <div class="p-4 pt-0">
+                                    <p class="body-text silver-text mb-0">
+                                        Да, мы предлагаем индивидуальные решения — от изменения внешнего вида 
+                                        до разработки полностью уникальных функций.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-top border-white-vlight py-5">
+        <div class="container">
+            <div class="row gap-4">
+                <!-- Company Info -->
+                <div class="col-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-gradient d-flex align-items-center justify-content-center rounded-3" style="width: 48px; height: 48px;">
+                            <span class="text-dark fw-bold">T&L</span>
+                        </div>
+                        <div>
+                            <h3 class="heading-3 gallery-text mb-1">Трансформаторы и Лампы</h3>
+                            <p class="body-text silver-text mb-0">Профессиональное аудиооборудование</p>
+                        </div>
+                    </div>
+                    <p class="body-text silver-text mb-0">© 2025 Все права защищены</p>
+                </div>
+                
+                <!-- Menu -->
+                <div class="col-lg-3">
+                    <h4 class="heading-3 silver-text mb-3">Меню</h4>
+                    <a href="index.html" class="footer-link body-text">Главная</a>
+                    <a href="catalog.html" class="footer-link body-text">Каталог</a>
+                    <a href="projects.html" class="footer-link body-text">Проекты</a>
+                    <a href="about.html" class="footer-link body-text">О компании</a>
+                    <a href="contacts.html" class="footer-link body-text">Контакты</a>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-3">
+                    <h4 class="heading-3 silver-text mb-3">Контакты</h4>
+                    <p class="body-text silver-text mb-2">email: info@translamps.example</p>
+                    <p class="body-text silver-text mb-2">тел: +7 (900) 000-00-00</p>
+                    <p class="body-text silver-text mb-0">Москва, ул. Примерная, д. 1</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Loading screen
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 700);
+            
+            // Form submission
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const name = this.querySelector('input[type="text"]').value.trim();
+                    const email = this.querySelector('input[type="email"]').value.trim();
+                    const message = this.querySelector('textarea').value.trim();
+                    
+                    // Simple validation
+                    if (!name || !email || !message) {
+                        alert('Пожалуйста, заполните обязательные поля.');
+                        return;
+                    }
+                    
+                    // Show success message
+                    alert('Ваше сообщение отправлено! Мы свяжемся с вами в течение рабочего дня.');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+            
+            // FAQ toggle icons
+            const faqHeaders = document.querySelectorAll('.faq-header');
+            faqHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const icon = this.querySelector('span');
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other FAQ items
+                    document.querySelectorAll('.faq-header').forEach(otherHeader => {
+                        if (otherHeader !== this) {
+                            otherHeader.setAttribute('aria-expanded', 'false');
+                            otherHeader.querySelector('span').textContent = '+';
+                        }
+                    });
+                    
+                    // Toggle current icon
+                    icon.textContent = isExpanded ? '+' : '−';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
