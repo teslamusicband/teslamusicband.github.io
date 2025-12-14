@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Проекты — Трансформаторы и Лампы</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Подключение общих стилей -->
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Дополнительные стили для projects.html */
+    body {
+      font-size: 20px; /* БАЗОВЫЙ 20px */
+    }
+
+    .section-projects {
+      padding: 50px 0;
+    }
+
+    .project-card {
+      background: #1E1E1E;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+      border-color: rgba(255,215,0,0.1);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 200ms ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .section-clients {
+      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    /* Все тексты минимум 20px */
+    p, .card-text {
+      font-size: 20px !important;
+      line-height: 34px;
+    }
+
+    .btn {
+      font-size: 20px !important;
+      padding: 10px 16px;
+    }
+
+    .text-secondary {
+      font-size: 20px !important;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      .project-card img {
+        height: 180px;
+      }
+      .section-clients {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading" data-component="Screen/Loading" aria-hidden="false">
+    <div class="loading-inner text-center">
+      <div class="brand-logo d-inline-flex">T&L</div>
+      <div class="loading-text mt-3 text-alto">Загрузка...</div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header sticky-top" data-component="Header/Main">
+    <div class="container-main">
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <a href="index.html" class="brand-link text-decoration-none d-flex align-items-center gap-3">
+          <div class="brand-logo">T&L</div>
+          <div>
+            <div class="fw-bold text-light" style="font-size: 20px;">Трансформаторы и Лампы</div>
+            <div class="text-silver" style="font-size: 20px;">Проекты</div>
+          </div>
+        </a>
+        <nav class="d-none d-lg-flex align-items-center gap-3" aria-label="Главное меню">
+          <a href="index.html" class="nav-link">Главная</a>
+          <a href="catalog.html" class="nav-link">Каталог</a>
+          <a href="projects.html" class="nav-link">Проекты</a>
+          <a href="about.html" class="nav-link">О компании</a>
+          <a href="contacts.html" class="nav-link">Контакты</a>
+        </nav>
+        <div class="header-right">
+          <a class="btn-custom btn-primary-custom" href="contacts.html">Связаться</a>
+        </div>
+        <!-- Mobile menu toggle -->
+        <button class="btn d-lg-none text-alto" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          ☰
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div class="collapse d-lg-none" id="mobileMenu">
+        <div class="d-flex flex-column gap-2 py-3">
+          <a href="index.html" class="text-decoration-none text-alto py-2" style="font-size: 20px;">Главная</a>
+          <a href="catalog.html" class="text-decoration-none text-alto py-2" style="font-size: 20px;">Каталог</a>
+          <a href="projects.html" class="text-decoration-none text-alto py-2" style="font-size: 20px;">Проекты</a>
+          <a href="about.html" class="text-decoration-none text-alto py-2" style="font-size: 20px;">О компании</a>
+          <a href="contacts.html" class="text-decoration-none text-alto py-2" style="font-size: 20px;">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Projects Section -->
+    <section class="section-projects">
+      <div class="container-main animate-fade-in">
+        <h2 class="heading-1 mb-4">Проекты и клиенты</h2>
+        <p class="lead text-d7d7d7 mb-5" style="max-width: 854px; font-size: 20px;">
+          Примеры инсталляций, студийных интеграций и шоу с трансформаторами Тесла.
+        </p>
+
+        <!-- Projects Grid -->
+        <div class="row g-4 mb-5">
+          <!-- Project 1 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj1.jpg" alt="Студия Omega" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Студия «Omega»</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">Интеграция ламповых микрофонов и процессоров</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Полная интеграция лампового оборудования в студию звукозаписи. Установлены микрофоны LM-1, компрессоры VM-Classic и эквалайзеры PEQ-2.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="omega">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj2.jpg" alt="Гитарный риг" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Гитарный риг для тура</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">Кастомная гитарная голова и обработка</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Разработка и изготовление кастомной гитарной головы для международного тура. Интеграция с эмуляторами кабинета CabSim Pro.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="guitar-rig">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj3.jpg" alt="Tesla шоу" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Tesla Art Шоу</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">DMC-1 с MIDI-управлением</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Организация музыкального шоу с трансформаторами Тесла DMC-1. Синхронизация разрядов с музыкой через MIDI-интерфейс.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="tesla-show">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj4.jpg" alt="Радиостанция" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Радиостанция «Волна»</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">Модернизация эфирного оборудования</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Полная модернизация эфирного комплекса с установкой ламповых процессоров и мониторов SM-5 для контроля качества звука.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="radio">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj5.jpg" alt="Концертный зал" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Концертный зал «Филармония»</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">Система мониторинга и обработки</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Установка системы студийных мониторов и ламповых процессоров для контроля звука в репетиционных залах и студиях.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="philharmonic">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6 -->
+          <div class="col-12 col-lg-4" data-component="Card/Project">
+            <div class="project-card h-100">
+              <img src="images/_proj6.jpg" alt="Киностудия" class="mb-3">
+              <div class="card-body p-0">
+                <h3 class="heading-3 mb-2">Киностудия «Космос»</h3>
+                <p class="text-silver mb-3" style="font-size: 20px;">Оборудование для пост-продакшена</p>
+                <p class="text-silver mb-4" style="font-size: 20px;">
+                  Оснащение студии звукового пост-продакшена для создания саундтреков и звуковых эффектов к фильмам.
+                </p>
+                <div class="actions">
+                  <button class="btn-custom btn-ghost-custom" data-view-project="cinema">Подробнее</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="text-center mt-5">
+          <a class="btn-custom btn-primary-custom" href="contacts.html">Обсудить ваш проект</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section-clients mt-5">
+      <div class="container-main animate-fade-in">
+        <h2 class="heading-2 text-center mb-5">Наши клиенты</h2>
+        <div class="row justify-content-center g-4 text-center">
+          <div class="col-6 col-md-4 col-lg">
+            <p class="text-silver mb-0" style="font-size: 20px;">Студия «Omega»</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg">
+            <p class="text-silver mb-0" style="font-size: 20px;">Радио «Волна»</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg">
+            <p class="text-silver mb-0" style="font-size: 20px;">Филармония</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg">
+            <p class="text-silver mb-0" style="font-size: 20px;">Киностудия «Космос»</p>
+          </div>
+          <div class="col-6 col-md-4 col-lg">
+            <p class="text-silver mb-0" style="font-size: 20px;">Театр «Современник»</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+      <div class="container-main py-5">
+        <div class="row g-5">
+          <div class="col-12 col-lg-6">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="brand-logo">T&L</div>
+              <div>
+                <div class="fw-bold text-light" style="font-size: 20px;">Трансформаторы и Лампы</div>
+                <div class="text-silver" style="font-size: 20px;">Профессиональное аудиооборудование</div>
+              </div>
+            </div>
+            <p class="text-silver mb-0" style="font-size: 20px;">© 2025 Все права защищены</p>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <h4 class="heading-4 text-silver mb-3">Меню</h4>
+            <div class="d-flex flex-column gap-2">
+              <a href="catalog.html" class="text-decoration-none text-alto" style="font-size: 20px;">Каталог</a>
+              <a href="projects.html" class="text-decoration-none text-alto" style="font-size: 20px;">Проекты</a>
+              <a href="about.html" class="text-decoration-none text-alto" style="font-size: 20px;">О компании</a>
+              <a href="contacts.html" class="text-decoration-none text-alto" style="font-size: 20px;">Контакты</a>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-3">
+            <h4 class="heading-4 text-silver mb-3">Контакты</h4>
+            <div class="d-flex flex-column gap-2">
+              <p class="text-silver mb-0" style="font-size: 20px;">email: info@translamps.example</p>
+              <p class="text-silver mb-0" style="font-size: 20px;">тел: +7 (900) 000-00-00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="project-modal" class="modal fade" data-component="Modal/Project" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border border-light border-opacity-10">
+        <div class="modal-header border-bottom border-light border-opacity-10">
+          <h3 class="modal-title heading-2" id="project-modal-title">Детали проекта</h3>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body">
+          <div id="project-modal-content" style="font-size: 20px;">
+            <!-- Content will be loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Подключение общего JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
