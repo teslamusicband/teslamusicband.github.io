@@ -344,7 +344,7 @@ p, .body-text {
   font-size: 20px; /* Минимум 20px */
   line-height: 34px;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   transition: color 160ms ease;
 }
 
