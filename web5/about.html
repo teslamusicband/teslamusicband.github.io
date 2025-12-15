@@ -4,376 +4,231 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>О компании — Трансформаторы и Лампы</title>
+
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Подключение общих стилей -->
+
+  <!-- Глобальные стили (как в catalog.html) -->
   <link rel="stylesheet" href="css/styles.css">
+
   <style>
-    /* Дополнительные стили для about.html */
     body {
-      font-size: 20px; /* БАЗОВЫЙ 20px */
+      font-size: 20px;
+      line-height: 30px; /* уменьшено */
     }
 
-    .philosophy-card {
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
-      border: 1px solid rgba(255, 215, 0, 0.08);
-      border-radius: 10px;
-      padding: 25px;
-      height: 100%;
+    /* Заголовки */
+    h1, .heading-1 {
+      font-size: 32px;  /* "Наша история" */
+      line-height: 40px;
+      font-weight: 700;
     }
 
+    h1.block-title, .heading-block { 
+      font-size: 28px;  /* "Философия бренда", "Наша команда", "Производственный процесс" */
+      line-height: 36px;
+      font-weight: 700;
+    }
+
+    h2, .heading-2 {
+      font-size: 28px;
+      line-height: 36px;
+      font-weight: 700;
+    }
+
+    h4, .heading-4 {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 600;
+    }
+
+    p, a, li {
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    /* Team cards */
     .team-card {
       background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 12px;
-      overflow: hidden;
       height: 100%;
-      cursor: pointer;
       transition: transform 200ms ease, box-shadow 200ms ease;
     }
 
     .team-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 32px rgba(0,0,0,0.4);
-      border-color: rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.15);
+    }
+
+    .team-card .image-wrap {
+      padding: 16px;
     }
 
     .team-card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
+      border-radius: 8px;
+      display: block;
     }
 
-    .value-card {
-      text-align: center;
-      padding: 24px;
-      height: 100%;
+    .team-card .card-body {
+      padding: 16px 20px 24px;
     }
 
-    .value-icon {
-      font-size: 32px;
-      line-height: 46px;
-      margin-bottom: 12px;
+    /* Footer */
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.2); /* светлая тонкая полоска */
+      padding-top: 16px;
+      padding-bottom: 16px;
     }
 
-    .achievement-section {
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
-      border-radius: 12px;
-      padding: 40px;
+    .footer p {
+      font-size: 20px;
+      margin-bottom: 0;
     }
 
-    .achievement-number {
-      font-size: 38px;
-      font-weight: 700;
-      line-height: 46px;
-      letter-spacing: 0.6px;
-      color: var(--gold);
+    /* Отступы между секциями */
+    section.py-5 {
+      padding-top: 2rem !important;
+      padding-bottom: 2rem !important;
     }
 
-    /* Все текстовые элементы минимум 20px */
-    p, li, a, button, h4, h5 {
-      font-size: 20px !important;
-      line-height: 34px;
+    /* Отступы между заголовками и текстом */
+    h1, h2, h1.block-title {
+      margin-bottom: 1rem; /* единый отступ */
     }
 
-    @media (max-width: 768px) {
-      .achievement-section {
-        padding: 30px 20px;
-      }
+    p {
+      margin-bottom: 1.5rem; /* компактнее */
+    }
+	
+	h1.block-title {
+      margin-top: 1rem !important;
+      margin-bottom: 1rem !important;
+    }
+	
+	section.py-5 p {
+      margin-bottom: 1rem !important;
     }
   </style>
 </head>
+
 <body>
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loading">
-    <div class="text-center">
-      <div class="brand-logo d-inline-flex">T&L</div>
-      <div class="text-silver mt-3" style="font-size: 20px;">Загрузка...</div>
+
+<!-- Loading -->
+<div id="loading-screen" class="loading">
+  <div class="text-center">
+    <div class="brand-logo d-inline-flex">T&L</div>
+    <div class="text-silver mt-3">Загрузка...</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="header sticky-top">
+  <div class="container-main py-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="index.html" class="brand-link text-decoration-none text-white d-flex align-items-center gap-3">
+        <div class="brand-logo">T&L</div>
+        <div>
+          <div class="fw-bold">Трансформаторы и Лампы</div>
+          <div class="text-silver">О компании</div>
+        </div>
+      </a>
+
+      <nav class="d-none d-md-flex align-items-center gap-3">
+        <a href="index.html" class="nav-link">Главная</a>
+        <a href="catalog.html" class="nav-link">Каталог</a>
+        <a href="projects.html" class="nav-link">Проекты</a>
+        <a href="about.html" class="nav-link">О компании</a>
+        <a href="contacts.html" class="nav-link">Контакты</a>
+      </nav>
+
+      <a class="btn-custom btn-primary-custom" href="contacts.html">Связаться</a>
     </div>
   </div>
+</header>
 
-  <!-- Header -->
-  <header class="header sticky-top">
-    <div class="container-main py-3">
-      <div class="d-flex justify-content-between align-items-center">
-        <a href="index.html" class="brand-link text-decoration-none text-white d-flex align-items-center gap-3">
-          <div class="brand-logo">T&L</div>
-          <div>
-            <div class="fw-bold" style="font-size: 20px;">Трансформаторы и Лампы</div>
-            <div class="text-silver" style="font-size: 20px;">О компании</div>
-          </div>
-        </a>
-        <nav class="d-none d-md-flex align-items-center gap-3">
-          <a href="index.html" class="nav-link">Главная</a>
-          <a href="catalog.html" class="nav-link">Каталог</a>
-          <a href="projects.html" class="nav-link">Проекты</a>
-          <a href="about.html" class="nav-link">О компании</a>
-          <a href="contacts.html" class="nav-link">Контакты</a>
-        </nav>
-        <div class="header-right">
-          <a class="btn-custom btn-primary-custom" href="contacts.html">Связаться</a>
-        </div>
-      </div>
-    </div>
-  </header>
+<main>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="py-5">
-      <div class="container-main">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            <h1 class="heading-1 mb-4">Наша история</h1>
-            <p class="lead mb-5">
-              «Трансформаторы и Лампы» — мастерская инженеров и звуколюбов. Мы соединяем традиции лампового звучания с современными технологиями, включая цифровое управление и MIDI-интеграцию для экспериментальных проектов.
-            </p>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          <div class="col-lg-6 mb-4 mb-lg-0">
-            <img src="images/about1.jpg" alt="Наша мастерская" class="img-fluid rounded-3">
-          </div>
-          <div class="col-lg-6">
-            <h3 class="heading-3 mb-4">С чего всё начиналось</h3>
-            <p class="lead">
-              Основанная в 2015 году, наша компания начинала с небольшой мастерской по ремонту винтажного аудиооборудования. Постепенно мы перешли к созданию собственных разработок, сочетающих лучшие традиции лампового звука с современными технологиями.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="py-5">
-      <div class="container-main">
-        <h2 class="heading-2 mb-5">Философия бренда</h2>
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="philosophy-card">
-              <h3 class="heading-3 mb-3">Традиции и инновации</h3>
-              <p class="lead mb-0">
-                Мы верим, что тёплый характер ламп и точность цифровых решений могут существовать вместе, давая инженеру и музыканту максимум контроля и эмоциональной выразительности.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="philosophy-card">
-              <h3 class="heading-3 mb-3">Качество выше всего</h3>
-              <p class="lead mb-0">
-                Каждый прибор проходит многоэтапный контроль качества и тестирование в реальных условиях. Мы используем только проверенные компоненты от мировых производителей.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="philosophy-card">
-              <h3 class="heading-3 mb-3">Индивидуальный подход</h3>
-              <p class="lead mb-0">
-                Мы готовы разработать индивидуальное решение под конкретные задачи клиента — от кастомизации существующих моделей до создания полностью уникальных приборов.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="py-5">
-      <div class="container-main">
-        <h2 class="heading-2 mb-5">Наши ценности</h2>
-        <div class="row g-4">
-          <div class="col-lg-3 col-md-6">
-            <div class="value-card">
-              <div class="value-icon text-gold">🎯</div>
-              <h4 class="heading-4 text-white mb-3">Точность</h4>
-              <p class="lead mb-0">Каждый децибел имеет значение в создании идеального звука</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="value-card">
-              <div class="value-icon text-gold">❤️</div>
-              <h4 class="heading-4 text-white mb-3">Страсть</h4>
-              <p class="lead mb-0">Мы любим то, что делаем, и это чувствуется в каждом нашем продукте</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="value-card">
-              <div class="value-icon text-gold">⚡</div>
-              <h4 class="heading-4 text-white mb-3">Инновации</h4>
-              <p class="lead mb-0">Постоянно исследуем новые технологии для улучшения звука</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6">
-            <div class="value-card">
-              <div class="value-icon text-gold">🤝</div>
-              <h4 class="heading-4 text-white mb-3">Поддержка</h4>
-              <p class="lead mb-0">Всегда помогаем нашим клиентам в решении любых задач</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="py-5">
-      <div class="container-main">
-        <h2 class="heading-2 mb-5">Наша команда</h2>
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="team-card" data-person="ivan">
-              <img src="images/about2.jpg" alt="Иван П.">
-              <div class="p-4">
-                <h4 class="heading-4 text-white mb-1">Иван Петров</h4>
-                <p class="text-gold mb-3">Главный инженер</p>
-                <p class="lead mb-0">
-                  Основатель компании. Более 15 лет опыта в разработке аудиооборудования. Специализируется на ламповых схемах и аналоговой обработке сигналов.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="team-card" data-person="maria">
-              <img src="images/about3.jpg" alt="Мария Л.">
-              <div class="p-4">
-                <h4 class="heading-4 text-white mb-1">Мария Лебедева</h4>
-                <p class="text-gold mb-3">DSP и ПО</p>
-                <p class="lead mb-0">
-                  Разработчик цифровых сигнальных процессоров и программного обеспечения. Отвечает за интеграцию аналоговых и цифровых технологий.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="team-card" data-person="alexey">
-              <img src="images/about4.jpg" alt="Алексей С.">
-              <div class="p-4">
-                <h4 class="heading-4 text-white mb-1">Алексей Смирнов</h4>
-                <p class="text-gold mb-3">Инженер-конструктор</p>
-                <p class="lead mb-0">
-                  Специалист по механическим конструкциям и промышленному дизайну. Создаёт эргономичные и функциональные корпуса для нашего оборудования.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section class="py-5">
-      <div class="container-main">
-        <div class="achievement-section">
-          <h2 class="heading-2 text-center mb-5">Наши достижения</h2>
-          <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-              <div class="text-center">
-                <div class="achievement-number mb-2">150+</div>
-                <p class="lead mb-0">Успешных проектов</p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="text-center">
-                <div class="achievement-number mb-2">5 лет</div>
-                <p class="lead mb-0">Гарантии на оборудование</p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="text-center">
-                <div class="achievement-number mb-2">98%</div>
-                <p class="lead mb-0">Довольных клиентов</p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="text-center">
-                <div class="achievement-number mb-2">24/7</div>
-                <p class="lead mb-0">Техническая поддержка</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
+  <!-- History -->
+  <section class="py-5">
     <div class="container-main">
+      <h1 class="mb-3">Наша история</h1>
+      <p class="mb-4">
+        «Трансформаторы и Лампы» — мастерская инженеров и звуколюбов. Мы соединяем традиции лампового звучания
+        с современными технологиями, включая цифровое управление и MIDI-интеграцию для экспериментальных проектов.
+      </p>
+
+      <h1 class="block-title">Философия бренда</h1>
+      <p>
+        Мы верим, что тёплый характер ламп и точность цифровых решений могут существовать вместе,
+        давая инженеру и музыканту максимум контроля и эмоциональной выразительности.
+      </p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-5">
+    <div class="container-main">
+      <h1 class="block-title">Наша команда</h1>
+
       <div class="row g-4">
-        <div class="col-lg-5">
-          <div class="d-flex align-items-center gap-3 mb-4">
-            <div class="brand-logo">T&L</div>
-            <div>
-              <h5 class="text-white mb-1" style="font-size: 20px;">Трансформаторы и Лампы</h5>
-              <p class="text-silver mb-0" style="font-size: 20px;">Профессиональное аудиооборудование</p>
+        <div class="col-lg-4">
+          <div class="team-card">
+            <div class="image-wrap">
+              <img src="images/about2.jpg" alt="Иван П.">
+            </div>
+            <div class="card-body">
+              <h4 class="mb-1">Иван П.</h4>
+              <p class="mb-0">Главный инженер, разработка ламповых схем.</p>
             </div>
           </div>
-          <p class="text-silver mb-0" style="font-size: 20px;">© 2025 Все права защищены</p>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-silver mb-3" style="font-size: 20px;">Меню</h5>
-          <a href="catalog.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Каталог</a>
-          <a href="projects.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Проекты</a>
-          <a href="about.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">О компании</a>
-          <a href="contacts.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Контакты</a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <h5 class="text-silver mb-3" style="font-size: 20px;">Контакты</h5>
-          <p class="text-silver mb-2" style="font-size: 20px;">email: info@translamps.example</p>
-          <p class="text-silver mb-0" style="font-size: 20px;">тел: +7 (900) 000-00-00</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Team Member Modal -->
-  <div class="modal fade" id="teamModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content modal-content-custom">
-        <div class="modal-header border-0">
-          <h5 class="modal-title modal-title-custom" id="teamModalTitle">Участник команды</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-        </div>
-        <div class="modal-body" id="teamModalContent" style="font-size: 20px;">
-          <!-- Content will be loaded dynamically -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Подключение общего JavaScript -->
-  <script src="js/main.js"></script>
-  <script>
-    // Инициализация модального окна команды
-    document.addEventListener('DOMContentLoaded', function() {
-      const teamModal = new bootstrap.Modal(document.getElementById('teamModal'));
-      
-      document.querySelectorAll('.team-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-          const name = this.querySelector('h4').textContent;
-          const role = this.querySelector('.text-gold').textContent;
-          const description = this.querySelector('.lead').textContent;
-          const imageSrc = this.querySelector('img').src;
-          
-          document.getElementById('teamModalTitle').textContent = name;
-          document.getElementById('teamModalContent').innerHTML = `
-            <div class="row">
-              <div class="col-md-4">
-                <img src="${imageSrc}" alt="${name}" class="img-fluid rounded-3 mb-3 mb-md-0">
-              </div>
-              <div class="col-md-8">
-                <h6 class="text-gold mb-2" style="font-size: 20px;">${role}</h6>
-                <p class="lead" style="font-size: 20px;">${description}</p>
-                <p class="text-silver" style="font-size: 20px;">Образование: МГТУ им. Баумана, факультет Радиоэлектроники</p>
-                <p class="text-silver" style="font-size: 20px;">Специализация: ламповые схемы, аналоговая обработка сигналов</p>
-              </div>
+        <div class="col-lg-4">
+          <div class="team-card">
+            <div class="image-wrap">
+              <img src="images/about3.jpg" alt="Мария Л.">
             </div>
-          `;
-          
-          teamModal.show();
-        });
-      });
-    });
-  </script>
+            <div class="card-body">
+              <h4 class="mb-1">Мария Л.</h4>
+              <p class="mb-0">DSP и ПО для сенсорных интерфейсов.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Production -->
+  <section class="py-5">
+    <div class="container-main">
+      <h1 class="block-title">Производственный процесс</h1>
+      <p>
+        Проектирование → прототип → тестирование → ручная сборка → контроль качества → отправка.
+        Для Tesla-инсталляций дополнительно: протоколы безопасности и дистанционное MIDI-управление.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container-main">
+    <p class="text-silver mb-0">© 2025 Трансформаторы и Лампы</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+
 </body>
 </html>
+
+
