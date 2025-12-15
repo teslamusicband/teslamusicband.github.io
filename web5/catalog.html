@@ -164,6 +164,46 @@
       text-underline-offset: 4px;
       text-decoration-thickness: 1px;
     }
+
+    /* Filter buttons — outlined + underlined text (wireframe style) */
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    
+      padding: 6px 14px;
+      margin-right: 12px;
+    
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 6px;
+    
+      font-size: 20px;
+      font-weight: 600;
+      color: #ECECEC;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    
+      transition:
+        color 160ms ease,
+        border-color 160ms ease,
+        background-color 160ms ease;
+    }
+    
+    /* Hover */
+    .filter-btn:hover {
+      color: #FFD700;
+      border-color: rgba(255, 215, 0, 0.6);
+      background: rgba(255, 215, 0, 0.04);
+    }
+    
+    /* Active filter */
+    .filter-btn.active {
+      color: #FFD700;
+      border-color: #FFD700;
+      text-decoration-thickness: 2px;
+    }
   </style>
 </head>
 <body>
@@ -202,9 +242,7 @@
         <div class="container-main">
           <h2 class="heading-2 mb-4">Каталог оборудования</h2>
           <div class="filters">
-            <div class="small mb-3" style="color: #BDBDBD; font-size: 20px;">Фильтр по категории:</div>
-            <div>
-              <a class="filter-btn active" href="#" data-filter="all">Все</a>
+            <div class="small mb-3" style="color: #BDBDBD; font-size: 20px;">Фильтр по категории:
               <a class="filter-btn" href="#" data-filter="lamps">Ламповое</a>
               <a class="filter-btn" href="#" data-filter="digital">Транзисторное/Цифровое</a>
               <a class="filter-btn" href="#" data-filter="tesla">Трансформаторы Тесла</a>
