@@ -1,0 +1,1017 @@
+/* ===================================
+   ОБЩИЕ СТИЛИ ДЛЯ САЙТА "ТРАНСФОРМАТОРЫ И ЛАМПЫ"
+   Минимальный размер шрифта: 20px
+   Единая ширина контейнера: 1360px
+   =================================== */
+
+/* Базовые переменные */
+:root {
+  --black: #000000;
+  --graphite: #212121;
+  --gold: #FFD700;
+  --burgundy: #880E4F;
+  --muted: #f5f5f5;
+  --card-bg: #1e1e1e;
+  --text: #ececec;
+  --accent: #880E4F;
+  --radius: 10px;
+  --silver: #BDBDBD;
+  --alto: #CFCFCF;
+  --d7d7d7: #D7D7D7;
+}
+
+/* Сброс стилей */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базовые стили body */
+html, body {
+  height: 100%;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(180deg, #0b0b0b 0%, #111111 100%);
+  color: var(--text);
+  line-height: 1.45;
+  font-size: 20px; /* БАЗОВЫЙ РАЗМЕР 20px */
+  min-height: 100vh;
+}
+
+/* ===================================
+   КОНТЕЙНЕРЫ
+   =================================== */
+
+.container-main {
+  width: 100%;
+  max-width: 1360px; /* ЕДИНАЯ ШИРИНА */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* ===================================
+   ТИПОГРАФИКА (минимум 20px)
+   =================================== */
+
+h1, .heading-1 {
+  font-weight: 700;
+  font-size: 44px; /* Больше базового */
+  line-height: 54px;
+  letter-spacing: 0.6px;
+  color: var(--gold);
+}
+
+h2, .heading-2 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 46px;
+  color: var(--gold);
+}
+
+h3, .heading-3 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 38px;
+  color: var(--text);
+}
+
+h4, .heading-4 {
+  font-weight: 700;
+  font-size: 20px; /* Минимум 20px */
+  line-height: 29px;
+}
+
+p, .body-text {
+  font-size: 20px; /* Минимум 20px */
+  line-height: 34px;
+  font-weight: 400;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 34px;
+  color: var(--d7d7d7);
+}
+
+.small-text {
+  font-size: 20px; /* НЕ МЕНЬШЕ 20px */
+  line-height: 34px;
+}
+
+/* ===================================
+   ЦВЕТОВЫЕ КЛАССЫ
+   =================================== */
+
+.text-gold { color: var(--gold) !important; }
+.text-silver { color: var(--silver) !important; }
+.text-alto { color: var(--alto) !important; }
+.text-d7d7d7 { color: var(--d7d7d7) !important; }
+.text-gallery { color: #ECECEC !important; }
+.text-dusty-gray { color: #999999 !important; }
+
+.bg-cod-gray { background-color: #0F0F0F !important; }
+.bg-dark-gray { background-color: #0E0E0E !important; }
+.bg-darker { background-color: #121212 !important; }
+.bg-card { background-color: #1E1E1E !important; }
+
+/* Градиентные фоны */
+.gradient-bg {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%) !important;
+}
+
+.gradient-light {
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.03) 0%, rgba(136, 14, 79, 0.02) 100%) !important;
+}
+
+/* ===================================
+   ГРАНИЦЫ
+   =================================== */
+
+.border-gold-light { border: 1px solid rgba(255, 215, 0, 0.08) !important; }
+.border-white-light { border: 1px solid rgba(255, 255, 255, 0.1) !important; }
+.border-white-vlight { border: 1px solid rgba(255, 255, 255, 0.03) !important; }
+.border-gold-vlight { border: 1px solid rgba(255, 215, 0, 0.1) !important; }
+
+/* ===================================
+   ТЕНИ
+   =================================== */
+
+.shadow-gold { box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.4) !important; }
+.shadow-burgundy { box-shadow: 0px 4px 12px rgba(136, 14, 79, 0.2) !important; }
+
+/* ===================================
+   ЛОГОТИП
+   =================================== */
+
+.logo, .brand-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%);
+  box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15);
+  border-radius: 8px;
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  color: #212121;
+}
+
+/* ===================================
+   HEADER (ОБЩИЙ ДЛЯ ВСЕХ СТРАНИЦ)
+   =================================== */
+
+.header {
+  background: linear-gradient(90deg, rgba(33, 33, 33, 0.95) 0%, rgba(0, 0, 0, 0.95) 100%);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.06);
+  padding: 12px 0;
+}
+
+.header .brand-link {
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 160ms ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header .brand-link:hover {
+  transform: scale(1.02);
+  color: var(--text);
+}
+
+.header .nav-link {
+  font-weight: 700;
+  font-size: 20px; /* Минимум 20px */
+  line-height: 29px;
+  color: #CFCFCF;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 180ms ease, transform 120ms ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header .nav-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+  color: #CFCFCF;
+}
+
+/* ===================================
+   КНОПКИ
+   =================================== */
+
+.btn-custom {
+  padding: 10.5px 17px 10.8px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 20px; /* Минимум 20px */
+  line-height: 29px;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  white-space: nowrap;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary-custom, .btn-burgundy {
+  background: #880E4F;
+  color: #ECECEC;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(136, 14, 79, 0.2);
+}
+
+.btn-primary-custom:hover, .btn-burgundy:hover {
+  background: #9a1059;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(136, 14, 79, 0.3);
+  color: #ECECEC;
+}
+
+.btn-ghost-custom, .btn-ghost {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(0px 4px 12px rgba(136, 14, 79, 0.2));
+}
+
+.btn-ghost-custom:hover, .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 215, 0, 0.2);
+  transform: translateY(-2px);
+  color: #FFFFFF;
+}
+
+/* ===================================
+   КАРТОЧКИ ПРОДУКТОВ
+   =================================== */
+
+.product-card, .card-custom {
+  background: #1E1E1E;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  height: 100%;
+}
+
+.product-card:hover, .card-custom:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 215, 0, 0.1);
+}
+
+.product-card img, .card-img-custom {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 200ms ease;
+}
+
+.product-card:hover img, .card-custom:hover img {
+  transform: scale(1.03);
+}
+
+/* ===================================
+   ФОРМЫ
+   =================================== */
+
+.form-custom label {
+  display: block;
+  font-size: 20px; /* Минимум 20px */
+  color: #cfcfcf;
+  margin: 12px 0 6px;
+  font-weight: 500;
+}
+
+.form-custom input,
+.form-custom textarea,
+.form-custom select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 20px; /* Минимум 20px */
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.form-custom input:focus,
+.form-custom textarea:focus,
+.form-custom select:focus {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08);
+}
+
+.form-custom input:hover,
+.form-custom textarea:hover,
+.form-custom select:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===================================
+   FOOTER (ОБЩИЙ)
+   =================================== */
+
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 40px 0;
+  margin-top: 4rem;
+}
+
+.footer a {
+  color: #cfcfcf;
+  text-decoration: none;
+  font-size: 20px; /* Минимум 20px */
+  line-height: 34px;
+  display: block;
+  margin-bottom: 0px;
+  transition: color 160ms ease;
+}
+
+.footer a:hover {
+  color: var(--gold);
+}
+
+/* ===================================
+   МОДАЛЬНЫЕ ОКНА
+   =================================== */
+
+.modal-custom {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+}
+
+.modal-content-custom {
+  background: #0c0c0c;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.08);
+}
+
+.modal-title-custom {
+  color: var(--gold);
+  font-size: 24px;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 160ms ease, color 160ms ease;
+  width: 40px;
+  height: 40px;
+}
+
+.close-btn:hover {
+  color: var(--gold);
+  transform: rotate(90deg);
+}
+
+/* ===================================
+   LOADING SCREEN
+   =================================== */
+
+.loading-screen, .loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #000, rgba(0, 0, 0, 0.8));
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.loading-screen.hidden, .loading.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===================================
+   УТИЛИТАРНЫЕ КЛАССЫ
+   =================================== */
+
+.gap-40 { gap: 40px; }
+.gap-27 { gap: 27.3px; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 2rem; }
+
+.py-5 { padding-top: 2rem; padding-bottom: 2rem; }
+
+/* ===================================
+   АДАПТИВНОСТЬ
+   =================================== */
+
+@media (max-width: 1400px) {
+  .container-main {
+    padding: 0 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1, .heading-1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  h2, .heading-2 {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  h3, .heading-3 {
+    font-size: 22px;
+    line-height: 32px;
+  }
+
+  p, .body-text {
+    font-size: 20px; /* НЕ МЕНЬШЕ 20px */
+    line-height: 30px;
+  }
+
+  .product-card img, .card-img-custom {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  h1, .heading-1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  h2, .heading-2 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  h3, .heading-3 {
+    font-size: 20px; /* НЕ МЕНЬШЕ 20px */
+    line-height: 28px;
+  }
+
+  .btn-custom {
+    font-size: 20px; /* НЕ МЕНЬШЕ 20px */
+    padding: 8px 14px;
+  }
+}
+
+/* =================================== 
+   ИСПРАВЛЕНИЯ ПО ТЗ
+=================================== */
+
+/* 1. Тонкие белые полосы */
+.header + main::before,
+main + .footer::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 auto;
+}
+
+/* 2. Адаптивный хедер для мобильных устройств */
+@media (max-width: 880px) {
+    .header .container,
+    .header-grid,
+    .header .container-main,
+    .header > div[class*="container"] {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 15px !important;
+    }
+    
+    .menu,
+    .nav-grid,
+    .header nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        display: flex !important;
+        gap: 10px;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .header-right,
+    .header .btn-custom,
+    .header > div[class*="container"] > a[class*="btn"] {
+        order: 2;
+        margin-left: auto;
+        margin-right: 0;
+    }
+    
+    .brand,
+    .brand-link {
+        order: 1;
+    }
+}
+
+/* 3. Фиксированная высота футера */
+.footer {
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+}
+
+/* 4. Стандартные стили меню для всех страниц */
+.menu a,
+.header .nav-link {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 29px !important;
+    color: #CFCFCF !important;
+    text-decoration: none !important;
+    transition: background 180ms ease, transform 120ms ease !important;
+    padding: 6px 8px !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+}
+
+/* Ховеры для ссылок меню */
+.menu a:hover,
+.header .nav-link:hover {
+    background: rgba(255, 255, 255, 0.04) !important;
+    transform: translateY(-1px) !important;
+    color: #CFCFCF !important;
+}
+
+/* 5. Стандартные стили CTA кнопок для всех страниц */
+.btn.cta,
+.btn-custom.btn-primary-custom,
+.header-right a.btn,
+.header > div[class*="container"] > a[class*="btn"] {
+    min-width: 200px;
+    width: auto;
+    display: inline-flex;
+    justify-content: center;
+    background: #880E4F !important;
+    color: #ECECEC !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(136, 14, 79, 0.2) !important;
+    text-decoration: none !important;
+    transition: transform 160ms ease, box-shadow 160ms ease !important;
+}
+
+/* Ховеры для CTA кнопок */
+.btn.cta:hover,
+.btn-custom.btn-primary-custom:hover,
+.header-right a.btn:hover,
+.header > div[class*="container"] > a[class*="btn"]:hover {
+    background: #9a1059 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(136, 14, 79, 0.3) !important;
+    color: #ECECEC !important;
+}
+
+/* 6. Выравнивание элементов хедера */
+body:not([data-page="index"]) .header {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Контейнер хедера для всех страниц */
+.header > div[class*="container"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 1360px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+/* Меню на всех страницах кроме index */
+body:not([data-page="index"]) .menu,
+body:not([data-page="index"]) .header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* Кнопка CTA на всех страницах кроме index */
+body:not([data-page="index"]) .header-right,
+body:not([data-page="index"]) .header > div[class*="container"] > a[class*="btn"]:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin-left: 20px;
+}
+
+/* ===================================
+   АНИМАЦИИ
+   =================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes loading-pulse {
+  from {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes loading-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+
+/* =================================== 
+   МИНИМАЛЬНОЕ ИСПРАВЛЕНИЕ НАВИГАЦИИ
+=================================== */
+
+/* Для страниц где меню не выровнено по правому краю */
+body:not([data-page="index"]) .header .menu,
+body:not([data-page="index"]) .header nav.d-none.d-lg-flex {
+    margin-left: auto !important;
+    margin-right: 20px !important;
+    display: flex !important;
+    gap: 0 !important;
+}
+
+/* Для главной страницы оставляем как есть */
+body[data-page="index"] .header .menu {
+    margin-left: auto !important;
+    margin-right: 20px !important;
+}
+
+/* Выравнивание элементов внутри меню */
+.header .menu a,
+.header .nav-link {
+    margin: 0 !important;
+    padding: 6px 8px !important;
+}
+
+/* Правильное расположение CTA кнопки */
+.header .header-right {
+    margin-left: 0 !important;
+}
+
+
+/* =================================== 
+   ИСПРАВЛЕНИЕ БРЕНДА И ПОДСТРОЧНИКА
+=================================== */
+
+/* Контейнер бренда */
+.brand,
+.brand-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+    color: var(--text) !important;
+    transition: transform 160ms ease !important;
+    flex-shrink: 0 !important;
+}
+
+/* Ховер эффект */
+.brand:hover,
+.brand-link:hover {
+    transform: scale(1.02) !important;
+}
+
+/* Логотип - без изменений */
+.brand .logo,
+.brand-logo {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%) !important;
+    box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15) !important;
+    border-radius: 8px !important;
+    font-family: 'Inter' !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    color: #212121 !important;
+}
+
+/* Текстовый блок бренда */
+.brand > div:not(.logo):not(.brand-logo),
+.brand-link > div:not(.brand-logo) {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+    max-width: 300px !important;
+    min-width: 200px !important;
+}
+
+/* Название бренда - фиксированный размер */
+.brand-name,
+.brand > div > div:first-child,
+.brand-link > div > div:first-child {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 29px !important;
+    color: #ECECEC !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+}
+
+/* Подстрочник - адаптивный размер */
+.brand-subtitle,
+.brand > div > div:last-child,
+.brand-link > div > div:last-child,
+.brand .small,
+.brand-link .text-silver,
+.brand-link .small {
+    font-size: calc(20px - var(--subtitle-offset, 0px)) !important;
+    line-height: 1.2 !important;
+    color: #BDBDBD !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+}
+
+/* Адаптивность подстрочника для разных длин текста */
+.brand-subtitle[data-length="short"] { --subtitle-offset: 0px; }
+.brand-subtitle[data-length="medium"] { --subtitle-offset: 2px; }
+.brand-subtitle[data-length="long"] { --subtitle-offset: 4px; }
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .brand > div:not(.logo):not(.brand-logo),
+    .brand-link > div:not(.brand-logo) {
+        min-width: 150px !important;
+        max-width: 200px !important;
+    }
+    
+    .brand-name,
+    .brand > div > div:first-child,
+    .brand-link > div > div:first-child {
+        font-size: 18px !important;
+        line-height: 26px !important;
+    }
+    
+    .brand-subtitle,
+    .brand > div > div:last-child,
+    .brand-link > div > div:last-child {
+        font-size: calc(16px - var(--subtitle-offset, 0px)) !important;
+    }
+}
+
+/* =================================== 
+   ФИКСИРОВАННАЯ ВЫСОТА БРЕНДА
+=================================== */
+
+/* Фиксируем высоту контейнера бренда */
+.brand,
+.brand-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+    color: var(--text) !important;
+    transition: transform 160ms ease !important;
+    flex-shrink: 0 !important;
+    height: 48px !important; /* Высота логотипа */
+    position: relative !important;
+}
+
+/* Логотип - фиксированный размер */
+.brand .logo,
+.brand-logo {
+    width: 48px !important;
+    height: 48px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #FFD700 0%, #880E4F 100%) !important;
+    box-shadow: 0px 6px 18px rgba(136, 14, 79, 0.15) !important;
+    border-radius: 8px !important;
+    font-family: 'Inter' !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    line-height: 26px !important;
+    color: #212121 !important;
+}
+
+/* Текстовый блок бренда - фиксированная высота */
+.brand > div:not(.logo):not(.brand-logo),
+.brand-link > div:not(.brand-logo) {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+    max-width: 300px !important;
+    height: 48px !important; /* Фиксированная высота */
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+/* Название бренда - абсолютное позиционирование */
+.brand-name,
+.brand > div > div:first-child,
+.brand-link > div > div:first-child {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 20px !important; /* Уменьшаем line-height */
+    color: #ECECEC !important;
+    white-space: nowrap !important;
+    position: absolute !important;
+    top: 8px !important; /* Центрируем вертикально в пределах 48px */
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Подстрочник - абсолютное позиционирование */
+.brand-subtitle,
+.brand > div > div:last-child,
+.brand-link > div > div:last-child,
+.brand .small,
+.brand-link .text-silver,
+.brand-link .small {
+    position: absolute !important;
+    top: 28px !important; /* Под названием бренда */
+    left: 0 !important;
+    right: 0 !important;
+    font-size: var(--subtitle-size, 18px) !important;
+    line-height: 18px !important; /* Фиксированный line-height */
+    color: #BDBDBD !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 20px !important; /* Ограничиваем высоту */
+}
+
+/* Адаптация размера подстрочника */
+.brand-subtitle[data-length="short"] { --subtitle-size: 18px; }
+.brand-subtitle[data-length="medium"] { --subtitle-size: 16px; }
+.brand-subtitle[data-length="long"] { --subtitle-size: 14px; }
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+    .brand,
+    .brand-link {
+        height: 40px !important; /* Уменьшаем высоту на мобильных */
+    }
+    
+    .brand > div:not(.logo):not(.brand-logo),
+    .brand-link > div:not(.brand-logo) {
+        height: 40px !important;
+        max-width: 180px !important;
+    }
+    
+    .brand-name,
+    .brand > div > div:first-child,
+    .brand-link > div > div:first-child {
+        font-size: 18px !important;
+        line-height: 18px !important;
+        top: 6px !important;
+    }
+    
+    .brand-subtitle,
+    .brand > div > div:last-child,
+    .brand-link > div > div:last-child {
+        top: 24px !important;
+        max-height: 16px !important;
+        --subtitle-size: 14px !important;
+        line-height: 16px !important;
+    }
+    
+    .brand-subtitle[data-length="short"] { --subtitle-size: 14px; }
+    .brand-subtitle[data-length="medium"] { --subtitle-size: 13px; }
+    .brand-subtitle[data-length="long"] { --subtitle-size: 12px; }
+}
+
+/* Контейнер текста бренда */
+.brand-text-container {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+    max-width: 300px !important;
+    height: 48px !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+/* Абсолютное позиционирование элементов */
+.brand-text-container > .brand-name {
+    position: absolute !important;
+    top: 8px !important;
+    left: 0 !important;
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+    color: #ECECEC !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.brand-text-container > .brand-subtitle {
+    position: absolute !important;
+    top: 28px !important;
+    left: 0 !important;
+    right: 0 !important;
+    font-size: var(--subtitle-size, 18px) !important;
+    line-height: 18px !important;
+    color: #BDBDBD !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+    white-space: normal !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 20px !important;
+}
+
+/* Автоматическое применение к существующей структуре */
+.brand > div:not(.logo):not(.brand-logo) {
+    position: relative !important;
+    height: 48px !important;
+}
+
+.brand > div:not(.logo):not(.brand-logo) > div:first-child {
+    position: absolute !important;
+    top: 8px !important;
+    left: 0 !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+}
+
+.brand > div:not(.logo):not(.brand-logo) > div:last-child {
+    position: absolute !important;
+    top: 28px !important;
+    left: 0 !important;
+    right: 0 !important;
+    font-size: var(--subtitle-size, 18px) !important;
+    line-height: 18px !important;
+    max-height: 20px !important;
+}
