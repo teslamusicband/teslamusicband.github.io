@@ -1,379 +1,190 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Контакты — Трансформаторы и Лампы</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Подключение общих стилей -->
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    /* Дополнительные стили для contacts.html */
-    body {
-      font-size: 20px; /* БАЗОВЫЙ 20px */
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Контакты — Трансформаторы и Лампы</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение общих стилей -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Дополнительные стили для contacts.html */
+        body {
+            font-size: 20px;
+        }
 
-    .contact-card {
-      height: 100%;
-      padding: 25px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, rgba(255, 215, 0, 0.05) 0%, rgba(136, 14, 79, 0.03) 100%);
-      border: 1px solid rgba(255, 215, 0, 0.08);
-    }
+        .contact-info h3 {
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
 
-    .contact-card h3 {
-      color: var(--gold);
-      font-size: 20px;
-      margin-bottom: 1rem;
-    }
+        .contact-info h3:first-child {
+            margin-top: 0;
+        }
 
-    .faq-item {
-      background-color: #1E1E1E;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      border-radius: 12px;
-      margin-bottom: 12px;
-    }
+        .contact-info p {
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
 
-    .faq-header {
-      padding: 15px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .contact-card {
+            height: 100%;
+            border-radius: 10px;
+            background: #0E0E0E;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
 
-    .faq-header h3 {
-      margin: 0;
-      font-size: 20px;
-    }
+        .contact-card h3 {
+            color: var(--text);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
 
-    .map-placeholder {
-      height: 270px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0F0F0F;
-    }
+        .map-placeholder {
+            height: 270px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0F0F0F;
+        }
 
-    /* Все текстовые элементы минимум 20px */
-    p, li, a, button, input, textarea, label, h3, h4, h5 {
-      font-size: 20px !important;
-      line-height: 34px;
-    }
+        p, li, a, button, input, textarea, label, h4, h5 {
+            font-size: 20px !important;
+            line-height: 34px;
+        }
 
-    .form-control, .form-select {
-      font-size: 20px !important;
-      padding: 12px;
-    }
+        .form-control, .form-select {
+            font-size: 20px !important;
+            padding: 12px;
+        }
 
-    @media (max-width: 768px) {
-      .map-placeholder {
-        height: 200px;
-      }
-    }
-  </style>
+        .footer {
+            border-top: 1px solid #FFFFFF;
+        }
+
+        @media (max-width: 768px) {
+            .map-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Loading Screen -->
-  <div id="loading-screen" class="loading">
-    <div class="text-center">
-      <div class="brand-logo d-inline-flex">T&L</div>
-      <div class="text-alto mt-3" style="font-size: 20px;">Загрузка...</div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading">
+        <div class="text-center">
+            <div class="brand-logo d-inline-flex">T&L</div>
+            <div class="text-alto mt-3" style="font-size: 20px;">Загрузка...</div>
+        </div>
     </div>
-  </div>
 
-  <!-- Header -->
-  <header class="header sticky-top">
-    <div class="container-main">
-      <div class="d-flex justify-content-between align-items-center py-3">
-        <a href="index.html" class="brand-link text-decoration-none d-flex align-items-center gap-3">
-          <div class="brand-logo">T&L</div>
-          <div>
-            <div class="fw-bold text-light" style="font-size: 20px;">Трансформаторы и Лампы</div>
-            <div class="text-silver" style="font-size: 20px;">Контакты</div>
-          </div>
-        </a>
-        <nav class="d-none d-md-flex align-items-center gap-3">
-          <a href="index.html" class="nav-link">Главная</a>
-          <a href="catalog.html" class="nav-link">Каталог</a>
-          <a href="projects.html" class="nav-link">Проекты</a>
-          <a href="about.html" class="nav-link">О компании</a>
-          <a href="contacts.html" class="nav-link">Контакты</a>
-        </nav>
-        <a href="#contact-form" class="btn-custom btn-primary-custom">Написать нам</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="py-5">
-    <!-- Main Section -->
-    <div class="container-main py-5">
-      <!-- Section with contact info -->
-      <section class="mb-5">
-        <h1 class="heading-1 mb-4">Контакты</h1>
-        <p class="lead text-silver mb-5" style="max-width: 752px;">
-          Свяжитесь с нами для консультации, заказа оборудования или обсуждения вашего проекта
-        </p>
-
-        <!-- Contact Cards Grid -->
-        <div class="row mb-5 g-4">
-          <div class="col-md-6">
-            <div class="contact-card">
-              <h3>Адрес</h3>
-              <p class="text-silver mb-0">
-                г. Москва, ул. Примерная, д. 1<br>
-                Бизнес-центр «Аудио»
-              </p>
+    <!-- Header -->
+    <header class="header sticky-top">
+        <div class="container-main">
+            <div class="d-flex justify-content-between align-items-center py-3">
+                <a href="index.html" class="brand-link text-decoration-none d-flex align-items-center gap-3">
+                    <div class="brand-logo">T&L</div>
+                    <div>
+                        <div class="fw-bold text-light" style="font-size: 20px;">Трансформаторы и Лампы</div>
+                        <div class="text-silver" style="font-size: 20px;">Контакты</div>
+                    </div>
+                </a>
+                <nav class="d-none d-md-flex align-items-center gap-3">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="catalog.html" class="nav-link">Каталог</a>
+                    <a href="projects.html" class="nav-link">Проекты</a>
+                    <a href="about.html" class="nav-link">О компании</a>
+                    <a href="contacts.html" class="nav-link">Контакты</a>
+                </nav>
+                <a href="#contact-form" class="btn-custom btn-primary-custom">Купить</a>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="contact-card">
-              <h3>Телефон</h3>
-              <p class="text-silver mb-0">
-                +7 (900) 000-00-00<br>
-                +7 (495) 123-45-67
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="contact-card">
-              <h3>Email</h3>
-              <p class="text-silver mb-0">
-                info@translamps.example<br>
-                sales@translamps.example
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="contact-card">
-              <h3>Режим работы</h3>
-              <p class="text-silver mb-0">
-                Пн-Пт: 9:00-18:00<br>
-                Сб-Вс: выходной
-              </p>
-            </div>
-          </div>
         </div>
+    </header>
 
-        <!-- How to get there section -->
-        <div class="row g-5">
-          <div class="col-lg-8">
-            <h2 class="heading-2 mb-4">Как добраться</h2>
-            <!-- Map placeholder -->
-            <div class="map-placeholder mb-4 p-0 overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1333.8814324592329!2d30.313306081420652!3d59.939382746173585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310b32cbe2e9%3A0x74e032aa0505dfc!2z0JPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INCt0YDQvNC40YLQsNC2!5e0!3m2!1sru!2sru!4v1765722129341!5m2!1sru!2sru"
-                width="100%"
-                height="100%"
-                style="border:0; border-radius:12px;"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
-            </div>
-            <!-- Departments -->
-            <div class="row">
-              <div class="col-md-6 mb-4 mb-md-0">
-                <h4 class="heading-4 text-gold mb-3">Отдел продаж</h4>
-                <p class="text-silver mb-3">
-                  Консультации по оборудованию<br>
-                  Подбор решений<br>
-                  Коммерческие предложения
-                </p>
-                <p class="text-gold mb-0">sales@translamps.example</p>
-              </div>
-              <div class="col-md-6">
-                <h4 class="heading-4 text-gold mb-3">Техподдержка</h4>
-                <p class="text-silver mb-3">
-                  Консультации по эксплуатации<br>
-                  Гарантийное обслуживание<br>
-                  Ремонт и сервис
-                </p>
-                <p class="text-gold mb-0">support@translamps.example</p>
-              </div>
-            </div>
-          </div>
+    <main class="py-5">
+        <!-- Main Section -->
+        <div class="container-main py-5">
+            <!-- Section with contact info -->
+            <section class="mb-5">
+                <h1 class="heading-1 mb-4">Контакты</h1>
 
-          <!-- Contact Form -->
-          <div class="col-lg-4">
-            <div class="bg-dark-gray border-gold-vlight shadow-gold rounded-3">
-              <div class="p-4 border-bottom border-white-light">
-                <h3 class="heading-3 text-gold mb-2">Связаться с нами</h3>
-                <p class="text-silver mb-0">
-                  Заполните форму и мы ответим в течение дня
-                </p>
-              </div>
-              <form id="contact-form" class="p-4 form-custom">
-                <div class="mb-3">
-                  <label class="form-label text-alto">Имя *</label>
-                  <input type="text" name="name" class="form-control" required>
+                <div class="row g-5">
+                    <!-- Левая часть: Адрес и Карта -->
+                    <div class="col-lg-7">
+                        <div class="contact-info mb-4">
+                            <h3>Адрес и связь</h3>
+                            <p>г. Москва, ул. Примерная, д. 1</p>
+                            <p>Тел: +7 (900) 000-00-00</p>
+                            <p>E-mail: info@translamps.example</p>
+                            <h3>Карта</h3>
+                        </div>
+
+                        <!-- Map placeholder -->
+                        <div class="map-placeholder p-0 overflow-hidden">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1333.8814324592329!2d30.313306081420652!3d59.939382746173585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4696310b32cbe2e9%3A0x74e032aa0505dfc!2z0JPQvtGB0YPQtNCw0YDRgdGC0LLQtdC90L3Ri9C5INCt0YDQvNC40YLQsNC2!5e0!3m2!1sru!2sru!4v1765722129341!5m2!1sru!2sru" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0; border-radius:12px;" 
+                                allowfullscreen 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Правая часть: Форма -->
+                    <div class="col-lg-5">
+                        <div class="contact-card shadow-gold rounded-3">
+                            <div class="p-4 border-bottom border-white-light">
+                                <h3>Связаться с нами</h3>
+                            </div>
+                            <form id="contact-form" class="p-4 form-custom">
+                                <div class="mb-3">
+                                    <label class="form-label text-alto">Имя *</label>
+                                    <input type="text" name="name" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-alto">E-mail *</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label text-alto">Сообщение</label>
+                                    <textarea class="form-control" name="message" rows="4"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn-custom btn-primary-custom">
+                                        Отправить
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label text-alto">E-mail *</label>
-                  <input type="email" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label text-alto">Телефон</label>
-                  <input type="tel" name="phone" class="form-control">
-                </div>
-                <div class="mb-3">
-                  <label class="form-label text-alto">Тема обращения</label>
-                  <select class="form-select" name="subject">
-                    <option selected>Выберите тему</option>
-                    <option value="sales">Консультация по оборудованию</option>
-                    <option value="support">Техническая поддержка</option>
-                    <option value="project">Обсуждение проекта</option>
-                    <option value="cooperation">Сотрудничество</option>
-                    <option value="other">Другое</option>
-                  </select>
-                </div>
-                <div class="mb-4">
-                  <label class="form-label text-alto">Сообщение *</label>
-                  <textarea class="form-control" name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="btn-custom btn-primary-custom w-100">
-                  Отправить сообщение
-                </button>
-              </form>
-            </div>
-          </div>
+            </section>
         </div>
-      </section>
+    </main>
 
-      <!-- FAQ Section -->
-      <section class="gradient-light rounded-4 p-5 mt-5">
-        <h2 class="heading-2 text-center mb-5">Часто задаваемые вопросы</h2>
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <!-- FAQ Item 1 -->
-            <div class="faq-item mb-3">
-              <div class="faq-header" data-bs-toggle="collapse" data-bs-target="#faq1">
-                <h3 class="text-gallery mb-0">Какой срок изготовления оборудования?</h3>
-                <span class="text-gold">+</span>
-              </div>
-              <div class="collapse" id="faq1">
-                <div class="p-4 pt-0">
-                  <p class="text-silver mb-0">
-                    Стандартный срок изготовления — 2-4 недели в зависимости от сложности заказа. Срочные заказы обсуждаются индивидуально.
-                  </p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-main">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <p class="text-silver mb-0" style="font-size: 20px;">© 2025 Трансформаторы и Лампы</p>
                 </div>
-              </div>
             </div>
-
-            <!-- FAQ Item 2 -->
-            <div class="faq-item mb-3">
-              <div class="faq-header" data-bs-toggle="collapse" data-bs-target="#faq2">
-                <h3 class="text-gallery mb-0">Предоставляете ли вы гарантию?</h3>
-                <span class="text-gold">+</span>
-              </div>
-              <div class="collapse" id="faq2">
-                <div class="p-4 pt-0">
-                  <p class="text-silver mb-0">
-                    Да, на всё оборудование мы предоставляем гарантию 5 лет. Также доступно пост-гарантийное обслуживание.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- FAQ Item 3 -->
-            <div class="faq-item">
-              <div class="faq-header" data-bs-toggle="collapse" data-bs-target="#faq3">
-                <h3 class="text-gallery mb-0">Возможна ли кастомизация оборудования?</h3>
-                <span class="text-gold">+</span>
-              </div>
-              <div class="collapse" id="faq3">
-                <div class="p-4 pt-0">
-                  <p class="text-silver mb-0">
-                    Да, мы предлагаем индивидуальные решения — от изменения внешнего вида до разработки полностью уникальных функций.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
-    </div>
-  </main>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container-main">
-      <div class="row g-4">
-        <div class="col-lg-5">
-          <div class="d-flex align-items-center gap-3 mb-4">
-            <div class="brand-logo">T&L</div>
-            <div>
-              <h3 class="text-gallery mb-1" style="font-size: 20px;">Трансформаторы и Лампы</h3>
-              <p class="text-silver mb-0" style="font-size: 20px;">Профессиональное аудиооборудование</p>
-            </div>
-          </div>
-          <p class="text-silver mb-0" style="font-size: 20px;">© 2025 Все права защищены</p>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h4 class="text-silver mb-3" style="font-size: 20px;">Меню</h4>
-          <a href="index.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Главная</a>
-          <a href="catalog.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Каталог</a>
-          <a href="projects.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Проекты</a>
-          <a href="about.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">О компании</a>
-          <a href="contacts.html" class="text-alto text-decoration-none d-block" style="font-size: 20px;">Контакты</a>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <h4 class="text-silver mb-3" style="font-size: 20px;">Контакты</h4>
-          <p class="text-silver mb-2" style="font-size: 20px;">email: info@translamps.example</p>
-          <p class="text-silver mb-2" style="font-size: 20px;">тел: +7 (900) 000-00-00</p>
-          <p class="text-silver mb-0" style="font-size: 20px;">Москва, ул. Примерная, д. 1</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Подключение общего JavaScript -->
-  <script src="js/main.js"></script>
-  <script>
-    // FAQ toggle icons
-    document.addEventListener('DOMContentLoaded', function() {
-      const faqHeaders = document.querySelectorAll('.faq-header');
-      faqHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-          const icon = this.querySelector('span');
-          const target = this.getAttribute('data-bs-target');
-          const collapse = document.querySelector(target);
-          
-          // Закрыть все другие FAQ items
-          document.querySelectorAll('.faq-header').forEach(otherHeader => {
-            if (otherHeader !== this) {
-              otherHeader.setAttribute('aria-expanded', 'false');
-              const otherIcon = otherHeader.querySelector('span');
-              if (otherIcon) otherIcon.textContent = '+';
-            }
-          });
-          
-          // Переключить текущий
-          const isShown = collapse && collapse.classList.contains('show');
-          if (icon) {
-            icon.textContent = isShown ? '+' : '−';
-          }
-        });
-        
-        // Отслеживание событий Bootstrap collapse
-        const target = header.getAttribute('data-bs-target');
-        const collapse = document.querySelector(target);
-        if (collapse) {
-          collapse.addEventListener('shown.bs.collapse', function() {
-            const icon = header.querySelector('span');
-            if (icon) icon.textContent = '−';
-          });
-          collapse.addEventListener('hidden.bs.collapse', function() {
-            const icon = header.querySelector('span');
-            if (icon) icon.textContent = '+';
-          });
-        }
-      });
-    });
-  </script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Подключение общего JavaScript -->
+    <script src="js/main.js"></script>
 </body>
 </html>
