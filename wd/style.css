@@ -1,0 +1,740 @@
+/* сброс стилей - чтоб браузеры не делали своё */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* базовые переменные из фигмы */
+:root {
+  --green-dark:  #096543;
+  --green-light: #5EC59F;
+  --black:       #000000;
+  --near-black:  #1E1E1E;
+  --nav-color:   #2F2F2F;
+  --gray-bg:     #F0F0F0;
+  --red-price:   #E8000B;
+  --star-color:  #F4B942;
+  --white:       #FFFFFF;
+  --side-pad:    120px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FFFFFF;
+  color: var(--near-black);
+  overflow-x: hidden;
+}
+
+/*  кнопки (из фигмы)  */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  transition: opacity .2s;
+}
+.btn:hover { opacity: .85; }
+
+/* зелёная мятная - для hero-секции */
+.btn--mint {
+  background: var(--green-light);
+  color: var(--white);
+  font-size: 21px;
+  line-height: 32px;
+  height: 58px;
+  padding: 0 32px;
+}
+
+/* тёмно-зелёная - для подвала и cta */
+.btn--dark {
+  background: var(--green-dark);
+  color: var(--white);
+  width: 255px;
+  height: 48px;
+}
+
+/* контурная - для карточек и категорий */
+.btn--outline {
+  background: transparent;
+  border: 1.5px solid var(--green-dark);
+  color: var(--green-dark);
+  font-size: 15px;
+  height: 48px;
+}
+.btn--outline:hover {
+  background: var(--green-dark);
+  color: var(--white);
+  opacity: 1;
+}
+
+/* растягивает кнопку на всю ширину */
+.btn--full { width: 100%; }
+
+/* большая ширина для hero-секции */
+.btn--wide {
+  width: 100%;
+  max-width: 728px;
+}
+
+/*  шапка (nav)  */
+/* позиции из фигмы: лого слева, ссылки по центру-правее */
+
+.header {
+  position: relative;
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--side-pad);
+  height: 100px;
+}
+
+/* Местные продукты - из фигмы: Poppins 400 24px */
+.nav__logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 18px;
+  color: var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+  list-style: none;
+}
+
+/* ссылки навигации - из фигмы: Poppins 400 18px letter-spacing 0.5px */
+.nav__links a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--nav-color);
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav__links a:hover { color: var(--green-dark); }
+
+/* бургер - скрыт на десктопе */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+}
+.burger span {
+  display: block;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+}
+
+/* мобильное меню - закрыто по умолчанию */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--black);
+  text-decoration: none;
+}
+.mobile-menu__close {
+  position: absolute;
+  top: 32px; right: 32px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--black);
+}
+
+/*  hero-секция  */
+/* из фигмы: блок с фоном 1680×581, blur 3px, border-radius 27px */
+
+.hero {
+  position: relative;
+  margin: 0 var(--side-pad) 80px;
+  border-radius: 27px;
+  overflow: hidden;
+  min-height: 517px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* размытый фон через ::before */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
+    url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1680&q=80') center / cover no-repeat;
+  filter: blur(3px);
+  transform: scale(1.04); /* чтоб края не просвечивали */
+  border-radius: 27px;
+}
+
+/* контент поверх фона - из фигмы: gap 100px снаружи, gap 50px внутри */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  padding: 60px 32px;
+  text-align: center;
+  width: 100%;
+  max-width: 983px;
+}
+
+/* МЕСТНЫЕ ПРОДУКТЫ - из фигмы: Poppins 700 96px, letter-spacing -0.05em */
+.hero__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 96px);
+  line-height: 100px;
+  letter-spacing: -0.05em;
+  color: var(--near-black);
+  text-align: center;
+}
+
+/* подзаголовок - из фигмы: DM Sans 400 18px */
+.hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: var(--near-black);
+}
+
+/*  секция с товарами  */
+
+.products-section {
+  padding: 0 var(--side-pad) 80px;
+}
+
+/* заголовки разделов - 3 варианта выравнивания */
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.8vw, 58px);
+  line-height: 72px;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+.section-title--left  { text-align: left; }
+.section-title--right { text-align: right; }
+.section-title--center { text-align: center; }
+
+/* два ряда карточек - из фигмы: flex row, gap 19px */
+.products-row {
+  display: flex;
+  flex-direction: row;
+  gap: 19px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 19px;
+}
+
+/* карточка товара - из фигмы: ширина ~318px, gap 8px -- width: 317px;  */
+.card {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* обёртка картинки - из фигмы: 318×250, border-radius 23px */
+.card__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  border-radius: 23px;
+  overflow: hidden;
+}
+.card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* кнопочки поверх картинки - сердечко и глаз */
+.card__actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .15s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.card__icon:hover { transform: scale(1.1); }
+
+/* название и цена в одной строке */
+.card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* из фигмы: Poppins 500 16px */
+.card__name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--black);
+}
+.card__price {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--red-price);
+  white-space: nowrap;
+}
+
+/*  интерактивный рейтинг звёздочками  */
+/* работает через радио-инпуты - кликаешь и звезда выделяется */
+
+.card__rating {
+  display: flex;
+  flex-direction: row-reverse; /* реверс нужен для CSS-трюка с ~ */
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+/* прячем сами инпуты - они нам не нужны визуально */
+.card__rating input[type="radio"] {
+  display: none;
+}
+
+/* звёздочки через псевдоэлемент label */
+.card__rating label {
+  cursor: pointer;
+  font-size: 16px;
+  color: #ccc;
+  transition: color .1s;
+}
+.card__rating label span { pointer-events: none; }
+
+/* подсвечиваем звезду при наведении и все после неё */
+.card__rating label:hover,
+.card__rating label:hover ~ label {
+  color: var(--star-color);
+}
+
+/* подсвечиваем выбранную и все после неё */
+.card__rating input[type="radio"]:checked ~ label {
+  color: var(--star-color);
+}
+
+.card__reviews {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #666;
+  margin-left: 4px;
+  /* выводим справа от звёзд - выходим из flex-reverse */
+  order: 99;
+}
+
+/*  категории  */
+
+.categories-section {
+  padding: 80px var(--side-pad);
+}
+
+/* внутренний серый блок - из фигмы */
+.categories-wrap {
+  background: #F5F5F5;
+  border-radius: 10px;
+  padding: 40px;
+}
+.categories-wrap__heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 28px);
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
+/* сетка категорий 2×2 */
+.categories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.cat {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  height: 200px;
+  cursor: pointer;
+}
+.cat img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s;
+}
+.cat:hover img { transform: scale(1.04); }
+.cat__label {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 1.5vw, 20px);
+  color: white;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/*  функционал  */
+/* тут просто вставляем 2 картинки из фигмы рядом */
+
+.features-section {
+  padding: 80px var(--side-pad);
+}
+
+.features-section__desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  text-align: center;
+  color: var(--black);
+  background: var(--gray-bg);
+  border-radius: 8px;
+  padding: 14px 32px;
+  margin: 0 auto 32px;
+  max-width: 640px;
+}
+
+/* два изображения рядом - просто flex */
+.features-images {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: flex-start;
+}
+.features-images__img {
+  width: calc(50% - 12px);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,.08);
+  display: block;
+}
+
+/*  как оформить заказ  */
+
+.how-section {
+  padding: 80px var(--side-pad);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* большие цифры - из фигмы: Poppins 700 120px, цвет #096543 */
+.step__num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(72px, 8vw, 120px);
+  line-height: 180px;
+  color: var(--green-dark);
+}
+
+/* текст под цифрой - из фигмы: Poppins 500 24px */
+.step__text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.4vw, 24px);
+  line-height: 36px;
+  color: var(--black);
+  max-width: 335px;
+}
+
+/* стрелочка между шагами - из фигмы: border 4px solid #096543, rotate 90deg */
+.step__arrow {
+  width: 4px;
+  height: 60px;
+  background: var(--green-dark);
+  border-radius: 2px;
+  position: relative;
+  margin: 8px 0;
+}
+.step__arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid var(--green-dark);
+}
+
+/*  блок со скидкой  */
+/* из фигмы: Frame 1, background #F0F0F0, border-radius 10px, padding 62px 130px */
+
+.cta-section {
+  padding: 60px var(--side-pad);
+}
+
+.cta-box {
+  background: var(--gray-bg);
+  border-radius: 10px;
+  padding: 62px 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  text-align: center;
+}
+
+/* из фигмы: Poppins 700 48px */
+.cta-box__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 48px);
+  line-height: 72px;
+  color: var(--black);
+}
+
+/* из фигмы: Poppins 400 20px */
+.cta-box__sub {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: clamp(14px, 1.2vw, 20px);
+  color: var(--black);
+  margin-top: -32px;
+}
+
+.cta-box__btns {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*  подвал  */
+/* из фигмы: background #096543, height 168px */
+
+.footer {
+  background: var(--green-dark);
+  padding: 37px var(--side-pad);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+  min-height: 168px;
+}
+
+/* контакты - из фигмы: Poppins 400 16px, color #fff */
+.footer__contact p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
+}
+
+.footer__copy {
+  margin-top: 12px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* из фигмы: Poppins 400 12px, color rgba(255,255,255,.45) */
+.footer__copy span,
+.footer__copy a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(255, 255, 255, .45);
+  text-decoration: none;
+}
+.footer__copy a:hover { color: rgba(255,255,255,.7); }
+
+/* навигация в подвале - из фигмы: Poppins 500 15px */
+.footer__nav {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.footer__nav a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity .2s;
+}
+.footer__nav a:hover { opacity: .7; }
+
+/* иконки соцсетей */
+.footer__social {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* базовая кнопка соцсети */
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 11px;
+  text-decoration: none;
+  transition: background .2s, border-color .2s;
+  letter-spacing: 0;
+  font-family: 'Poppins', sans-serif;
+}
+.social-btn:hover {
+  border-color: white;
+  background: rgba(255,255,255,.15);
+}
+
+/* rutube - красноватый оттенок при наведении */
+.social-btn--rutube:hover { background: rgba(255,50,50,.25); }
+
+/* vk - синеватый */
+.social-btn--vk:hover { background: rgba(50,100,255,.25); }
+
+/* max - нейтральный */
+.social-btn--max:hover { background: rgba(255,255,255,.2); }
+
+/* АДАПТИВНОСТЬ */
+
+/* ноутбук 1440/1366 */
+@media (max-width: 1500px) {
+  :root { --side-pad: 60px; }
+}
+
+/* планшет горизонтальный ~1194 */
+@media (max-width: 1250px) {
+  :root { --side-pad: 40px; }
+  .nav__links { gap: 28px; }
+  .nav__links a { font-size: 15px; }
+  .cta-box { padding: 48px; }
+  .footer { grid-template-columns: 1fr 1fr; }
+  .footer__social { grid-column: 1 / -1; justify-content: center; }
+  .card { width: calc(50% - 10px); }
+}
+
+/* планшет вертикальный ~834 */
+@media (max-width: 900px) {
+  :root { --side-pad: 24px; }
+  .nav { height: 72px; }
+  .nav__links { display: none; }
+  .burger { display: flex; }
+  .hero { min-height: 380px; }
+  .hero__title { line-height: 1.1; }
+  .categories-grid { grid-template-rows: 160px 160px; }
+  .features-images { flex-direction: column; }
+  .features-images__img { width: 100%; }
+  .footer { grid-template-columns: 1fr; }
+  .footer__nav { justify-content: flex-start; gap: 16px; }
+  .footer__social { justify-content: flex-start; }
+  .card { width: calc(50% - 10px); }
+}
+
+/* мобильный ~375 */
+@media (max-width: 480px) {
+  :root { --side-pad: 16px; }
+  .nav { height: 60px; }
+  .nav__logo { font-size: 18px; }
+  .hero { min-height: 280px; margin-bottom: 40px; }
+  .hero__title { font-size: 28px; letter-spacing: -0.03em; }
+  .hero__subtitle { font-size: 14px; }
+  .btn--mint { font-size: 16px; height: 50px; }
+  .section-title { line-height: 1.3; margin-bottom: 24px; }
+  .card { width: 100%; }
+  .categories-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 140px);
+  }
+  .cta-box { padding: 32px 16px; gap: 24px; }
+  .cta-box__btns { flex-direction: column; align-items: center; }
+  .btn--dark { width: 100%; max-width: 300px; }
+  .footer__nav { gap: 10px; }
+  .footer__nav a { font-size: 13px; }
+}
