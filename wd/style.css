@@ -643,45 +643,6 @@ body {
 }
 .footer__nav a:hover { opacity: .7; }
 
-/* иконки соцсетей */
-.footer__social {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-/* базовая кнопка соцсети */
-.social-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 11px;
-  text-decoration: none;
-  transition: background .2s, border-color .2s;
-  letter-spacing: 0;
-  font-family: 'Poppins', sans-serif;
-}
-.social-btn:hover {
-  border-color: white;
-  background: rgba(255,255,255,.15);
-}
-
-/* rutube - красноватый оттенок при наведении */
-.social-btn--rutube:hover { background: rgba(255,50,50,.25); }
-
-/* vk - синеватый */
-.social-btn--vk:hover { background: rgba(50,100,255,.25); }
-
-/* max - нейтральный */
-.social-btn--max:hover { background: rgba(255,255,255,.2); }
-
 /* АДАПТИВНОСТЬ */
 
 /* ноутбук 1440/1366 */
