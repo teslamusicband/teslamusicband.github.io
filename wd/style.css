@@ -205,7 +205,7 @@ body {
   inset: 0;
   background:
     linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),
-    url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1680&q=80') center / cover no-repeat;
+    url('img/banner-back.jpg') center / cover no-repeat;
   filter: blur(3px);
   transform: scale(1.04); /* чтоб края не просвечивали */
   border-radius: 27px;
