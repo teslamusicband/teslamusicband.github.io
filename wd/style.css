@@ -199,7 +199,7 @@ body {
   justify-content: center;
 }
 
-/* размытый фон через ::before */
+/* размытый фон */
 .hero__bg {
   position: absolute;
   inset: 0;
