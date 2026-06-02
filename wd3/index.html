@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Местные продукты</title>
+<!-- Ссылка из google Fonts https://fonts.google.com/ для моих шрифтов из Figma -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css\style.css">
+</head>
+<body>
+
+<!-- Шапка -->
+<header class="header container">
+  <a href="#app" class="logo">Местные продукты</a>
+  <nav class="nav">
+    <a href="#catalog">Каталог</a>
+    <a href="#how">Как оформить заказ</a>
+    <a href="#about">О нас</a>
+    <a href="#features">Функционал</a>
+    <a href="#app">Приложение</a>
+  </nav>
+  <!-- Кнопка бургера для мобильного меню -->
+  <button class="burger" aria-label="Открыть меню" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- Мобильное меню -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu__close" aria-label="Закрыть меню" onclick="toggleMenu()">&#215;</button>
+  <a href="#catalog" onclick="toggleMenu()">Каталог</a>
+  <a href="#how" onclick="toggleMenu()">Как оформить заказ</a>
+  <a href="#about" onclick="toggleMenu()">О нас</a>
+  <a href="#features" onclick="toggleMenu()">Функционал</a>
+  <a href="#app" onclick="toggleMenu()">Приложение</a>
+</div>
+
+<div class="container">
+
+  <!-- Главный экран -->
+  <section class="hero" id="app">
+    <div class="hero-main">
+      <div class="hero-text">
+        <h1 class="hero-title">МЕСТНЫЕ<br>ПРОДУКТЫ</h1>
+        <p class="hero-subtitle">Свежие продукты от фермеров вашего региона — с доставкой на дом!</p>
+      </div>
+      <button class="hero-btn">Скачать</button>
+    </div>
+  </section>
+
+  <!-- Только свежие продукты внутри приложения -->
+  <h2 class="section-h2" id="catalog">Только свежие продукты<br>внутри приложения</h2>
+
+  <!-- Карточки товаров -->
+  <div class="products">
+
+    <!-- Картофель -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/kartofel.jpg" alt="Картофель">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Картофель</span>
+          <span class="card-price">80 р./кг</span>
+        </div>
+        <div class="rating" data-card="r1">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r1" value="5" id="r1-5"><label for="r1-5"><span>&#9733;</span></label>
+            <input type="radio" name="r1" value="4" id="r1-4"><label for="r1-4"><span>&#9733;</span></label>
+            <input type="radio" name="r1" value="3" id="r1-3"><label for="r1-3"><span>&#9733;</span></label>
+            <input type="radio" name="r1" value="2" id="r1-2"><label for="r1-2"><span>&#9733;</span></label>
+            <input type="radio" name="r1" value="1" id="r1-1"><label for="r1-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Морковь -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/morkov.jpg" alt="Морковь">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Морковь</span>
+          <span class="card-price">90 р./кг</span>
+        </div>
+        <div class="rating" data-card="r2">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r2" value="5" id="r2-5"><label for="r2-5"><span>&#9733;</span></label>
+            <input type="radio" name="r2" value="4" id="r2-4"><label for="r2-4"><span>&#9733;</span></label>
+            <input type="radio" name="r2" value="3" id="r2-3"><label for="r2-3"><span>&#9733;</span></label>
+            <input type="radio" name="r2" value="2" id="r2-2"><label for="r2-2"><span>&#9733;</span></label>
+            <input type="radio" name="r2" value="1" id="r2-1"><label for="r2-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Огурцы -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/ogurtsy.jpg" alt="Огурцы">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Огурцы</span>
+          <span class="card-price">100 р./кг</span>
+        </div>
+        <div class="rating" data-card="r3">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r3" value="5" id="r3-5"><label for="r3-5"><span>&#9733;</span></label>
+            <input type="radio" name="r3" value="4" id="r3-4"><label for="r3-4"><span>&#9733;</span></label>
+            <input type="radio" name="r3" value="3" id="r3-3"><label for="r3-3"><span>&#9733;</span></label>
+            <input type="radio" name="r3" value="2" id="r3-2"><label for="r3-2"><span>&#9733;</span></label>
+            <input type="radio" name="r3" value="1" id="r3-1"><label for="r3-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Перец -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/perets.jpg" alt="Перец">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Перец</span>
+          <span class="card-price">110 р./кг</span>
+        </div>
+        <div class="rating" data-card="r4">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r4" value="5" id="r4-5"><label for="r4-5"><span>&#9733;</span></label>
+            <input type="radio" name="r4" value="4" id="r4-4"><label for="r4-4"><span>&#9733;</span></label>
+            <input type="radio" name="r4" value="3" id="r4-3"><label for="r4-3"><span>&#9733;</span></label>
+            <input type="radio" name="r4" value="2" id="r4-2"><label for="r4-2"><span>&#9733;</span></label>
+            <input type="radio" name="r4" value="1" id="r4-1"><label for="r4-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Второй ряд -->
+
+    <!-- Баклажан -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/baklazhan.jpg" alt="Баклажан">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Баклажан</span>
+          <span class="card-price">120 р./кг</span>
+        </div>
+        <div class="rating" data-card="r5">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r5" value="5" id="r5-5"><label for="r5-5"><span>&#9733;</span></label>
+            <input type="radio" name="r5" value="4" id="r5-4"><label for="r5-4"><span>&#9733;</span></label>
+            <input type="radio" name="r5" value="3" id="r5-3"><label for="r5-3"><span>&#9733;</span></label>
+            <input type="radio" name="r5" value="2" id="r5-2"><label for="r5-2"><span>&#9733;</span></label>
+            <input type="radio" name="r5" value="1" id="r5-1"><label for="r5-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Кабачок -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/kabachok.jpg" alt="Кабачок">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Кабачок</span>
+          <span class="card-price">120 р./кг</span>
+        </div>
+        <div class="rating" data-card="r6">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r6" value="5" id="r6-5"><label for="r6-5"><span>&#9733;</span></label>
+            <input type="radio" name="r6" value="4" id="r6-4"><label for="r6-4"><span>&#9733;</span></label>
+            <input type="radio" name="r6" value="3" id="r6-3"><label for="r6-3"><span>&#9733;</span></label>
+            <input type="radio" name="r6" value="2" id="r6-2"><label for="r6-2"><span>&#9733;</span></label>
+            <input type="radio" name="r6" value="1" id="r6-1"><label for="r6-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Тыква -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/tykva.jpg" alt="Тыква">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Тыква</span>
+          <span class="card-price">120 р./кг</span>
+        </div>
+        <div class="rating" data-card="r7">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r7" value="5" id="r7-5"><label for="r7-5"><span>&#9733;</span></label>
+            <input type="radio" name="r7" value="4" id="r7-4"><label for="r7-4"><span>&#9733;</span></label>
+            <input type="radio" name="r7" value="3" id="r7-3"><label for="r7-3"><span>&#9733;</span></label>
+            <input type="radio" name="r7" value="2" id="r7-2"><label for="r7-2"><span>&#9733;</span></label>
+            <input type="radio" name="r7" value="1" id="r7-1"><label for="r7-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+    <!-- Помидоры черри -->
+    <div class="card">
+      <div class="card-img">
+        <img src="img/cherry.jpg" alt="Помидоры черри">
+        <div class="card-icons">
+          <button class="icon" aria-label="В избранное">&#9825;</button>
+          <button class="icon" aria-label="Быстрый просмотр">&#9678;</button>
+        </div>
+      </div>
+      <div class="card-info">
+        <div class="card-row">
+          <span class="card-name">Помидоры черри</span>
+          <span class="card-price">120 р./кг</span>
+        </div>
+        <div class="rating" data-card="r8">
+          <span class="rate-count"></span>
+          <div class="stars">
+            <input type="radio" name="r8" value="5" id="r8-5"><label for="r8-5"><span>&#9733;</span></label>
+            <input type="radio" name="r8" value="4" id="r8-4"><label for="r8-4"><span>&#9733;</span></label>
+            <input type="radio" name="r8" value="3" id="r8-3"><label for="r8-3"><span>&#9733;</span></label>
+            <input type="radio" name="r8" value="2" id="r8-2"><label for="r8-2"><span>&#9733;</span></label>
+            <input type="radio" name="r8" value="1" id="r8-1"><label for="r8-1"><span>&#9733;</span></label>
+          </div>
+        </div>
+        <button class="card-btn">Подробнее</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Выбор категорий -->
+  <h2 class="section-h2" id="about">Большой выбор категорий</h2>
+
+  <section class="cat-block">
+    <div class="cat-title">Категории товаров</div>
+    <div class="cat-row cat-row-1">
+      <div class="cat"><img src="img/veg.jpg" alt="Овощи"><div class="cat-name">Овощи</div></div>
+      <div class="cat"><img src="img/green.jpg" alt="Зелень"><div class="cat-name">Зелень</div></div>
+    </div>
+    <div class="cat-row cat-row-2">
+      <div class="cat"><img src="img/cheese.jpg" alt="Сыр и молочное"><div class="cat-name">Сыр и молочное</div></div>
+      <div class="cat"><img src="img/meat.jpg" alt="Мясо и птица"><div class="cat-name">Мясо и птица</div></div>
+    </div>
+  </section>
+
+  <!-- Эксклюзивный функционал -->
+  <section class="excl" id="features">
+    <h2 class="excl-title">Эксклюзивный функционал, который<br>есть только внутри приложения</h2>
+    <div class="excl-sub">Система подписок и экскурсии на фермы наших поставщиков</div>
+    <div class="excl-imgs">
+      <img src="img/active_subscribe.png" alt="Активные подписки">
+      <img src="img/excursions.png" alt="Экскурсии">
+    </div>
+  </section>
+
+  <!-- Оформление заказа -->
+  <section class="order" id="how">
+    <h2 class="order-h">Как устроено оформление заказа?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-t">Выбор нужного товара</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-t">Добавление в корзину</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-t">Оформление заказа и оплата</div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-t">Отслеживание статуса заказа в личном кабинете</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Скидка -->
+  <section class="discount">
+    <div class="dis-text">
+      <div class="dis-tit">Успейте получить скидку 20%</div>
+      <div class="dis-sub">На первый заказ в мобильном приложении</div>
+    </div>
+    <div class="dis-btns">
+      <button class="dis-btn">App store</button>
+      <button class="dis-btn">Google play</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- Подвал -->
+<footer class="footer">
+  <div class="container footer-in">
+    <div class="foot-contacts">
+      <p>Телефон: &nbsp;+7 931 385 23 84</p>
+      <p>Электронная почта: &nbsp;&nbsp;&nbsp;инфо@местныепродукты.рф</p>
+      <div class="foot-copy">
+        <span>&#169; 2026 Все права защищены</span>
+        <a href="#">Политика обработки персональных данных</a>
+      </div>
+    </div>
+    <ul class="foot-nav">
+      <li><a href="#catalog">Каталог</a></li>
+      <li><a href="#how">Как оформить заказ</a></li>
+      <li><a href="#about">О нас</a></li>
+      <li><a href="#features">Функционал</a></li>
+      <li><a href="#app">Приложение</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="js\script.js"></script>
+</body>
+</html>
