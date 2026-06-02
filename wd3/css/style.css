@@ -1,0 +1,683 @@
+:root {
+  --black: #000000;
+}
+
+/* Сброс отступов */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Poppins', sans-serif; background: #FFFFFF; color: #000000; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: 'Poppins', sans-serif; }
+
+/* Контейнер контента - 1600px на десктопе */
+.container {
+  width: 1600px;
+  margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 18px;
+  color: #000000;
+}
+.nav {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+.nav a {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #2F2F2F;
+}
+
+/* бургер - скрыт на десктопе */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--black);
+  border-radius: 2px;
+}
+
+/* мобильное меню - закрыто по умолчанию */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--black);
+  text-decoration: none;
+}
+.mobile-menu__close {
+  position: absolute;
+  top: 32px; right: 32px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: var(--black);
+}
+
+/* Главный экран */
+.hero {
+  position: relative;
+  height: 581px;
+  margin-top: 35px;
+  border-radius: 27px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* Размытый фоновый слой */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.4)),
+    url(../img/banner-back.jpg) center/cover no-repeat,
+    rgba(196, 196, 196, 0.1);
+  filter: blur(3px);
+  transform: scale(1.04);
+  z-index: 0;
+}
+.hero-main {
+  position: relative;
+  z-index: 1;
+  width: 983px;
+  padding: 60px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  border-radius: 10px;
+}
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 100px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: #1E1E1E;
+}
+.hero-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #1E1E1E;
+}
+.hero-btn {
+  width: 728px;
+  height: 58px;
+  background: #5EC59F;
+  border-radius: 10px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Заголовки разделов */
+.section-h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 72px;
+  color: #000000;
+  margin: 100px 0 50px;
+}
+
+/* Карточки товаров */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  row-gap: 50px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Картинка карточки */
+.card-img {
+  width: 100%;
+  height: 250px;
+  border-radius: 23px;
+  background: #f3f3f3;
+  position: relative;
+  overflow: hidden;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-icons {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.icon {
+  width: 34px;
+  height: 34px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  border: none;
+  line-height: 1;
+}
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.card-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.card-price {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #DB4444;
+}
+/* Рейтинг звёздами - кликабельные через radio-инпуты */
+.rating {
+  display: flex;
+  align-items: center;
+}
+.stars {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+/* Прячем сами radio-кнопки */
+.stars input[type="radio"] {
+  display: none;
+}
+/* Звёздочка - серая по умолчанию */
+.stars label {
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: #d0d0d0;
+  transition: color .1s;
+  padding: 0 1px;
+}
+.stars label span { pointer-events: none; }
+/* Наведение - закрашиваются звёздочка и все следующие в обратном порядке */
+.stars label:hover,
+.stars label:hover ~ label {
+  color: #FFAD33;
+}
+/* Выбранная звезда и все после неё (визуально слева в row-reverse) */
+.stars input[type="radio"]:checked + label,
+.stars input[type="radio"]:checked ~ label {
+  color: #FFAD33;
+}
+.rate-count {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+  opacity: 0.5;
+  margin-right: 8px;
+}
+.card-btn {
+  height: 48px;
+  background: transparent;
+  border: 1px solid #096543;
+  border-radius: 10px;
+  color: #096543;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* Большой выбор категорий */
+.cat-block {
+  background: #F0F0F0;
+  border-radius: 10px;
+  padding: 62px 24px 24px;
+}
+.cat-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 24px;
+}
+.cat-row {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+.cat-row-1 { grid-template-columns: 661fr 867fr; }
+.cat-row-2 { grid-template-columns: 947fr 605fr; margin-bottom: 0; }
+.cat {
+  height: 289px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.cat img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cat-name {
+  position: absolute;
+  top: 22px;
+  left: 36px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  color: #FFFFFF;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+}
+
+/* Эксклюзивный функционал */
+.excl {
+  text-align: center;
+  margin-top: 100px;
+}
+.excl-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 87px;
+  text-align: center;
+  color: #000000;
+}
+.excl-sub {
+  display: inline-block;
+  background: #F0F0F0;
+  border-radius: 10px;
+  padding: 20px 40px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  color: #000000;
+  margin-top: 30px;
+}
+.excl-imgs {
+  background: #F0F0F0;
+  border-radius: 10px;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.excl-imgs img {
+  width: 50%;
+  height: 670px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Как устроено оформление заказа */
+.order {
+  text-align: center;
+  margin-top: 100px;
+}
+.order-h {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 87px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 50px;
+}
+.steps {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+}
+.step {
+  width: 277px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-n {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 180px;
+  text-align: center;
+  color: #106A48;
+}
+.step-t {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+}
+
+/* Блок «Успейте получить скидку 20%» */
+.discount {
+  background: #F0F0F0;
+  border-radius: 10px;
+  padding: 62px 130px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+}
+.dis-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.dis-tit {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  text-align: center;
+  color: #000000;
+}
+.dis-sub {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  color: #000000;
+}
+.dis-btns {
+  display: flex;
+  gap: 24px;
+}
+.dis-btn {
+  width: 255px;
+  height: 48px;
+  background: #096543;
+  border-radius: 10px;
+  border: none;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Подвал */
+.footer {
+  background: #096543;
+  margin-top: 100px;
+  color: #FFFFFF;
+  padding: 37px 0;
+  min-height: 168px;
+}
+.footer-in {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 24px;
+}
+.foot-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.foot-contacts p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.foot-copy {
+  margin-top: 12px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.foot-copy span,
+.foot-copy a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(255,255,255,0.45);
+}
+.foot-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+}
+.foot-nav a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #FFFFFF;
+}
+
+/* Адаптив */
+
+/* Ноутбук 1440/1366 - контент 1280 */
+@media (max-width: 1919px) {
+  .container { width: 1280px; }
+  .hero-main { width: 800px; gap: 80px; }
+  .hero-title { font-size: 78px; line-height: 84px; }
+  .hero-btn { width: 580px; }
+  .section-h2 { font-size: 48px; line-height: 60px; }
+  .excl-title { font-size: 48px; line-height: 72px; }
+  .order-h { font-size: 48px; line-height: 72px; }
+  .step-n { font-size: 100px; line-height: 150px; }
+  .excl-imgs img { height: 540px; }
+  .cat-title { font-size: 40px; line-height: 60px; }
+}
+
+/* Tablet hor 1194 - контент 960 */
+@media (max-width: 1365px) {
+  .container { width: 960px; }
+  .hero { height: 480px; }
+  .hero-title { font-size: 64px; line-height: 70px; }
+  .hero-main { width: 100%; gap: 60px; padding: 40px 16px; }
+  .hero-text { gap: 30px; }
+  .hero-btn { width: 480px; }
+  .section-h2 { font-size: 42px; line-height: 56px; margin: 80px 0 32px; }
+  .products { grid-template-columns: repeat(3, 1fr); }
+  .cat-block { padding: 40px 20px 20px; }
+  .cat-title { font-size: 36px; line-height: 56px; }
+  .cat-row-1, .cat-row-2 { grid-template-columns: 1fr 1fr; }
+  .cat { height: 240px; }
+  .cat-name { font-size: 28px; line-height: 40px; top: 18px; left: 24px; }
+  .excl-title { font-size: 40px; line-height: 56px; }
+  .excl-sub { font-size: 20px; line-height: 28px; padding: 16px 28px; }
+  .excl-imgs { padding: 20px; gap: 20px; }
+  .excl-imgs img { height: 420px; }
+  .order-h { font-size: 40px; line-height: 56px; }
+  .steps { flex-wrap: wrap; gap: 40px; }
+  .step { width: calc(50% - 20px); }
+  .step-n { font-size: 84px; line-height: 120px; }
+  .discount { padding: 50px 60px; }
+  .dis-tit { font-size: 36px; line-height: 50px; }
+}
+
+/* Tablet vert 834 - контент 720 */
+@media (max-width: 1193px) {
+  .container { width: 720px; }
+  .header { padding-top: 24px; flex-direction: column; gap: 16px; }
+  .nav { flex-wrap: wrap; gap: 24px; justify-content: center; }
+  .nav a { font-size: 15px; }
+  .burger { display: flex; }
+  .hero { height: 400px; margin-top: 24px; }
+  .hero-title { font-size: 56px; line-height: 62px; }
+  .hero-main { gap: 40px; padding: 30px 16px; }
+  .hero-text { gap: 24px; }
+  .hero-btn { width: 100%; max-width: 480px; height: 52px; font-size: 18px; }
+  .hero-subtitle { font-size: 16px; }
+  .section-h2 { font-size: 36px; line-height: 48px; margin: 50px 0 28px; }
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .cat-block { padding: 32px 16px 16px; }
+  .cat-title { font-size: 32px; line-height: 44px; }
+  .cat-row-1, .cat-row-2 { grid-template-columns: 1fr; }
+  .cat { height: 200px; }
+  .cat-name { font-size: 26px; }
+  .excl { margin-top: 60px; }
+  .excl-title { font-size: 32px; line-height: 44px; }
+  .excl-sub { font-size: 18px; line-height: 24px; padding: 14px 20px; }
+  .excl-imgs { padding: 16px; flex-direction: column; gap: 16px; }
+  .excl-imgs img { width: 100%; height: 320px; }
+  .order { margin-top: 60px; }
+  .order-h { font-size: 32px; line-height: 44px; }
+  .steps { gap: 24px; }
+  .step { width: calc(50% - 12px); }
+  .step-n { font-size: 72px; line-height: 100px; }
+  .step-t { font-size: 18px; line-height: 26px; }
+  .discount { padding: 32px 24px; margin-top: 60px; }
+  .dis-tit { font-size: 28px; line-height: 38px; }
+  .footer { margin-top: 60px; }
+  .footer-in { grid-template-columns: 1fr; gap: 24px; align-items: flex-start; padding: 0 16px; }
+  .foot-copy { flex-direction: column; gap: 4px; }
+  .foot-nav { justify-content: flex-start; gap: 16px; }
+}
+
+/* Mobile 375 - контент 360 */
+@media (max-width: 833px) {
+  .container { width: 360px; padding: 0; }
+  .header { padding: 16px 8px 0; flex-direction: column; gap: 12px; }
+  .logo { font-size: 20px; }
+  .nav { display: none; }
+  .burger { display: flex; }
+  .hero { height: 280px; border-radius: 12px; margin-top: 12px; margin-left: 8px; margin-right: 8px; }
+  .hero-title { font-size: 32px; line-height: 36px; }
+  .hero-subtitle { font-size: 13px; line-height: 18px; }
+  .hero-main { padding: 16px 8px; gap: 24px; }
+  .hero-text { gap: 16px; }
+  .hero-btn { width: 100%; max-width: 320px; height: 44px; font-size: 16px; }
+  .section-h2 { font-size: 22px; line-height: 28px; margin: 36px 8px 20px; }
+  .products { grid-template-columns: 1fr; gap: 16px; row-gap: 24px; padding: 0 8px; }
+  .card-img { height: 200px; }
+  .cat-block { padding: 20px 8px 8px; margin: 0 8px; }
+  .cat-title { font-size: 22px; line-height: 30px; margin-bottom: 16px; }
+  .cat-row { gap: 12px; margin-bottom: 12px; }
+  .cat { height: 140px; }
+  .cat-name { font-size: 20px; line-height: 28px; top: 14px; left: 16px; }
+  .excl { margin: 50px 8px 0; }
+  .excl-title { font-size: 22px; line-height: 30px; }
+  .excl-sub { font-size: 14px; line-height: 20px; padding: 10px 14px; margin-top: 16px; }
+  .excl-imgs { padding: 10px; margin-top: 16px; gap: 10px; }
+  .excl-imgs img { height: 200px; }
+  .order { margin: 50px 8px 0; }
+  .order-h { font-size: 22px; line-height: 30px; margin-bottom: 24px; }
+  .steps { flex-direction: column; gap: 24px; }
+  .step { width: 100%; }
+  .step-n { font-size: 64px; line-height: 80px; }
+  .step-t { font-size: 16px; line-height: 22px; }
+  .discount { padding: 24px 16px; margin: 50px 8px 0; }
+  .dis-tit { font-size: 22px; line-height: 28px; }
+  .dis-sub { font-size: 14px; }
+  .dis-btns { flex-direction: column; width: 100%; }
+  .dis-btn { width: 100%; }
+  .footer { padding: 20px 0; margin-top: 60px; }
+  .footer-in { grid-template-columns: 1fr; padding: 0 12px; gap: 20px; }
+  .foot-contacts p { font-size: 14px; line-height: 22px; }
+  .foot-nav { gap: 10px; }
+  .foot-nav a { font-size: 13px; }
+  .foot-copy { font-size: 12px; line-height: 18px; }
+}
