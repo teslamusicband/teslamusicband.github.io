@@ -22,7 +22,46 @@ document.addEventListener('DOMContentLoaded', function() {
       countEl.textContent = '(' + randomCount + ')';
     }
   });
+
+  // Инициализация анимаций при скролле
+  initScrollAnimations();
+  // Параллакс для hero
+  initParallax();
 });
+
+// Анимации при скролле
+function initScrollAnimations() {
+  var elements = document.querySelectorAll('.card, .section-h2, .cat-block, .excl, .order, .discount, .step, .cat');
+  
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  
+  elements.forEach(function(el) {
+    el.classList.add('animate-on-scroll');
+    observer.observe(el);
+  });
+}
+
+// Параллакс эффект для hero секции
+function initParallax() {
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+  
+  var heroBefore = hero.querySelector('::before');
+  if (!heroBefore) return;
+  
+  window.addEventListener('scroll', function() {
+    var scrolled = window.pageYOffset;
+    if (scrolled < 600) {
+      hero.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
+    }
+  });
+}
 
 // Открытие и закрытие мобильного меню
 function toggleMenu() {

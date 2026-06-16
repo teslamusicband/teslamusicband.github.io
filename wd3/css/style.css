@@ -1,5 +1,88 @@
 :root {
   --black: #000000;
+  --green: #5EC59F;
+  --dark-green: #096543;
+}
+
+/* Анимации при скролле - появление элементов */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Параллакс для hero */
+.hero-parallax {
+  transition: transform 0.1s ease-out;
 }
 
 /* Сброс отступов */
@@ -43,6 +126,11 @@ button { font-family: 'Poppins', sans-serif; }
   line-height: 24px;
   letter-spacing: 0.5px;
   color: #2F2F2F;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.nav a:hover {
+  color: #096543;
+  transform: translateY(-2px);
 }
 
 /* бургер - скрыт на десктопе */
@@ -172,6 +260,13 @@ button { font-family: 'Poppins', sans-serif; }
   line-height: 32px;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.hero-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(94, 197, 159, 0.4);
+  background: #4db38f;
 }
 
 /* Заголовки разделов */
@@ -204,6 +299,12 @@ button { font-family: 'Poppins', sans-serif; }
   background: #f3f3f3;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover .card-img {
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 .card-img img {
   width: 100%;
@@ -232,6 +333,13 @@ button { font-family: 'Poppins', sans-serif; }
   color: #000000;
   border: none;
   line-height: 1;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  background: var(--dark-green);
+  color: #FFFFFF;
 }
 .card-info {
   display: flex;
@@ -314,6 +422,13 @@ button { font-family: 'Poppins', sans-serif; }
   text-align: center;
   cursor: pointer;
   margin-top: 4px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.card-btn:hover {
+  background: #096543;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 /* Большой выбор категорий */
@@ -343,12 +458,23 @@ button { font-family: 'Poppins', sans-serif; }
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
 }
+
+.cat:hover {
+  transform: scale(1.02);
+}
+
 .cat img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.cat:hover img {
+  transform: scale(1.1);
 }
 .cat-name {
   position: absolute;
@@ -497,6 +623,13 @@ button { font-family: 'Poppins', sans-serif; }
   line-height: 27px;
   text-align: center;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.dis-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(9, 101, 67, 0.35);
+  background: #0a7d56;
 }
 
 /* Подвал */
